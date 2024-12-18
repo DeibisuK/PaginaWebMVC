@@ -14,7 +14,7 @@ namespace PaginaWebMVC.Controllers
 {
     public class AccesoController : Controller
     {
-        static string cadena = "Data Source=´MACHINEGUN\\SQLEX´;initial catalog=PruebaLogin;integrated security=true";
+        static string cadena = "Data Source=MACHINEGUN\\SQLEX;initial catalog=PruebaLogin;integrated security=true";
         // GET: Acceso
         public ActionResult Login()
         {
@@ -24,31 +24,37 @@ namespace PaginaWebMVC.Controllers
         [HttpPost]
         public ActionResult Login(Usuario user)
         {
-            user.Contraseña = ConvertirSha256(user.Contraseña);
-
-            using (SqlConnection cn = new SqlConnection(cadena))
+            if (user.Clave != null || user.Correo != null)
             {
-                SqlCommand cmd = new SqlCommand("SP_ValidarUsuario", cn);
-                cmd.Parameters.AddWithValue("Email", user.Email);
-                cmd.Parameters.AddWithValue("Contraseña", user.Contraseña);
-                cmd.CommandType = CommandType.StoredProcedure;
+                user.Clave = ConvertirSha256(user.Clave);
 
-                cn.Open();
-                user.Id = Convert.ToInt32( cmd.ExecuteScalar().ToString());
-            }
+                using (SqlConnection cn = new SqlConnection(cadena))
+                {
+                    SqlCommand cmd = new SqlCommand("sp_ValidarUsuario", cn);
+                    cmd.Parameters.AddWithValue("Correo", user.Correo);
+                    cmd.Parameters.AddWithValue("Clave", user.Clave);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-            if (user.Id != 0)
-            {
-                Session["usuario"] = user;
-                return RedirectToAction("Index","Home");
+                    cn.Open();
+                    user.Id = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                }
+
+                if (user.Id != 0)
+                {
+                    Session["usuario"] = user;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewData["Mensaje"] = "usuario no encontrado";
+                    return View();
+                }
             }
             else
             {
-                ViewData["Mensaje"] = "usuario no encontrado";
+                ViewData["Mensaje"] = "Rellena con tus datos";
                 return View();
             }
-
-           
         }
 
         [HttpPost]
@@ -57,23 +63,23 @@ namespace PaginaWebMVC.Controllers
             bool registrado;
             string mensaje;
 
-            if (user.Contraseña == user.ConfirmarClave)
+            if (user.Clave == user.ConfirmarClave)
             {
-                user.Contraseña = ConvertirSha256(user.Contraseña);
+                user.Clave = ConvertirSha256(user.Clave);
             }
             else
             {
                 ViewData["Mensaje"] = "Las constraseñas no coinciden";
-                return View();
+                return View("Login");
             }
 
             using (SqlConnection cn = new SqlConnection(cadena))
             {
-                SqlCommand cmd = new SqlCommand("SP_AgregarUsuario",cn);
+                SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario", cn);
                 cmd.Parameters.AddWithValue("Nombre",user.Nombre);
-                cmd.Parameters.AddWithValue("Email",user.Email);
-                cmd.Parameters.AddWithValue("Contraseña",user.Contraseña);
-                cmd.Parameters.Add("Registro",SqlDbType.Bit).Direction = ParameterDirection.Output;
+                cmd.Parameters.AddWithValue("Correo",user.Correo);
+                cmd.Parameters.AddWithValue("Clave",user.Clave);
+                cmd.Parameters.Add("Registrado",SqlDbType.Bit).Direction = ParameterDirection.Output;
                 cmd.Parameters.Add("Mensaje",SqlDbType.VarChar,100).Direction = ParameterDirection.Output;
                 cmd.CommandType = CommandType.StoredProcedure;
                 
@@ -92,7 +98,7 @@ namespace PaginaWebMVC.Controllers
             }
             else
             {
-                return View();
+                return View("Login");
             }
         }
 

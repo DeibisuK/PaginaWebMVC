@@ -8,10 +8,70 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="~/Content/css/Estilos.css">
     <title>Login</title>
 </head>
 <body>
-    <div> 
+
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form action="@Url.Action("Register","Acceso")" method="post">
+                <h1>REGISTRATE</h1>
+                <label id="lbUsuario">Usuario:</label>
+                <input type="text" name="Nombre" placeholder="Nombre">
+
+                <label id="lbEmail">Correo:</label>
+                <input type="email" name="Correo" placeholder="Correo">
+
+                <label id="lbPassword">Contraseña:</label>
+                <input type="password" name="Clave" placeholder="Contraseña">
+
+                <label id="lbRepeatPass">Repetir Contraseña:</label>
+                <input type="password" name="ConfirmarClave" placeholder="Repetir contraseña">
+                @if (ViewData["Mensaje"] != null)
+                {
+                    <div id="alert-danger" role="alert">
+                        @ViewData["Mensaje"]
+                    </div>
+                }
+                <button type="submit" name="button">Registrarse</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form action="@Url.Action("Login","Acceso")" method="post">
+                <h1>UTMACH</h1>
+                <label id="lbUsuario">Usuario:</label>
+                <input type="text" name="Correo" placeholder="Correo">
+
+                <label id="lbPassword">Contraseña:</label>
+                <input type="password" name="Clave" placeholder="Contraseña">
+                @if (ViewData["Mensaje"] != null)
+                {
+                    <div id="alert-danger" role="alert">
+                        @ViewData["Mensaje"]
+                    </div>
+                }
+
+                <button type="submit" name="button">Iniciar Sesion</button>
+
+                <a id="register" href="#"> CREAR UNA CUENTA</a>
+                <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">OLVIDO SU CONTRASEÑA?</a>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <img src="Imagenes/logoPY.png" alt="Logo de HTML5">
+                    <button class="hidden" id="login">Volver</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <img src="Imagenes/logoPY.png" alt="Logo de HTML5">
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script src="~/Scripts/js/script.js"></script>
 </body>
 </html>
