@@ -8,7 +8,7 @@
 }
 
 body{
-    background-image: url(Imagenes/Backg.jpg);
+    background-image: url(../../Imagenes/Backg.jpg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,28 +75,8 @@ body{
     flex-direction: column;
     padding: 0 40px;
     height: 100%;
+ 
 }
-
-#lbUsuario{
-    position: relative;
-    margin-left: -195px;
-}
-
-#lbPassword{
-    position: relative;
-    margin-left: -165px;
-}
-
-#lbEmail{
-    position: relative;
-    margin-left: -210px;
-}
-
-#lbRepeatPass{
-    position: relative;
-    margin-left: -100px;
-}
-
 
 .container input{
     background-color: #ffffff;
@@ -120,16 +100,6 @@ body{
     left: 0;
     width: 50%;
     z-index: 2;
-}
-
-.form-container.sign-in h1{
-    font-size: 60pt;
-    margin-bottom: 15px;
-}
-
-.form-container.sign-up h1{
-    font-size: 40pt;
-    margin-bottom: 15px;
 }
 
 .container.active .sign-in{
