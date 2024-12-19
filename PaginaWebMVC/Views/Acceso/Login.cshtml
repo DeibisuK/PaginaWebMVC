@@ -9,11 +9,10 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="~/Content/css/Estilos.css">
+    <link href="~/Content/css/Estilos.css" rel="stylesheet" />
     <title>Login</title>
 </head>
 <body>
-
     <div class="container" id="container">
         <div class="form-container sign-up">
             <form action="@Url.Action("Register","Acceso")" method="post">
@@ -38,6 +37,7 @@
                 <button type="submit" name="button">Registrarse</button>
             </form>
         </div>
+
         <div class="form-container sign-in">
             <form action="@Url.Action("Login","Acceso")" method="post">
                 <h1>UTMACH</h1>

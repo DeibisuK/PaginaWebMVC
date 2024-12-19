@@ -7,7 +7,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-body{
+body {
     background-image: url(../../Imagenes/Backg.jpg);
     display: flex;
     align-items: center;
@@ -77,8 +77,28 @@ body{
     height: 100%;
  
 }
+#lbUsuario {
+    position: relative;
+    margin-left: -195px;
+}
 
-.container input{
+#lbPassword {
+    position: relative;
+    margin-left: -165px;
+}
+
+#lbEmail {
+    position: relative;
+    margin-left: -210px;
+}
+
+#lbRepeatPass {
+    position: relative;
+    margin-left: -100px;
+}
+
+
+.container input {
     background-color: #ffffff;
     border: 1px solid #000000;
     margin: 8px 0;
@@ -89,24 +109,34 @@ body{
     outline: none;
 }
 
-.form-container{
+.form-container {
     position: absolute;
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
 }
 
-.sign-in{
+.sign-in {
     left: 0;
     width: 50%;
     z-index: 2;
 }
 
-.container.active .sign-in{
+.form-container.sign-in h1 {
+    font-size: 60pt;
+    margin-bottom: 15px;
+}
+
+.form-container.sign-up h1 {
+    font-size: 40pt;
+    margin-bottom: 15px;
+}
+
+.container.active .sign-in {
     transform: translateX(100%);
 }
 
-.sign-up{
+.sign-up {
     left: 0;
     width: 50%;
     opacity: 0;
@@ -211,5 +241,5 @@ body{
     padding: 10px;
     border-radius: 5px;
     border: 1px solid transparent;
-    border-color: crimson;
+    border-color: aqua;
 }
