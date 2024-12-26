@@ -21,6 +21,11 @@ namespace PaginaWebMVC.Controllers
             return View();
         }
 
+        public ActionResult Register() { 
+            return View();
+        }
+
+
         [HttpPost]
         public ActionResult Login(Usuario user)
         {
@@ -42,17 +47,17 @@ namespace PaginaWebMVC.Controllers
                 if (user.Id != 0)
                 {
                     Session["usuario"] = user;
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Inicio");
                 }
                 else
                 {
-                    ViewData["Mensaje"] = "usuario no encontrado";
+                    ViewData["MensajeLogin"] = "Usuario no encontrado";
                     return View();
                 }
             }
             else
             {
-                ViewData["Mensaje"] = "Rellena con tus datos";
+                ViewData["MensajeLogin"] = "Rellena con tus datos";
                 return View();
             }
         }
@@ -63,50 +68,59 @@ namespace PaginaWebMVC.Controllers
             bool registrado;
             string mensaje;
 
-            if (user.Clave == user.ConfirmarClave)
-            {
-                user.Clave = ConvertirSha256(user.Clave);
+
+            try {
+                if (user.Clave == user.ConfirmarClave)
+                {
+                    user.Clave = ConvertirSha256(user.Clave);
+                }
+                else
+                {
+                    ViewData["MensajeRegister"] = "Las constraseñas no coinciden";
+                    ViewData["MostrarRegistro"] = "active"; // Bandera para mostrar el registro.
+                    return View("Login");
+                }
+
+                using (SqlConnection cn = new SqlConnection(cadena))
+                {
+                    SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario", cn);
+                    cmd.Parameters.AddWithValue("Nombre", user.Nombre);
+                    cmd.Parameters.AddWithValue("Correo", user.Correo);
+                    cmd.Parameters.AddWithValue("Clave", user.Clave);
+                    cmd.Parameters.Add("Registrado", SqlDbType.Bit).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    registrado = Convert.ToBoolean(cmd.Parameters["Registrado"].Value);
+                    mensaje = cmd.Parameters["Registrado"].Value.ToString();
+                }
+
+                ViewData["MensajeRegister"] = mensaje;
+
+                if (registrado)
+                {
+                    return View("Login");
+                }
+                else
+                {
+                    return View("Login");
+                }
             }
-            else
+            catch (Exception)
             {
-                ViewData["Mensaje"] = "Las constraseñas no coinciden";
+                ViewData["MensajeRegister"] = "Llena los datos";
+                ViewData["MostrarRegistro"] = "active"; // Bandera para mostrar el registro.
                 return View("Login");
             }
 
-            using (SqlConnection cn = new SqlConnection(cadena))
-            {
-                SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario", cn);
-                cmd.Parameters.AddWithValue("Nombre",user.Nombre);
-                cmd.Parameters.AddWithValue("Correo",user.Correo);
-                cmd.Parameters.AddWithValue("Clave",user.Clave);
-                cmd.Parameters.Add("Registrado",SqlDbType.Bit).Direction = ParameterDirection.Output;
-                cmd.Parameters.Add("Mensaje",SqlDbType.VarChar,100).Direction = ParameterDirection.Output;
-                cmd.CommandType = CommandType.StoredProcedure;
-                
-                cn.Open();
-                cmd.ExecuteNonQuery();
 
-                registrado = Convert.ToBoolean(cmd.Parameters["Registrado"].Value);
-                mensaje = cmd.Parameters["Registrado"].Value.ToString();
-            }
-
-            ViewData["Mensaje"] = mensaje;
-            
-            if (registrado)
-            {
-                return RedirectToAction("Login");
-            }
-            else
-            {
-                return View("Login");
-            }
         }
 
         public static string ConvertirSha256(string texto)
         {
-            //using System.Text;
-            //USAR LA REFERENCIA DE "System.Security.Cryptography"
-
             StringBuilder Sb = new StringBuilder();
             using (SHA256 hash = SHA256Managed.Create())
             {

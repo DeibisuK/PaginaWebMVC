@@ -236,10 +236,9 @@ body {
     display: block; 
 }
 
-#alert-danger {
+.alert-danger {
     background-color: lightcoral;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid transparent;
-    border-color: aqua;
 }

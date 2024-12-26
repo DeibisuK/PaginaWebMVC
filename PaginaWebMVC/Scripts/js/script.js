@@ -1,6 +1,8 @@
 const container = document.getElementById('container');
 const registerBtn = document.getElementById('register');
 const loginBtn = document.getElementById('login');
+const alert = document.getElementById('alert-danger');
+const mostrarRegistro = container.getAttribute("data-mostrar-registro");
 
 // Manejar el clic en "Sign Up"
 registerBtn.addEventListener('click', () => {

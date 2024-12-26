@@ -1,10 +1,4 @@
-﻿
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -13,30 +7,8 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="container" id="container">
-        <div class="form-container sign-up">
-            <form action="@Url.Action("Register","Acceso")" method="post">
-                <h1>REGISTRATE</h1>
-                <label id="lbUsuario">Usuario:</label>
-                <input type="text" name="Nombre" placeholder="Nombre">
-
-                <label id="lbEmail">Correo:</label>
-                <input type="email" name="Correo" placeholder="Correo">
-
-                <label id="lbPassword">Contraseña:</label>
-                <input type="password" name="Clave" placeholder="Contraseña">
-
-                <label id="lbRepeatPass">Repetir Contraseña:</label>
-                <input type="password" name="ConfirmarClave" placeholder="Repetir contraseña">
-                @if (ViewData["Mensaje"] != null)
-                {
-                    <div id="alert-danger" role="alert">
-                        @ViewData["Mensaje"]
-                    </div>
-                }
-                <button type="submit" name="button">Registrarse</button>
-            </form>
-        </div>
+    <div class="container @ViewData["MostrarRegistro"]" id="container">
+        @{ Html.RenderPartial("_Register");}
 
         <div class="form-container sign-in">
             <form action="@Url.Action("Login","Acceso")" method="post">
@@ -46,10 +18,10 @@
 
                 <label id="lbPassword">Contraseña:</label>
                 <input type="password" name="Clave" placeholder="Contraseña">
-                @if (ViewData["Mensaje"] != null)
+                @if (ViewData["MensajeLogin"] != null)
                 {
-                    <div id="alert-danger" role="alert">
-                        @ViewData["Mensaje"]
+                    <div class="alert-danger" role="alert">
+                        @ViewData["MensajeLogin"]
                     </div>
                 }
 
@@ -58,6 +30,7 @@
                 <a id="register" href="#"> CREAR UNA CUENTA</a>
                 <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">OLVIDO SU CONTRASEÑA?</a>
             </form>
+
         </div>
         <div class="toggle-container">
             <div class="toggle">

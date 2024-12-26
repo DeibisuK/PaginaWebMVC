@@ -1,0 +1,25 @@
+﻿<div class="form-container sign-up">
+    <form action="@Url.Action("Register","Acceso")" method="post">
+        <h1>REGISTRATE</h1>
+        <label id="lbUsuario">Usuario:</label>
+        <input type="text" name="Nombre" placeholder="Nombre">
+
+        <label id="lbEmail">Correo:</label>
+        <input type="email" name="Correo" placeholder="Correo">
+
+        <label id="lbPassword">Contraseña:</label>
+        <input type="password" name="Clave" placeholder="Contraseña">
+
+        <label id="lbRepeatPass">Repetir Contraseña:</label>
+        <input type="password" name="ConfirmarClave" placeholder="Repetir contraseña">
+
+        @if (ViewData["MensajeRegister"] != null)
+        {
+            <div class="alert-danger" role="alert">
+                @ViewData["MensajeRegister"]
+            </div>
+        }
+
+        <button onclick="" type="submit" name="button">Registrarse</button>
+    </form>
+</div>
