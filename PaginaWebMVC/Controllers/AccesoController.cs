@@ -14,7 +14,7 @@ namespace PaginaWebMVC.Controllers
 {
     public class AccesoController : Controller
     {
-        static string cadena = "Data Source=MACHINEGUN\\SQLEX;initial catalog=PruebaLogin;integrated security=true";
+        static string cadena = "Data Source=DESKTOP-V0DHSV8;initial catalog=PruebaLogin;integrated security=true";
         // GET: Acceso
         public ActionResult Login()
         {
@@ -37,7 +37,7 @@ namespace PaginaWebMVC.Controllers
                 {
                     SqlCommand cmd = new SqlCommand("sp_ValidarUsuario", cn);
                     cmd.Parameters.AddWithValue("Correo", user.Correo);
-                    cmd.Parameters.AddWithValue("Clave", user.Clave);
+                    cmd.Parameters.AddWithValue("Contraseña", user.Clave);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cn.Open();
@@ -69,7 +69,7 @@ namespace PaginaWebMVC.Controllers
             string mensaje;
 
 
-            try {
+            //try {
                 if (user.Clave == user.ConfirmarClave)
                 {
                     user.Clave = ConvertirSha256(user.Clave);
@@ -86,7 +86,7 @@ namespace PaginaWebMVC.Controllers
                     SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario", cn);
                     cmd.Parameters.AddWithValue("Nombre", user.Nombre);
                     cmd.Parameters.AddWithValue("Correo", user.Correo);
-                    cmd.Parameters.AddWithValue("Clave", user.Clave);
+                    cmd.Parameters.AddWithValue("Contraseña", user.Clave);
                     cmd.Parameters.Add("Registrado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -108,13 +108,13 @@ namespace PaginaWebMVC.Controllers
                 {
                     return View("Login");
                 }
-            }
-            catch (Exception)
-            {
-                ViewData["MensajeRegister"] = "Llena los datos";
-                ViewData["MostrarRegistro"] = "active"; // Bandera para mostrar el registro.
-                return View("Login");
-            }
+            
+            //catch (Exception)
+            //{
+            //    ViewData["MensajeRegister"] = "Llena los datos";
+            //    ViewData["MostrarRegistro"] = "active"; // Bandera para mostrar el registro.
+            //    return View("Login");
+            //}
 
 
         }
