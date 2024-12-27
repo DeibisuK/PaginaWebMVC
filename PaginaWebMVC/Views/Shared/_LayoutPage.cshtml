@@ -7,7 +7,7 @@
     <script src="https://kit.fontawesome.com/003dd04503.js" crossorigin="anonymous"></script>
     <link href="~/Content/css/menu.css" rel="stylesheet" />
     <link href="~/Content/css/resumen.css" rel="stylesheet" />
-
+    <link href="~/Content/css/empleado.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -25,10 +25,10 @@
                     </div>
                     <ul class="list__show">
                         <li class="list_inside">
-                            <a href="#" class="nav__link nav__link--inside">Empleados</a>
+                            <a href="@Url.Action("Empleado", "Home")" class="nav__link nav__link--inside"> <i class="fa-solid fa-helmet-safety"></i> Empleados</a>
                         </li>
                         <li class="list_inside">
-                            <a href="#" class="nav__link nav__link--inside">Cargos</a>
+                            <a href="@Url.Action("Cargos", "Home")" class="nav__link nav__link--inside"> <i class="fa-solid fa-users"></i> Cargos</a>
                         </li>
                     </ul>
                 </li>
@@ -36,14 +36,14 @@
                 <li class="list__item">
                     <div class="list__buttom">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        <a href="#" class="nav__link"> Compras</a>
+                        <a href="@Url.Action("Compras", "Home")" class="nav__link"> Compras</a>
                     </div>
                 </li>
 
                 <li class="list__item">
                     <div class="list__buttom">
                         <i class="fa-solid fa-cubes"></i>
-                        <a href="#" class="nav__link"> Recursos</a>
+                        <a href="@Url.Action("Recursos", "Home")" class="nav__link"> Recursos</a>
                     </div>
                 </li>
 
@@ -55,10 +55,10 @@
                     </div>
                     <ul class="list__show">
                         <li class="list_inside">
-                            <a href="#" class="nav__link nav__link--inside">Clientes</a>
+                            <a href="@Url.Action("Cliente", "Home")" class="nav__link nav__link--inside"> <i class="fa-solid fa-person"></i> Clientes</a>
                         </li>
                         <li class="list_inside">
-                            <a href="#" class="nav__link nav__link--inside">Proveedores</a>
+                            <a href="@Url.Action("Proveedor", "Home")" class="nav__link nav__link--inside"> <i class="fa-solid fa-truck-field"></i> Proveedores</a>
                         </li>
                     </ul>
                 </li>
@@ -66,24 +66,22 @@
                 <li class="list__item">
                     <div class="list__buttom">
                         <i class="fa-solid fa-clipboard-list"></i>
-                        <a href="#" class="nav__link"> Proyectos</a>
+                        <a href="@Url.Action("Proyecto", "Home")" class="nav__link"> Proyectos</a>
                     </div>
                 </li>
 
                 <li class="list__item">
                     <div class="list__buttom">
                         <i class="fa-solid fa-hand-holding-dollar"></i>
-                        <a href="#" class="nav__link"> Servicios</a>
+                        <a href="@Url.Action("Servicio", "Home")" class="nav__link"> Servicios</a>
                     </div>
                 </li>
             </ul>
         </nav>
-
         <div class="principal">
-            @{ Html.RenderPartial("_Resumen");}
+            @RenderBody()
         </div>
     </main>
-
     <footer class="pie">
         <div>
             <h1>GRUPO 5</h1>

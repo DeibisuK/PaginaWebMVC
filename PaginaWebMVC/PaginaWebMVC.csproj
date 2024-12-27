@@ -119,8 +119,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccesoController.cs" />
-    <Compile Include="Controllers\InicioController.cs" />
-    <Compile Include="Controllers\ResumenController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -145,6 +145,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\css\empleado.css" />
     <Content Include="Content\css\Estilos.css" />
     <Content Include="Content\css\menu.css" />
     <Content Include="Content\css\resumen.css" />
@@ -182,14 +183,19 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Acceso\Login.cshtml" />
     <Content Include="Views\Acceso\_Register.cshtml" />
-    <Content Include="Views\Inicio\Index.cshtml" />
-    <Content Include="Views\Inicio\_Resumen.cshtml" />
+    <Content Include="Views\Home\Resumen.cshtml" />
+    <Content Include="Views\Home\Empleado.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage.cshtml" />
+    <Content Include="Views\Home\Recursos.cshtml" />
+    <Content Include="Views\Home\Compras.cshtml" />
+    <Content Include="Views\Home\Proyecto.cshtml" />
+    <Content Include="Views\Home\Proveedor.cshtml" />
+    <Content Include="Views\Home\Cliente.cshtml" />
+    <Content Include="Views\Home\Servicio.cshtml" />
+    <Content Include="Views\Home\Cargos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Menus\" />
-    <Folder Include="Views\Resumen\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
