@@ -47,7 +47,7 @@ namespace PaginaWebMVC.Controllers
                 if (user.Id != 0)
                 {
                     Session["usuario"] = user;
-                    return RedirectToAction("Index", "Inicio");
+                    return RedirectToAction("Resumen", "Home");
                 }
                 else
                 {

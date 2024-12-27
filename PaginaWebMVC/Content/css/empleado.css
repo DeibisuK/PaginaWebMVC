@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+html, body{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.Cont_Header{
+    background: #FAC710;
+    justify-content: center;
+    align-content: center;
+    min-height: 150px;
+    padding: 0 80px;
+}
+    .Cont_Header h2{
+        font-size: 33px;
+        color: white;
+        text-align: center;
+    }
+    .Cont_Header input{
+        width: 100%;
+        margin-top: 10px;
+        padding: 8px 8px 8px 30px
+    }
+.Cont_Cuerpo{
+    flex:2;
+    background: white;
+}
+.Cont_Tabla{
+    margin: 10px 20px;
+}
+
+.Cont_Botones{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+
+.Cont_Botones button{
+    background-color: #FAC710;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+}
