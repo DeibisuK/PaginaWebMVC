@@ -69,7 +69,8 @@ namespace PaginaWebMVC.Controllers
             string mensaje;
 
 
-            //try {
+            try
+            {
                 if (user.Clave == user.ConfirmarClave)
                 {
                     user.Clave = ConvertirSha256(user.Clave);
@@ -108,15 +109,13 @@ namespace PaginaWebMVC.Controllers
                 {
                     return View("Login");
                 }
-            
-            //catch (Exception)
-            //{
-            //    ViewData["MensajeRegister"] = "Llena los datos";
-            //    ViewData["MostrarRegistro"] = "active"; // Bandera para mostrar el registro.
-            //    return View("Login");
-            //}
-
-
+            }
+            catch (Exception)
+            {
+                ViewData["MensajeRegister"] = "Llena los datos";
+                ViewData["MostrarRegistro"] = "active"; // Bandera para mostrar el registro.
+                return View("Login");
+            }
         }
 
         public static string ConvertirSha256(string texto)

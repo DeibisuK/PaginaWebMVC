@@ -12,11 +12,22 @@
 <body>
     <header>
         <label class="fa-solid fa-bars"></label>
+        <i class="fa-solid fa-circle-user"></i>
+        <div class="menu">
+            <a>USUARIO</a>
+            <a href="@Url.Action("CerrarSesion","Home")">Cerrar Sesion</a>
+        </div>
     </header>
 
     <main>
         <nav class="nav">
             <ul class="list">
+                <li class="list__item">
+                    <div class="list__buttom">
+                        <i class="fa-solid fa-square-poll-vertical"></i>
+                        <a href="@Url.Action("Resumen", "Home")" class="nav__link"> Resumen</a>
+                    </div>
+                </li>
                 <li class="list__item list__item--click">
                     <div class="list__buttom list__buttom--click">
                         <i class="fa-solid fa-user-group"></i>
@@ -84,10 +95,10 @@
     </main>
     <footer class="pie">
         <div>
-            <h1>GRUPO 5</h1>
+            <span style="right:0">Derechos reservados al Grupo #</span>
         </div>
     </footer>
-
+    
     <script src="~/Scripts/js/menujs.js"></script>
 </body>
 </html>

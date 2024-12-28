@@ -10,6 +10,34 @@ body {
     width: 100%;
     min-height: 100vh;
 }
+
+.menu {
+    display:flex;
+    flex-direction:column;
+    position: absolute;
+    background: black;
+    color:white;
+    min-height: auto;
+    min-width: 50px;
+    gap:5px;
+    right: 5px;
+    top: 36px;
+    padding: 5px 2px 5px 2px;
+    border: 1px solid gray;
+    visibility: hidden;
+}
+
+    .menu:hover {
+        z-index: 1000;
+        visibility: visible;
+    }
+    .menu a{
+        cursor:default;
+    }
+    .menu a:hover{
+        background:aqua;
+    }
+
 header {
     background: black;
     width: 100%;
@@ -20,10 +48,22 @@ header {
     position: sticky;
     top: 0;
 }
-    header label{
-        font-size:20px;
-        color:white;
+    header label {
+        font-size: 20px;
+        color: white;
     }
+    .fa-solid.fa-circle-user {
+        position: absolute;
+        margin-right: 10px;
+        font-size: 20px;
+        right: 0;
+        color: #FAC710;
+        cursor: pointer;
+    }
+    .fa-solid.fa-circle-user:hover ~ .menu{
+        visibility:visible;
+    }
+    
 
 main {
     display: flex;
@@ -31,14 +71,20 @@ main {
 }
 
 footer {
+    align-content: center;
     background: black;
     color: white;
-    text-align: center;
+    text-align: right;
     height: 49px;
     flex-shrink: 0;
     position: sticky;
     bottom: 0;
 }
+    footer span {
+        color:darkgray;
+        font-style:italic;
+        padding-right:15px;
+    }
 
 .principal {
     flex: 1; /* El contenido principal ocupa el espacio restante */
