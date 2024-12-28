@@ -18,24 +18,24 @@ body {
     background: black;
     color:white;
     min-height: auto;
-    min-width: 50px;
-    gap:5px;
+    min-width: auto;
     right: 5px;
-    top: 36px;
-    padding: 5px 2px 5px 2px;
+    top: 35px;
+    padding: 0 2px 0 2px;
     border: 1px solid gray;
     visibility: hidden;
 }
 
     .menu:hover {
-        z-index: 1000;
         visibility: visible;
     }
-    .menu a{
-        cursor:default;
+    .menu a {
+        color: white;
+        text-decoration: none;
+        cursor: default;
     }
-    .menu a:hover{
-        background:aqua;
+    .menu a:hover {
+        background: #3c3c3c;
     }
 
 header {

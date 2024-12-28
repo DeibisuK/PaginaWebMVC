@@ -14,7 +14,7 @@ namespace PaginaWebMVC.Controllers
 {
     public class AccesoController : Controller
     {
-        static string cadena = "Data Source=DESKTOP-V0DHSV8;initial catalog=PruebaLogin;integrated security=true";
+        static string cadena = "Data Source=MACHINEGUN\\SQLEX;initial catalog=PruebaLogin;integrated security=true";
         // GET: Acceso
         public ActionResult Login()
         {
@@ -37,16 +37,23 @@ namespace PaginaWebMVC.Controllers
                 {
                     SqlCommand cmd = new SqlCommand("sp_ValidarUsuario", cn);
                     cmd.Parameters.AddWithValue("Correo", user.Correo);
-                    cmd.Parameters.AddWithValue("Contraseña", user.Clave);
+                    cmd.Parameters.AddWithValue("Clave", user.Clave);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cn.Open();
                     user.Id = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+
+                    string sqlQuery = "SELECT Nombre FROM USUARIO WHERE IdUsuario = @UserId";
+                    cmd = new SqlCommand(sqlQuery, cn);
+                    cmd.Parameters.AddWithValue("@UserId", user.Id);
+
+                    user.Nombre = cmd.ExecuteScalar()?.ToString();
                 }
 
                 if (user.Id != 0)
                 {
                     Session["usuario"] = user;
+                    Session["Nombre"] = user.Nombre;
                     return RedirectToAction("Resumen", "Home");
                 }
                 else
@@ -87,7 +94,7 @@ namespace PaginaWebMVC.Controllers
                     SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario", cn);
                     cmd.Parameters.AddWithValue("Nombre", user.Nombre);
                     cmd.Parameters.AddWithValue("Correo", user.Correo);
-                    cmd.Parameters.AddWithValue("Contraseña", user.Clave);
+                    cmd.Parameters.AddWithValue("Clave", user.Clave);
                     cmd.Parameters.Add("Registrado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;

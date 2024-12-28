@@ -14,7 +14,24 @@
         <label class="fa-solid fa-bars"></label>
         <i class="fa-solid fa-circle-user"></i>
         <div class="menu">
-            <a>USUARIO</a>
+            @{
+                var sharedData = Session["Nombre"] as string;
+
+            }
+
+            @if (sharedData != null)
+            {
+                <a>
+                    Hola, @sharedData
+                </a>
+            }
+            else
+            {
+                <a>
+                    Error
+                </a>
+            }
+
             <a href="@Url.Action("CerrarSesion","Home")">Cerrar Sesion</a>
         </div>
     </header>

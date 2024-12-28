@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PaginaWebMVC.Models;
 using PaginaWebMVC.Permisos;
 
 namespace PaginaWebMVC.Controllers
@@ -11,6 +12,7 @@ namespace PaginaWebMVC.Controllers
     public class HomeController : Controller
     {
         
+
         // GET: Home
         public ActionResult Resumen()
         {
