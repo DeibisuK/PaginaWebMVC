@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="Cont_Header">
+    <h2>
+        Empleados
+    </h2>
+    <input type="search" placeholder="Buscar">
+</div>
+<div class="Cont_Cuerpo">
+    <div class="Cont_Botones">
+        <button id="btnAdd">Ingresar</button>
+        <button id="btnMod">Modificar</button>
+        <button id="btnDel">Eliminar</button>
+    </div>
+
+    <form class="Cont_form">
+        <div class="Datos1">
+            <label>Cedula:</label>
+            <input type="text" placeholder="Cedula" />
+
+            <label>Cargo:</label>
+            <select name="select">
+                <option value="value1">Value 1</option>
+                <option value="value2" selected>Value 2</option>
+                <option value="value3">Value 3</option>
+            </select>
+
+            <label>Ciudad:</label>
+            <select name="select">
+                <option value="value1">Value 1</option>
+                <option value="value2" selected>Value 2</option>
+                <option value="value3">Value 3</option>
+            </select>
+
+            <label>Estado:</label>
+            <select name="select">
+                <option value="value1">Value 1</option>
+                <option value="value2" selected>Value 2</option>
+                <option value="value3">Value 3</option>
+            </select>
+        </div>
+        <div class="Datos2">
+            <label>Nombres:</label>
+            <input type="text" placeholder="Cedula" />
+            <label>Apellidos:</label>
+            <input type="text" placeholder="Cedula" />
+            <label>Telefono:</label>
+            <input type="text" placeholder="Cedula" />
+            <label>Salario:</label>
+            <input type="text" placeholder="Cedula" />
+        </div>
+    </form>
+
+    <div class="Cont_Tabla">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cedula</th>
+                    <th>ID</th>
+                    <th>ID</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>s</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

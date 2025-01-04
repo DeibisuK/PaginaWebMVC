@@ -20,12 +20,6 @@ namespace PaginaWebMVC.Controllers
             return View("Resumen");
         }
 
-        public ActionResult Empleado()
-        {
-            ViewBag.Title = "Empleados";
-            return View("Empleado");
-        }
-
         public ActionResult Cargos()
         {
             ViewBag.Title = "Cargos";

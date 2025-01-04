@@ -1,0 +1,88 @@
+﻿@model IEnumerable<PaginaWebMVC.Models.DTO.Empleados>
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    ViewBag.Title = "Empleado";
+}
+
+<h2>Empleado</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_ced)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_ape)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cargo_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_salario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ciu_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_fec_contrat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_est)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_ced)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_ape)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cargo_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_salario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ciu_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_fec_contrat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_tel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_est)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -14,8 +14,8 @@ namespace PaginaWebMVC.Controllers
 {
     public class AccesoController : Controller
     {
-        static string cadena = "Data Source=MACHINEGUN\\SQLEX;initial catalog=PruebaLogin;integrated security=true";
-        // GET: Acceso
+        static string cadena = "Data Source=MACHINEGUN\\SQLEX;initial catalog=ConstructoraBD;integrated security=true";
+
         public ActionResult Login()
         {
             return View();
@@ -37,13 +37,13 @@ namespace PaginaWebMVC.Controllers
                 {
                     SqlCommand cmd = new SqlCommand("sp_ValidarUsuario", cn);
                     cmd.Parameters.AddWithValue("Correo", user.Correo);
-                    cmd.Parameters.AddWithValue("Clave", user.Clave);
+                    cmd.Parameters.AddWithValue("Contraseña", user.Clave);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cn.Open();
                     user.Id = Convert.ToInt32(cmd.ExecuteScalar().ToString());
 
-                    string sqlQuery = "SELECT Nombre FROM USUARIO WHERE IdUsuario = @UserId";
+                    string sqlQuery = "SELECT usu_nom FROM dbo.usuarios WHERE usu_id = @UserId";
                     cmd = new SqlCommand(sqlQuery, cn);
                     cmd.Parameters.AddWithValue("@UserId", user.Id);
 
@@ -74,8 +74,6 @@ namespace PaginaWebMVC.Controllers
         {
             bool registrado;
             string mensaje;
-
-
             try
             {
                 if (user.Clave == user.ConfirmarClave)
@@ -94,7 +92,9 @@ namespace PaginaWebMVC.Controllers
                     SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario", cn);
                     cmd.Parameters.AddWithValue("Nombre", user.Nombre);
                     cmd.Parameters.AddWithValue("Correo", user.Correo);
-                    cmd.Parameters.AddWithValue("Clave", user.Clave);
+                    cmd.Parameters.AddWithValue("Contraseña", user.Clave);
+                    cmd.Parameters.Add("Estado", SqlDbType.Char, 1).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("Fecha", SqlDbType.Date).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Registrado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;

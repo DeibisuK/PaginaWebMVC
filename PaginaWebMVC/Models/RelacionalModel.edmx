@@ -1,0 +1,1863 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ConstructoraBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.alquiler_cliente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="alquiler_cliente">
+          <Key>
+            <PropertyRef Name="alq_id" />
+            <PropertyRef Name="cli_id" />
+            <PropertyRef Name="ac_fec_asig" />
+            <PropertyRef Name="ac_est" />
+          </Key>
+          <Property Name="alq_id" Type="int" Nullable="false" />
+          <Property Name="cli_id" Type="int" Nullable="false" />
+          <Property Name="ac_fec_asig" Type="date" Nullable="false" />
+          <Property Name="ac_est" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.alquiler_proyecto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="alquiler_proyecto">
+          <Key>
+            <PropertyRef Name="alq_id" />
+            <PropertyRef Name="proy_id" />
+            <PropertyRef Name="ap_fec_asig" />
+            <PropertyRef Name="ap_est" />
+          </Key>
+          <Property Name="alq_id" Type="int" Nullable="false" />
+          <Property Name="proy_id" Type="int" Nullable="false" />
+          <Property Name="ap_fec_asig" Type="date" Nullable="false" />
+          <Property Name="ap_est" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="alquileres">
+          <Key>
+            <PropertyRef Name="alq_id" />
+          </Key>
+          <Property Name="alq_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="equ_id" Type="int" />
+          <Property Name="alq_fec_ini" Type="date" />
+          <Property Name="alq_fec_fin_est" Type="date" />
+          <Property Name="alq_fec_fin_re" Type="date" />
+          <Property Name="alq_est" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="cargos">
+          <Key>
+            <PropertyRef Name="cargo_id" />
+          </Key>
+          <Property Name="cargo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cargo_nom" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cat_nom" Type="varchar" MaxLength="100" />
+          <Property Name="cat_desc" Type="varchar" MaxLength="100" />
+          <Property Name="cat_est" Type="char" MaxLength="1" />
+          <Property Name="cat_fec" Type="date" />
+        </EntityType>
+        <EntityType Name="ciudad">
+          <Key>
+            <PropertyRef Name="ciu_id" />
+          </Key>
+          <Property Name="ciu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ciu_nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="prov_id" Type="int" />
+          <Property Name="ciu_est" Type="char" MaxLength="1" />
+          <Property Name="ciu_fecha" Type="date" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.cliente_proyecto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="cliente_proyecto">
+          <Key>
+            <PropertyRef Name="cli_id" />
+            <PropertyRef Name="proy_id" />
+          </Key>
+          <Property Name="cli_id" Type="int" Nullable="false" />
+          <Property Name="proy_id" Type="int" Nullable="false" />
+          <Property Name="cp_fecha" Type="date" />
+          <Property Name="cp_rol" Type="varchar" MaxLength="50" />
+          <Property Name="cp_est" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="cli_id" />
+          </Key>
+          <Property Name="cli_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cli_ced" Type="varchar" MaxLength="15" />
+          <Property Name="cli_nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cli_ape" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cli_tel" Type="varchar" MaxLength="15" />
+          <Property Name="ciu_id" Type="int" />
+          <Property Name="cli_dir" Type="varchar" MaxLength="255" />
+          <Property Name="cli_email" Type="varchar" MaxLength="100" />
+          <Property Name="cli_est" Type="char" MaxLength="1" />
+          <Property Name="cli_fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="compras">
+          <Key>
+            <PropertyRef Name="comp_id" />
+          </Key>
+          <Property Name="comp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prove_id" Type="int" />
+          <Property Name="comp_tip_doc" Type="varchar" MaxLength="50" />
+          <Property Name="comp_num_doc" Type="varchar" MaxLength="50" />
+          <Property Name="comp_total" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="comp_est" Type="char" MaxLength="1" />
+          <Property Name="usu_id" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.detalle_compra_equ' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="detalle_compra_equ">
+          <Property Name="comp_id" Type="int" />
+          <Property Name="equ_id" Type="int" />
+          <Property Name="dce_prec_comp" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="dce_prec_ven" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="dce_cant" Type="int" />
+          <Property Name="dce_monto" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="dce_fec" Type="date" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.detalle_compra_mat' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="detalle_compra_mat">
+          <Property Name="comp_id" Type="int" />
+          <Property Name="mat_id" Type="int" />
+          <Property Name="dcm_prec_comp" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="dcm_prec_ven" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="dcm_cant" Type="int" />
+          <Property Name="dcm_monto" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="dcm_fec" Type="date" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.detalle_venta_equ' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="detalle_venta_equ">
+          <Property Name="ven_id" Type="int" />
+          <Property Name="equ_id" Type="int" />
+          <Property Name="dve_prec_ven" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="dve_cant" Type="int" />
+          <Property Name="dve_subt" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="dve_fec" Type="date" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.detalle_venta_mat' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="detalle_venta_mat">
+          <Property Name="ven_id" Type="int" />
+          <Property Name="mat_id" Type="int" />
+          <Property Name="dvm_prec_ven" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="dvm_cant" Type="int" />
+          <Property Name="dvm_subt" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="dvm_fec" Type="date" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.empleado_tarea' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="empleado_tarea">
+          <Property Name="emp_id" Type="int" />
+          <Property Name="tar_id" Type="int" />
+          <Property Name="cargo_id" Type="int" />
+          <Property Name="et_fec_asig" Type="date" />
+          <Property Name="et_horas" Type="int" />
+          <Property Name="et_est" Type="char" MaxLength="1" />
+        </EntityType>-->
+        <EntityType Name="empleados">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emp_ced" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="emp_nom" Type="varchar" MaxLength="100" />
+          <Property Name="emp_ape" Type="varchar" MaxLength="100" />
+          <Property Name="cargo_id" Type="int" />
+          <Property Name="emp_salario" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ciu_id" Type="int" />
+          <Property Name="emp_fec_contrat" Type="date" />
+          <Property Name="emp_tel" Type="varchar" MaxLength="15" />
+          <Property Name="emp_est" Type="char" MaxLength="1" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.equipo_proyecto' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="equipo_proyecto">
+          <Property Name="equ_id" Type="int" />
+          <Property Name="proy_id" Type="int" />
+          <Property Name="ep_cant" Type="int" />
+          <Property Name="ep_fecha_inicio" Type="date" />
+          <Property Name="ep_fecha_fin_est" Type="date" />
+          <Property Name="ep_fecha_fin_real" Type="date" />
+          <Property Name="ep_est" Type="char" MaxLength="1" />
+        </EntityType>-->
+        <EntityType Name="equipos">
+          <Key>
+            <PropertyRef Name="equ_id" />
+          </Key>
+          <Property Name="equ_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="equ_nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="equ_desc" Type="varchar" MaxLength="255" />
+          <Property Name="equ_prec_com" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="equ_prec_ven" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="equ_stock" Type="int" Nullable="false" />
+          <Property Name="equ_fec" Type="date" />
+          <Property Name="equ_est" Type="char" MaxLength="1" />
+          <Property Name="mar_id" Type="int" />
+          <Property Name="equ_code" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="marcas">
+          <Key>
+            <PropertyRef Name="marca_id" />
+          </Key>
+          <Property Name="marca_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="marca_nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="marca_est" Type="char" MaxLength="1" />
+          <Property Name="marca_fec" Type="date" />
+        </EntityType>
+        <EntityType Name="materiales">
+          <Key>
+            <PropertyRef Name="mat_id" />
+          </Key>
+          <Property Name="mat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mat_nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="mat_desc" Type="varchar" MaxLength="255" />
+          <Property Name="mat_stock" Type="int" Nullable="false" />
+          <Property Name="mat_prec_com" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="mat_prec_ven" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="mat_fec" Type="date" />
+          <Property Name="mat_est" Type="char" MaxLength="1" />
+          <Property Name="mar_id" Type="int" />
+          <Property Name="cat_id" Type="int" />
+          <Property Name="mat_code" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="pagos">
+          <Key>
+            <PropertyRef Name="pag_id" />
+          </Key>
+          <Property Name="pag_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pag_nom" Type="varchar" MaxLength="50" />
+          <Property Name="pag_desc" Type="varchar" MaxLength="255" />
+          <Property Name="pag_est" Type="char" MaxLength="1" />
+          <Property Name="pag_fec" Type="date" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.proveedor_equipo' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="proveedor_equipo">
+          <Property Name="prove_id" Type="int" />
+          <Property Name="equ_id" Type="int" />
+          <Property Name="pe_precio" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="pe_fec" Type="date" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.proveedor_material' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="proveedor_material">
+          <Property Name="prove_id" Type="int" />
+          <Property Name="mat_id" Type="int" />
+          <Property Name="pm_precio" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="pm_fec" Type="date" />
+        </EntityType>-->
+        <EntityType Name="proveedores">
+          <Key>
+            <PropertyRef Name="prove_id" />
+          </Key>
+          <Property Name="prove_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prove_nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="prove_dir" Type="varchar" MaxLength="255" />
+          <Property Name="prove_tel" Type="varchar" MaxLength="15" />
+          <Property Name="prove_email" Type="varchar" MaxLength="100" />
+          <Property Name="prove_ruc" Type="varchar" MaxLength="13" />
+          <Property Name="prove_est" Type="char" MaxLength="1" />
+          <Property Name="prove_fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="provincia">
+          <Key>
+            <PropertyRef Name="prov_id" />
+          </Key>
+          <Property Name="prov_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prov_nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="prov_est" Type="char" MaxLength="1" />
+          <Property Name="prov_fecha" Type="date" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.proyecto_servicio' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="proyecto_servicio">
+          <Key>
+            <PropertyRef Name="ps_fec_asig" />
+            <PropertyRef Name="ps_est" />
+          </Key>
+          <Property Name="proy_id" Type="int" />
+          <Property Name="serv_id" Type="int" />
+          <Property Name="ps_fec_asig" Type="date" Nullable="false" />
+          <Property Name="ps_est" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="proyecto_tarea">
+          <Key>
+            <PropertyRef Name="proy_id" />
+            <PropertyRef Name="tar_id" />
+          </Key>
+          <Property Name="proy_id" Type="int" Nullable="false" />
+          <Property Name="tar_id" Type="int" Nullable="false" />
+          <Property Name="pt_fec_ini" Type="date" Nullable="false" />
+          <Property Name="pt_fec_fin" Type="date" />
+          <Property Name="pt_fec_fin_real" Type="date" />
+          <Property Name="pt_est" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="proyectos">
+          <Key>
+            <PropertyRef Name="proy_id" />
+          </Key>
+          <Property Name="proy_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="proy_nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="proy_desc" Type="varchar" MaxLength="255" />
+          <Property Name="proy_fecha_inicio" Type="date" />
+          <Property Name="proy_fecha_fin_est" Type="date" />
+          <Property Name="proy_fecha_fin_real" Type="date" />
+          <Property Name="proy_presupuesto" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="proy_est" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="servicios">
+          <Key>
+            <PropertyRef Name="serv_id" />
+          </Key>
+          <Property Name="serv_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="serv_nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="serv_desc" Type="varchar" MaxLength="255" />
+          <Property Name="serv_costo" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="serv_est" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tareas">
+          <Key>
+            <PropertyRef Name="tar_id" />
+          </Key>
+          <Property Name="tar_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tar_nom" Type="varchar" MaxLength="100" />
+          <Property Name="tar_desc" Type="varchar" MaxLength="100" />
+          <Property Name="tar_est" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="usu_id" />
+          </Key>
+          <Property Name="usu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="usu_email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="usu_contra" Type="varchar" MaxLength="500" />
+          <Property Name="usu_est" Type="char" MaxLength="1" />
+          <Property Name="usu_fec_reg" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ventas">
+          <Key>
+            <PropertyRef Name="ven_id" />
+          </Key>
+          <Property Name="ven_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cli_id" Type="int" />
+          <Property Name="pag_id" Type="int" />
+          <Property Name="ven_tip_doc" Type="varchar" MaxLength="50" />
+          <Property Name="ven_num_doc" Type="varchar" MaxLength="50" />
+          <Property Name="ven_mont_pag" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ven_mont_camb" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ven_mont_tot" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ven_fec" Type="date" />
+          <Property Name="ven_est" Type="char" MaxLength="1" />
+        </EntityType>
+        <Association Name="FK__alquilere__equ_i__31B762FC">
+          <End Role="equipos" Type="Self.equipos" Multiplicity="0..1" />
+          <End Role="alquileres" Type="Self.alquileres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipos">
+              <PropertyRef Name="equ_id" />
+            </Principal>
+            <Dependent Role="alquileres">
+              <PropertyRef Name="equ_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ciudad__prov_id__32AB8735">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="0..1" />
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="prov_id" />
+            </Principal>
+            <Dependent Role="ciudad">
+              <PropertyRef Name="prov_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cliente_p__cli_i__55F4C372">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="cliente_proyecto" Type="Self.cliente_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="cli_id" />
+            </Principal>
+            <Dependent Role="cliente_proyecto">
+              <PropertyRef Name="cli_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__clientes__ciu_id__4222D4EF">
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="0..1" />
+          <End Role="clientes" Type="Self.clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="ciu_id" />
+            </Principal>
+            <Dependent Role="clientes">
+              <PropertyRef Name="ciu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__compras__prove_i__367C1819">
+          <End Role="proveedores" Type="Self.proveedores" Multiplicity="0..1" />
+          <End Role="compras" Type="Self.compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedores">
+              <PropertyRef Name="prove_id" />
+            </Principal>
+            <Dependent Role="compras">
+              <PropertyRef Name="prove_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.detalle_compra_equ', pero no se encuentra la tabla.
+        <Association Name="FK__detalle_c__comp___3864608B" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.detalle_compra_mat', pero no se encuentra la tabla.
+        <Association Name="FK__detalle_c__comp___3A4CA8FD" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.detalle_compra_equ', pero no se encuentra la tabla.
+        <Association Name="FK__detalle_c__equ_i__395884C4" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.detalle_compra_mat', pero no se encuentra la tabla.
+        <Association Name="FK__detalle_c__mat_i__3B40CD36" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.detalle_venta_equ', pero no se encuentra la tabla.
+        <Association Name="FK__detalle_v__equ_i__3D2915A8" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.detalle_venta_mat', pero no se encuentra la tabla.
+        <Association Name="FK__detalle_v__mat_i__3F115E1A" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.detalle_venta_equ', pero no se encuentra la tabla.
+        <Association Name="FK__detalle_v__ven_i__3C34F16F" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.detalle_venta_mat', pero no se encuentra la tabla.
+        <Association Name="FK__detalle_v__ven_i__3E1D39E1" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.empleado_tarea', pero no se encuentra la tabla.
+        <Association Name="FK__empleado___cargo__40058253" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.empleado_tarea', pero no se encuentra la tabla.
+        <Association Name="FK__empleado___emp_i__489AC854" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.empleado_tarea', pero no se encuentra la tabla.
+        <Association Name="FK__empleado___tar_i__40F9A68C" />-->
+        <Association Name="FK__empleados__cargo__4CA06362">
+          <End Role="cargos" Type="Self.cargos" Multiplicity="0..1" />
+          <End Role="empleados" Type="Self.empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cargos">
+              <PropertyRef Name="cargo_id" />
+            </Principal>
+            <Dependent Role="empleados">
+              <PropertyRef Name="cargo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__empleados__ciu_i__4D94879B">
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="0..1" />
+          <End Role="empleados" Type="Self.empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="ciu_id" />
+            </Principal>
+            <Dependent Role="empleados">
+              <PropertyRef Name="ciu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.equipo_proyecto', pero no se encuentra la tabla.
+        <Association Name="FK__equipo_pr__equ_i__44CA3770" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.equipo_proyecto', pero no se encuentra la tabla.
+        <Association Name="FK__equipo_pr__proy___45BE5BA9" />-->
+        <Association Name="FK__equipos__mar_id__46B27FE2">
+          <End Role="marcas" Type="Self.marcas" Multiplicity="0..1" />
+          <End Role="equipos" Type="Self.equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="marcas">
+              <PropertyRef Name="marca_id" />
+            </Principal>
+            <Dependent Role="equipos">
+              <PropertyRef Name="mar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__materiale__cat_i__489AC854">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
+          <End Role="materiales" Type="Self.materiales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="materiales">
+              <PropertyRef Name="cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__materiale__mar_i__47A6A41B">
+          <End Role="marcas" Type="Self.marcas" Multiplicity="0..1" />
+          <End Role="materiales" Type="Self.materiales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="marcas">
+              <PropertyRef Name="marca_id" />
+            </Principal>
+            <Dependent Role="materiales">
+              <PropertyRef Name="mar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveedor_equipo', pero no se encuentra la tabla.
+        <Association Name="FK__proveedor__equ_i__4A8310C6" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveedor_material', pero no se encuentra la tabla.
+        <Association Name="FK__proveedor__mat_i__4C6B5938" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveedor_equipo', pero no se encuentra la tabla.
+        <Association Name="FK__proveedor__prove__498EEC8D" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveedor_material', pero no se encuentra la tabla.
+        <Association Name="FK__proveedor__prove__4B7734FF" />-->
+        <Association Name="FK__proyecto___proy___3DE82FB7">
+          <End Role="proyectos" Type="Self.proyectos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="proyecto_tarea" Type="Self.proyecto_tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proyectos">
+              <PropertyRef Name="proy_id" />
+            </Principal>
+            <Dependent Role="proyecto_tarea">
+              <PropertyRef Name="proy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__proyecto___tar_i__3EDC53F0">
+          <End Role="tareas" Type="Self.tareas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="proyecto_tarea" Type="Self.proyecto_tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tareas">
+              <PropertyRef Name="tar_id" />
+            </Principal>
+            <Dependent Role="proyecto_tarea">
+              <PropertyRef Name="tar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ventas__cli_id__7F2BE32F">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="0..1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="cli_id" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="cli_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ventas__pag_id__51300E55">
+          <End Role="pagos" Type="Self.pagos" Multiplicity="0..1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pagos">
+              <PropertyRef Name="pag_id" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="pag_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_alquiler_cliente_alquileres">
+          <End Role="alquileres" Type="Self.alquileres" Multiplicity="1" />
+          <End Role="alquiler_cliente" Type="Self.alquiler_cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="alquileres">
+              <PropertyRef Name="alq_id" />
+            </Principal>
+            <Dependent Role="alquiler_cliente">
+              <PropertyRef Name="alq_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_alquiler_cliente_clientes">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="alquiler_cliente" Type="Self.alquiler_cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="cli_id" />
+            </Principal>
+            <Dependent Role="alquiler_cliente">
+              <PropertyRef Name="cli_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_alquiler_proyecto_alquileres">
+          <End Role="alquileres" Type="Self.alquileres" Multiplicity="1" />
+          <End Role="alquiler_proyecto" Type="Self.alquiler_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="alquileres">
+              <PropertyRef Name="alq_id" />
+            </Principal>
+            <Dependent Role="alquiler_proyecto">
+              <PropertyRef Name="alq_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_alquiler_proyecto_proyectos">
+          <End Role="proyectos" Type="Self.proyectos" Multiplicity="1" />
+          <End Role="alquiler_proyecto" Type="Self.alquiler_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proyectos">
+              <PropertyRef Name="proy_id" />
+            </Principal>
+            <Dependent Role="alquiler_proyecto">
+              <PropertyRef Name="proy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cliente_proyecto_proyectos">
+          <End Role="proyectos" Type="Self.proyectos" Multiplicity="1" />
+          <End Role="cliente_proyecto" Type="Self.cliente_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proyectos">
+              <PropertyRef Name="proy_id" />
+            </Principal>
+            <Dependent Role="cliente_proyecto">
+              <PropertyRef Name="proy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compras_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+          <End Role="compras" Type="Self.compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="compras">
+              <PropertyRef Name="usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_proyecto_servicio_proyectos">
+          <End Role="proyectos" Type="Self.proyectos" Multiplicity="0..1" />
+          <End Role="proyecto_servicio" Type="Self.proyecto_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proyectos">
+              <PropertyRef Name="proy_id" />
+            </Principal>
+            <Dependent Role="proyecto_servicio">
+              <PropertyRef Name="proy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_proyecto_servicio_servicios">
+          <End Role="servicios" Type="Self.servicios" Multiplicity="0..1" />
+          <End Role="proyecto_servicio" Type="Self.proyecto_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servicios">
+              <PropertyRef Name="serv_id" />
+            </Principal>
+            <Dependent Role="proyecto_servicio">
+              <PropertyRef Name="serv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ConstructoraBDModelStoreContainer">
+          <EntitySet Name="alquileres" EntityType="Self.alquileres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cargos" EntityType="Self.cargos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ciudad" EntityType="Self.ciudad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clientes" EntityType="Self.clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="compras" EntityType="Self.compras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="empleados" EntityType="Self.empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="equipos" EntityType="Self.equipos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="marcas" EntityType="Self.marcas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="materiales" EntityType="Self.materiales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pagos" EntityType="Self.pagos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="proveedores" EntityType="Self.proveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="provincia" EntityType="Self.provincia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="proyecto_tarea" EntityType="Self.proyecto_tarea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="proyectos" EntityType="Self.proyectos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="servicios" EntityType="Self.servicios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tareas" EntityType="Self.tareas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ventas" EntityType="Self.ventas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="alquiler_cliente" EntityType="Self.alquiler_cliente" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [alquiler_cliente].[alq_id] AS [alq_id], 
+    [alquiler_cliente].[cli_id] AS [cli_id], 
+    [alquiler_cliente].[ac_fec_asig] AS [ac_fec_asig], 
+    [alquiler_cliente].[ac_est] AS [ac_est]
+    FROM [dbo].[alquiler_cliente] AS [alquiler_cliente]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="alquiler_proyecto" EntityType="Self.alquiler_proyecto" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [alquiler_proyecto].[alq_id] AS [alq_id], 
+    [alquiler_proyecto].[proy_id] AS [proy_id], 
+    [alquiler_proyecto].[ap_fec_asig] AS [ap_fec_asig], 
+    [alquiler_proyecto].[ap_est] AS [ap_est]
+    FROM [dbo].[alquiler_proyecto] AS [alquiler_proyecto]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="cliente_proyecto" EntityType="Self.cliente_proyecto" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [cliente_proyecto].[cli_id] AS [cli_id], 
+    [cliente_proyecto].[proy_id] AS [proy_id], 
+    [cliente_proyecto].[cp_fecha] AS [cp_fecha], 
+    [cliente_proyecto].[cp_rol] AS [cp_rol], 
+    [cliente_proyecto].[cp_est] AS [cp_est]
+    FROM [dbo].[cliente_proyecto] AS [cliente_proyecto]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="proyecto_servicio" EntityType="Self.proyecto_servicio" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [proyecto_servicio].[proy_id] AS [proy_id], 
+    [proyecto_servicio].[serv_id] AS [serv_id], 
+    [proyecto_servicio].[ps_fec_asig] AS [ps_fec_asig], 
+    [proyecto_servicio].[ps_est] AS [ps_est]
+    FROM [dbo].[proyecto_servicio] AS [proyecto_servicio]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__alquilere__equ_i__31B762FC" Association="Self.FK__alquilere__equ_i__31B762FC">
+            <End Role="equipos" EntitySet="equipos" />
+            <End Role="alquileres" EntitySet="alquileres" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ciudad__prov_id__32AB8735" Association="Self.FK__ciudad__prov_id__32AB8735">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="ciudad" EntitySet="ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cliente_p__cli_i__55F4C372" Association="Self.FK__cliente_p__cli_i__55F4C372">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="cliente_proyecto" EntitySet="cliente_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__clientes__ciu_id__4222D4EF" Association="Self.FK__clientes__ciu_id__4222D4EF">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="clientes" EntitySet="clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__compras__prove_i__367C1819" Association="Self.FK__compras__prove_i__367C1819">
+            <End Role="proveedores" EntitySet="proveedores" />
+            <End Role="compras" EntitySet="compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__empleados__cargo__4CA06362" Association="Self.FK__empleados__cargo__4CA06362">
+            <End Role="cargos" EntitySet="cargos" />
+            <End Role="empleados" EntitySet="empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__empleados__ciu_i__4D94879B" Association="Self.FK__empleados__ciu_i__4D94879B">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="empleados" EntitySet="empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__equipos__mar_id__46B27FE2" Association="Self.FK__equipos__mar_id__46B27FE2">
+            <End Role="marcas" EntitySet="marcas" />
+            <End Role="equipos" EntitySet="equipos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__materiale__cat_i__489AC854" Association="Self.FK__materiale__cat_i__489AC854">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="materiales" EntitySet="materiales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__materiale__mar_i__47A6A41B" Association="Self.FK__materiale__mar_i__47A6A41B">
+            <End Role="marcas" EntitySet="marcas" />
+            <End Role="materiales" EntitySet="materiales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__proyecto___proy___3DE82FB7" Association="Self.FK__proyecto___proy___3DE82FB7">
+            <End Role="proyectos" EntitySet="proyectos" />
+            <End Role="proyecto_tarea" EntitySet="proyecto_tarea" />
+          </AssociationSet>
+          <AssociationSet Name="FK__proyecto___tar_i__3EDC53F0" Association="Self.FK__proyecto___tar_i__3EDC53F0">
+            <End Role="tareas" EntitySet="tareas" />
+            <End Role="proyecto_tarea" EntitySet="proyecto_tarea" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ventas__cli_id__7F2BE32F" Association="Self.FK__ventas__cli_id__7F2BE32F">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ventas__pag_id__51300E55" Association="Self.FK__ventas__pag_id__51300E55">
+            <End Role="pagos" EntitySet="pagos" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_alquiler_cliente_alquileres" Association="Self.FK_alquiler_cliente_alquileres">
+            <End Role="alquileres" EntitySet="alquileres" />
+            <End Role="alquiler_cliente" EntitySet="alquiler_cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_alquiler_cliente_clientes" Association="Self.FK_alquiler_cliente_clientes">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="alquiler_cliente" EntitySet="alquiler_cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_alquiler_proyecto_alquileres" Association="Self.FK_alquiler_proyecto_alquileres">
+            <End Role="alquileres" EntitySet="alquileres" />
+            <End Role="alquiler_proyecto" EntitySet="alquiler_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_alquiler_proyecto_proyectos" Association="Self.FK_alquiler_proyecto_proyectos">
+            <End Role="proyectos" EntitySet="proyectos" />
+            <End Role="alquiler_proyecto" EntitySet="alquiler_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cliente_proyecto_proyectos" Association="Self.FK_cliente_proyecto_proyectos">
+            <End Role="proyectos" EntitySet="proyectos" />
+            <End Role="cliente_proyecto" EntitySet="cliente_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compras_usuarios" Association="Self.FK_compras_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="compras" EntitySet="compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_proyecto_servicio_proyectos" Association="Self.FK_proyecto_servicio_proyectos">
+            <End Role="proyectos" EntitySet="proyectos" />
+            <End Role="proyecto_servicio" EntitySet="proyecto_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_proyecto_servicio_servicios" Association="Self.FK_proyecto_servicio_servicios">
+            <End Role="servicios" EntitySet="servicios" />
+            <End Role="proyecto_servicio" EntitySet="proyecto_servicio" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ConstructoraBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="alquileres">
+          <Key>
+            <PropertyRef Name="alq_id" />
+          </Key>
+          <Property Name="alq_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="equ_id" Type="Int32" />
+          <Property Name="alq_fec_ini" Type="DateTime" Precision="0" />
+          <Property Name="alq_fec_fin_est" Type="DateTime" Precision="0" />
+          <Property Name="alq_fec_fin_re" Type="DateTime" Precision="0" />
+          <Property Name="alq_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="equipos" Relationship="Self.FK__alquilere__equ_i__31B762FC" FromRole="alquileres" ToRole="equipos" />
+          <NavigationProperty Name="alquiler_cliente" Relationship="Self.FK_alquiler_cliente_alquileres" FromRole="alquileres" ToRole="alquiler_cliente" />
+          <NavigationProperty Name="alquiler_proyecto" Relationship="Self.FK_alquiler_proyecto_alquileres" FromRole="alquileres" ToRole="alquiler_proyecto" />
+        </EntityType>
+        <EntityType Name="cargos">
+          <Key>
+            <PropertyRef Name="cargo_id" />
+          </Key>
+          <Property Name="cargo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cargo_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="empleados" Relationship="Self.FK__empleados__cargo__4CA06362" FromRole="cargos" ToRole="empleados" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cat_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cat_desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cat_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cat_fec" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="materiales" Relationship="Self.FK__materiale__cat_i__489AC854" FromRole="categoria" ToRole="materiales" />
+        </EntityType>
+        <EntityType Name="ciudad">
+          <Key>
+            <PropertyRef Name="ciu_id" />
+          </Key>
+          <Property Name="ciu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ciu_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prov_id" Type="Int32" />
+          <Property Name="ciu_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ciu_fecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="provincia" Relationship="Self.FK__ciudad__prov_id__32AB8735" FromRole="ciudad" ToRole="provincia" />
+          <NavigationProperty Name="clientes" Relationship="Self.FK__clientes__ciu_id__4222D4EF" FromRole="ciudad" ToRole="clientes" />
+          <NavigationProperty Name="empleados" Relationship="Self.FK__empleados__ciu_i__4D94879B" FromRole="ciudad" ToRole="empleados" />
+        </EntityType>
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="cli_id" />
+          </Key>
+          <Property Name="cli_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cli_ced" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cli_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cli_ape" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cli_tel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ciu_id" Type="Int32" />
+          <Property Name="cli_dir" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cli_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cli_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cli_fecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ciudad" Relationship="Self.FK__clientes__ciu_id__4222D4EF" FromRole="clientes" ToRole="ciudad" />
+          <NavigationProperty Name="cliente_proyecto" Relationship="Self.FK__cliente_p__cli_i__55F4C372" FromRole="clientes" ToRole="cliente_proyecto" />
+          <NavigationProperty Name="ventas" Relationship="Self.FK__ventas__cli_id__7F2BE32F" FromRole="clientes" ToRole="ventas" />
+          <NavigationProperty Name="alquiler_cliente" Relationship="Self.FK_alquiler_cliente_clientes" FromRole="clientes" ToRole="alquiler_cliente" />
+        </EntityType>
+        <EntityType Name="compras">
+          <Key>
+            <PropertyRef Name="comp_id" />
+          </Key>
+          <Property Name="comp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prove_id" Type="Int32" />
+          <Property Name="comp_tip_doc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="comp_num_doc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="comp_total" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="comp_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="usu_id" Type="Int32" />
+          <NavigationProperty Name="proveedores" Relationship="Self.FK__compras__prove_i__367C1819" FromRole="compras" ToRole="proveedores" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_compras_usuarios" FromRole="compras" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="empleados">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emp_ced" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emp_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="emp_ape" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_id" Type="Int32" />
+          <Property Name="emp_salario" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ciu_id" Type="Int32" />
+          <Property Name="emp_fec_contrat" Type="DateTime" Precision="0" />
+          <Property Name="emp_tel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="emp_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="cargos" Relationship="Self.FK__empleados__cargo__4CA06362" FromRole="empleados" ToRole="cargos" />
+          <NavigationProperty Name="ciudad" Relationship="Self.FK__empleados__ciu_i__4D94879B" FromRole="empleados" ToRole="ciudad" />
+        </EntityType>
+        <EntityType Name="equipos">
+          <Key>
+            <PropertyRef Name="equ_id" />
+          </Key>
+          <Property Name="equ_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="equ_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="equ_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="equ_prec_com" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="equ_prec_ven" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="equ_stock" Type="Int32" Nullable="false" />
+          <Property Name="equ_fec" Type="DateTime" Precision="0" />
+          <Property Name="equ_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mar_id" Type="Int32" />
+          <Property Name="equ_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="alquileres" Relationship="Self.FK__alquilere__equ_i__31B762FC" FromRole="equipos" ToRole="alquileres" />
+          <NavigationProperty Name="marcas" Relationship="Self.FK__equipos__mar_id__46B27FE2" FromRole="equipos" ToRole="marcas" />
+        </EntityType>
+        <EntityType Name="marcas">
+          <Key>
+            <PropertyRef Name="marca_id" />
+          </Key>
+          <Property Name="marca_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="marca_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="marca_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="marca_fec" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="equipos" Relationship="Self.FK__equipos__mar_id__46B27FE2" FromRole="marcas" ToRole="equipos" />
+          <NavigationProperty Name="materiales" Relationship="Self.FK__materiale__mar_i__47A6A41B" FromRole="marcas" ToRole="materiales" />
+        </EntityType>
+        <EntityType Name="materiales">
+          <Key>
+            <PropertyRef Name="mat_id" />
+          </Key>
+          <Property Name="mat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mat_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mat_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="mat_stock" Type="Int32" Nullable="false" />
+          <Property Name="mat_prec_com" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="mat_prec_ven" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="mat_fec" Type="DateTime" Precision="0" />
+          <Property Name="mat_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mar_id" Type="Int32" />
+          <Property Name="cat_id" Type="Int32" />
+          <Property Name="mat_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="categoria" Relationship="Self.FK__materiale__cat_i__489AC854" FromRole="materiales" ToRole="categoria" />
+          <NavigationProperty Name="marcas" Relationship="Self.FK__materiale__mar_i__47A6A41B" FromRole="materiales" ToRole="marcas" />
+        </EntityType>
+        <EntityType Name="pagos">
+          <Key>
+            <PropertyRef Name="pag_id" />
+          </Key>
+          <Property Name="pag_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pag_nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pag_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="pag_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="pag_fec" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ventas" Relationship="Self.FK__ventas__pag_id__51300E55" FromRole="pagos" ToRole="ventas" />
+        </EntityType>
+        <EntityType Name="proveedores">
+          <Key>
+            <PropertyRef Name="prove_id" />
+          </Key>
+          <Property Name="prove_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prove_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prove_dir" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="prove_tel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="prove_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="prove_ruc" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="prove_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="prove_fecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="compras" Relationship="Self.FK__compras__prove_i__367C1819" FromRole="proveedores" ToRole="compras" />
+        </EntityType>
+        <EntityType Name="provincia">
+          <Key>
+            <PropertyRef Name="prov_id" />
+          </Key>
+          <Property Name="prov_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prov_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prov_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="prov_fecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ciudad" Relationship="Self.FK__ciudad__prov_id__32AB8735" FromRole="provincia" ToRole="ciudad" />
+        </EntityType>
+        <EntityType Name="proyecto_tarea">
+          <Key>
+            <PropertyRef Name="proy_id" />
+            <PropertyRef Name="tar_id" />
+          </Key>
+          <Property Name="proy_id" Type="Int32" Nullable="false" />
+          <Property Name="tar_id" Type="Int32" Nullable="false" />
+          <Property Name="pt_fec_ini" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="pt_fec_fin" Type="DateTime" Precision="0" />
+          <Property Name="pt_fec_fin_real" Type="DateTime" Precision="0" />
+          <Property Name="pt_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="proyectos" Relationship="Self.FK__proyecto___proy___3DE82FB7" FromRole="proyecto_tarea" ToRole="proyectos" />
+          <NavigationProperty Name="tareas" Relationship="Self.FK__proyecto___tar_i__3EDC53F0" FromRole="proyecto_tarea" ToRole="tareas" />
+        </EntityType>
+        <EntityType Name="proyectos">
+          <Key>
+            <PropertyRef Name="proy_id" />
+          </Key>
+          <Property Name="proy_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="proy_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="proy_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="proy_fecha_inicio" Type="DateTime" Precision="0" />
+          <Property Name="proy_fecha_fin_est" Type="DateTime" Precision="0" />
+          <Property Name="proy_fecha_fin_real" Type="DateTime" Precision="0" />
+          <Property Name="proy_presupuesto" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="proy_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="proyecto_tarea" Relationship="Self.FK__proyecto___proy___3DE82FB7" FromRole="proyectos" ToRole="proyecto_tarea" />
+          <NavigationProperty Name="alquiler_proyecto" Relationship="Self.FK_alquiler_proyecto_proyectos" FromRole="proyectos" ToRole="alquiler_proyecto" />
+          <NavigationProperty Name="cliente_proyecto" Relationship="Self.FK_cliente_proyecto_proyectos" FromRole="proyectos" ToRole="cliente_proyecto" />
+          <NavigationProperty Name="proyecto_servicio" Relationship="Self.FK_proyecto_servicio_proyectos" FromRole="proyectos" ToRole="proyecto_servicio" />
+        </EntityType>
+        <EntityType Name="servicios">
+          <Key>
+            <PropertyRef Name="serv_id" />
+          </Key>
+          <Property Name="serv_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="serv_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="serv_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="serv_costo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="serv_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="proyecto_servicio" Relationship="Self.FK_proyecto_servicio_servicios" FromRole="servicios" ToRole="proyecto_servicio" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tareas">
+          <Key>
+            <PropertyRef Name="tar_id" />
+          </Key>
+          <Property Name="tar_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tar_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tar_desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tar_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="proyecto_tarea" Relationship="Self.FK__proyecto___tar_i__3EDC53F0" FromRole="tareas" ToRole="proyecto_tarea" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="usu_id" />
+          </Key>
+          <Property Name="usu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_contra" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="usu_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="usu_fec_reg" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="compras" Relationship="Self.FK_compras_usuarios" FromRole="usuarios" ToRole="compras" />
+        </EntityType>
+        <EntityType Name="ventas">
+          <Key>
+            <PropertyRef Name="ven_id" />
+          </Key>
+          <Property Name="ven_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cli_id" Type="Int32" />
+          <Property Name="pag_id" Type="Int32" />
+          <Property Name="ven_tip_doc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ven_num_doc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ven_mont_pag" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ven_mont_camb" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ven_mont_tot" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ven_fec" Type="DateTime" Precision="0" />
+          <Property Name="ven_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="clientes" Relationship="Self.FK__ventas__cli_id__7F2BE32F" FromRole="ventas" ToRole="clientes" />
+          <NavigationProperty Name="pagos" Relationship="Self.FK__ventas__pag_id__51300E55" FromRole="ventas" ToRole="pagos" />
+        </EntityType>
+        <EntityType Name="alquiler_cliente">
+          <Key>
+            <PropertyRef Name="alq_id" />
+            <PropertyRef Name="cli_id" />
+            <PropertyRef Name="ac_fec_asig" />
+            <PropertyRef Name="ac_est" />
+          </Key>
+          <Property Name="alq_id" Type="Int32" Nullable="false" />
+          <Property Name="cli_id" Type="Int32" Nullable="false" />
+          <Property Name="ac_fec_asig" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ac_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="alquileres" Relationship="Self.FK_alquiler_cliente_alquileres" FromRole="alquiler_cliente" ToRole="alquileres" />
+          <NavigationProperty Name="clientes" Relationship="Self.FK_alquiler_cliente_clientes" FromRole="alquiler_cliente" ToRole="clientes" />
+        </EntityType>
+        <EntityType Name="alquiler_proyecto">
+          <Key>
+            <PropertyRef Name="alq_id" />
+            <PropertyRef Name="proy_id" />
+            <PropertyRef Name="ap_fec_asig" />
+            <PropertyRef Name="ap_est" />
+          </Key>
+          <Property Name="alq_id" Type="Int32" Nullable="false" />
+          <Property Name="proy_id" Type="Int32" Nullable="false" />
+          <Property Name="ap_fec_asig" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ap_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="alquileres" Relationship="Self.FK_alquiler_proyecto_alquileres" FromRole="alquiler_proyecto" ToRole="alquileres" />
+          <NavigationProperty Name="proyectos" Relationship="Self.FK_alquiler_proyecto_proyectos" FromRole="alquiler_proyecto" ToRole="proyectos" />
+        </EntityType>
+        <EntityType Name="cliente_proyecto">
+          <Key>
+            <PropertyRef Name="cli_id" />
+            <PropertyRef Name="proy_id" />
+          </Key>
+          <Property Name="cli_id" Type="Int32" Nullable="false" />
+          <Property Name="proy_id" Type="Int32" Nullable="false" />
+          <Property Name="cp_fecha" Type="DateTime" Precision="0" />
+          <Property Name="cp_rol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cp_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="clientes" Relationship="Self.FK__cliente_p__cli_i__55F4C372" FromRole="cliente_proyecto" ToRole="clientes" />
+          <NavigationProperty Name="proyectos" Relationship="Self.FK_cliente_proyecto_proyectos" FromRole="cliente_proyecto" ToRole="proyectos" />
+        </EntityType>
+        <EntityType Name="proyecto_servicio">
+          <Key>
+            <PropertyRef Name="ps_fec_asig" />
+            <PropertyRef Name="ps_est" />
+          </Key>
+          <Property Name="proy_id" Type="Int32" />
+          <Property Name="serv_id" Type="Int32" />
+          <Property Name="ps_fec_asig" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ps_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="proyectos" Relationship="Self.FK_proyecto_servicio_proyectos" FromRole="proyecto_servicio" ToRole="proyectos" />
+          <NavigationProperty Name="servicios" Relationship="Self.FK_proyecto_servicio_servicios" FromRole="proyecto_servicio" ToRole="servicios" />
+        </EntityType>
+        <Association Name="FK__alquilere__equ_i__31B762FC">
+          <End Role="equipos" Type="Self.equipos" Multiplicity="0..1" />
+          <End Role="alquileres" Type="Self.alquileres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipos">
+              <PropertyRef Name="equ_id" />
+            </Principal>
+            <Dependent Role="alquileres">
+              <PropertyRef Name="equ_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_alquiler_cliente_alquileres">
+          <End Role="alquileres" Type="Self.alquileres" Multiplicity="1" />
+          <End Role="alquiler_cliente" Type="Self.alquiler_cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="alquileres">
+              <PropertyRef Name="alq_id" />
+            </Principal>
+            <Dependent Role="alquiler_cliente">
+              <PropertyRef Name="alq_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_alquiler_proyecto_alquileres">
+          <End Role="alquileres" Type="Self.alquileres" Multiplicity="1" />
+          <End Role="alquiler_proyecto" Type="Self.alquiler_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="alquileres">
+              <PropertyRef Name="alq_id" />
+            </Principal>
+            <Dependent Role="alquiler_proyecto">
+              <PropertyRef Name="alq_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__empleados__cargo__4CA06362">
+          <End Role="cargos" Type="Self.cargos" Multiplicity="0..1" />
+          <End Role="empleados" Type="Self.empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cargos">
+              <PropertyRef Name="cargo_id" />
+            </Principal>
+            <Dependent Role="empleados">
+              <PropertyRef Name="cargo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__materiale__cat_i__489AC854">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
+          <End Role="materiales" Type="Self.materiales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="materiales">
+              <PropertyRef Name="cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ciudad__prov_id__32AB8735">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="0..1" />
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="prov_id" />
+            </Principal>
+            <Dependent Role="ciudad">
+              <PropertyRef Name="prov_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__clientes__ciu_id__4222D4EF">
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="0..1" />
+          <End Role="clientes" Type="Self.clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="ciu_id" />
+            </Principal>
+            <Dependent Role="clientes">
+              <PropertyRef Name="ciu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__empleados__ciu_i__4D94879B">
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="0..1" />
+          <End Role="empleados" Type="Self.empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="ciu_id" />
+            </Principal>
+            <Dependent Role="empleados">
+              <PropertyRef Name="ciu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cliente_p__cli_i__55F4C372">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="cliente_proyecto" Type="Self.cliente_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="cli_id" />
+            </Principal>
+            <Dependent Role="cliente_proyecto">
+              <PropertyRef Name="cli_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ventas__cli_id__7F2BE32F">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="0..1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="cli_id" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="cli_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_alquiler_cliente_clientes">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="alquiler_cliente" Type="Self.alquiler_cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="cli_id" />
+            </Principal>
+            <Dependent Role="alquiler_cliente">
+              <PropertyRef Name="cli_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__compras__prove_i__367C1819">
+          <End Role="proveedores" Type="Self.proveedores" Multiplicity="0..1" />
+          <End Role="compras" Type="Self.compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedores">
+              <PropertyRef Name="prove_id" />
+            </Principal>
+            <Dependent Role="compras">
+              <PropertyRef Name="prove_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compras_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+          <End Role="compras" Type="Self.compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="compras">
+              <PropertyRef Name="usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__equipos__mar_id__46B27FE2">
+          <End Role="marcas" Type="Self.marcas" Multiplicity="0..1" />
+          <End Role="equipos" Type="Self.equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="marcas">
+              <PropertyRef Name="marca_id" />
+            </Principal>
+            <Dependent Role="equipos">
+              <PropertyRef Name="mar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__materiale__mar_i__47A6A41B">
+          <End Role="marcas" Type="Self.marcas" Multiplicity="0..1" />
+          <End Role="materiales" Type="Self.materiales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="marcas">
+              <PropertyRef Name="marca_id" />
+            </Principal>
+            <Dependent Role="materiales">
+              <PropertyRef Name="mar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ventas__pag_id__51300E55">
+          <End Role="pagos" Type="Self.pagos" Multiplicity="0..1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pagos">
+              <PropertyRef Name="pag_id" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="pag_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__proyecto___proy___3DE82FB7">
+          <End Role="proyectos" Type="Self.proyectos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="proyecto_tarea" Type="Self.proyecto_tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proyectos">
+              <PropertyRef Name="proy_id" />
+            </Principal>
+            <Dependent Role="proyecto_tarea">
+              <PropertyRef Name="proy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__proyecto___tar_i__3EDC53F0">
+          <End Role="tareas" Type="Self.tareas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="proyecto_tarea" Type="Self.proyecto_tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tareas">
+              <PropertyRef Name="tar_id" />
+            </Principal>
+            <Dependent Role="proyecto_tarea">
+              <PropertyRef Name="tar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_alquiler_proyecto_proyectos">
+          <End Role="proyectos" Type="Self.proyectos" Multiplicity="1" />
+          <End Role="alquiler_proyecto" Type="Self.alquiler_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proyectos">
+              <PropertyRef Name="proy_id" />
+            </Principal>
+            <Dependent Role="alquiler_proyecto">
+              <PropertyRef Name="proy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cliente_proyecto_proyectos">
+          <End Role="proyectos" Type="Self.proyectos" Multiplicity="1" />
+          <End Role="cliente_proyecto" Type="Self.cliente_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proyectos">
+              <PropertyRef Name="proy_id" />
+            </Principal>
+            <Dependent Role="cliente_proyecto">
+              <PropertyRef Name="proy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_proyecto_servicio_proyectos">
+          <End Role="proyectos" Type="Self.proyectos" Multiplicity="0..1" />
+          <End Role="proyecto_servicio" Type="Self.proyecto_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proyectos">
+              <PropertyRef Name="proy_id" />
+            </Principal>
+            <Dependent Role="proyecto_servicio">
+              <PropertyRef Name="proy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_proyecto_servicio_servicios">
+          <End Role="servicios" Type="Self.servicios" Multiplicity="0..1" />
+          <End Role="proyecto_servicio" Type="Self.proyecto_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servicios">
+              <PropertyRef Name="serv_id" />
+            </Principal>
+            <Dependent Role="proyecto_servicio">
+              <PropertyRef Name="serv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ConstructoraBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="alquileres" EntityType="Self.alquileres" />
+          <EntitySet Name="cargos" EntityType="Self.cargos" />
+          <EntitySet Name="categoria" EntityType="Self.categoria" />
+          <EntitySet Name="ciudad" EntityType="Self.ciudad" />
+          <EntitySet Name="clientes" EntityType="Self.clientes" />
+          <EntitySet Name="compras" EntityType="Self.compras" />
+          <EntitySet Name="empleados" EntityType="Self.empleados" />
+          <EntitySet Name="equipos" EntityType="Self.equipos" />
+          <EntitySet Name="marcas" EntityType="Self.marcas" />
+          <EntitySet Name="materiales" EntityType="Self.materiales" />
+          <EntitySet Name="pagos" EntityType="Self.pagos" />
+          <EntitySet Name="proveedores" EntityType="Self.proveedores" />
+          <EntitySet Name="provincia" EntityType="Self.provincia" />
+          <EntitySet Name="proyecto_tarea" EntityType="Self.proyecto_tarea" />
+          <EntitySet Name="proyectos" EntityType="Self.proyectos" />
+          <EntitySet Name="servicios" EntityType="Self.servicios" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tareas" EntityType="Self.tareas" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" />
+          <EntitySet Name="ventas" EntityType="Self.ventas" />
+          <EntitySet Name="alquiler_cliente" EntityType="Self.alquiler_cliente" />
+          <EntitySet Name="alquiler_proyecto" EntityType="Self.alquiler_proyecto" />
+          <EntitySet Name="cliente_proyecto" EntityType="Self.cliente_proyecto" />
+          <EntitySet Name="proyecto_servicio" EntityType="Self.proyecto_servicio" />
+          <AssociationSet Name="FK__alquilere__equ_i__31B762FC" Association="Self.FK__alquilere__equ_i__31B762FC">
+            <End Role="equipos" EntitySet="equipos" />
+            <End Role="alquileres" EntitySet="alquileres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_alquiler_cliente_alquileres" Association="Self.FK_alquiler_cliente_alquileres">
+            <End Role="alquileres" EntitySet="alquileres" />
+            <End Role="alquiler_cliente" EntitySet="alquiler_cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_alquiler_proyecto_alquileres" Association="Self.FK_alquiler_proyecto_alquileres">
+            <End Role="alquileres" EntitySet="alquileres" />
+            <End Role="alquiler_proyecto" EntitySet="alquiler_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__empleados__cargo__4CA06362" Association="Self.FK__empleados__cargo__4CA06362">
+            <End Role="cargos" EntitySet="cargos" />
+            <End Role="empleados" EntitySet="empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__materiale__cat_i__489AC854" Association="Self.FK__materiale__cat_i__489AC854">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="materiales" EntitySet="materiales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ciudad__prov_id__32AB8735" Association="Self.FK__ciudad__prov_id__32AB8735">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="ciudad" EntitySet="ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__clientes__ciu_id__4222D4EF" Association="Self.FK__clientes__ciu_id__4222D4EF">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="clientes" EntitySet="clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__empleados__ciu_i__4D94879B" Association="Self.FK__empleados__ciu_i__4D94879B">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="empleados" EntitySet="empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cliente_p__cli_i__55F4C372" Association="Self.FK__cliente_p__cli_i__55F4C372">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="cliente_proyecto" EntitySet="cliente_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ventas__cli_id__7F2BE32F" Association="Self.FK__ventas__cli_id__7F2BE32F">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_alquiler_cliente_clientes" Association="Self.FK_alquiler_cliente_clientes">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="alquiler_cliente" EntitySet="alquiler_cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__compras__prove_i__367C1819" Association="Self.FK__compras__prove_i__367C1819">
+            <End Role="proveedores" EntitySet="proveedores" />
+            <End Role="compras" EntitySet="compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compras_usuarios" Association="Self.FK_compras_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="compras" EntitySet="compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__equipos__mar_id__46B27FE2" Association="Self.FK__equipos__mar_id__46B27FE2">
+            <End Role="marcas" EntitySet="marcas" />
+            <End Role="equipos" EntitySet="equipos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__materiale__mar_i__47A6A41B" Association="Self.FK__materiale__mar_i__47A6A41B">
+            <End Role="marcas" EntitySet="marcas" />
+            <End Role="materiales" EntitySet="materiales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ventas__pag_id__51300E55" Association="Self.FK__ventas__pag_id__51300E55">
+            <End Role="pagos" EntitySet="pagos" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__proyecto___proy___3DE82FB7" Association="Self.FK__proyecto___proy___3DE82FB7">
+            <End Role="proyectos" EntitySet="proyectos" />
+            <End Role="proyecto_tarea" EntitySet="proyecto_tarea" />
+          </AssociationSet>
+          <AssociationSet Name="FK__proyecto___tar_i__3EDC53F0" Association="Self.FK__proyecto___tar_i__3EDC53F0">
+            <End Role="tareas" EntitySet="tareas" />
+            <End Role="proyecto_tarea" EntitySet="proyecto_tarea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_alquiler_proyecto_proyectos" Association="Self.FK_alquiler_proyecto_proyectos">
+            <End Role="proyectos" EntitySet="proyectos" />
+            <End Role="alquiler_proyecto" EntitySet="alquiler_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cliente_proyecto_proyectos" Association="Self.FK_cliente_proyecto_proyectos">
+            <End Role="proyectos" EntitySet="proyectos" />
+            <End Role="cliente_proyecto" EntitySet="cliente_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_proyecto_servicio_proyectos" Association="Self.FK_proyecto_servicio_proyectos">
+            <End Role="proyectos" EntitySet="proyectos" />
+            <End Role="proyecto_servicio" EntitySet="proyecto_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_proyecto_servicio_servicios" Association="Self.FK_proyecto_servicio_servicios">
+            <End Role="servicios" EntitySet="servicios" />
+            <End Role="proyecto_servicio" EntitySet="proyecto_servicio" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ConstructoraBDModelStoreContainer" CdmEntityContainer="ConstructoraBDEntities">
+          <EntitySetMapping Name="alquileres">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.alquileres">
+              <MappingFragment StoreEntitySet="alquileres">
+                <ScalarProperty Name="alq_id" ColumnName="alq_id" />
+                <ScalarProperty Name="equ_id" ColumnName="equ_id" />
+                <ScalarProperty Name="alq_fec_ini" ColumnName="alq_fec_ini" />
+                <ScalarProperty Name="alq_fec_fin_est" ColumnName="alq_fec_fin_est" />
+                <ScalarProperty Name="alq_fec_fin_re" ColumnName="alq_fec_fin_re" />
+                <ScalarProperty Name="alq_est" ColumnName="alq_est" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cargos">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.cargos">
+              <MappingFragment StoreEntitySet="cargos">
+                <ScalarProperty Name="cargo_id" ColumnName="cargo_id" />
+                <ScalarProperty Name="cargo_nom" ColumnName="cargo_nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categoria">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+                <ScalarProperty Name="cat_nom" ColumnName="cat_nom" />
+                <ScalarProperty Name="cat_desc" ColumnName="cat_desc" />
+                <ScalarProperty Name="cat_est" ColumnName="cat_est" />
+                <ScalarProperty Name="cat_fec" ColumnName="cat_fec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ciudad">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.ciudad">
+              <MappingFragment StoreEntitySet="ciudad">
+                <ScalarProperty Name="ciu_id" ColumnName="ciu_id" />
+                <ScalarProperty Name="ciu_nom" ColumnName="ciu_nom" />
+                <ScalarProperty Name="prov_id" ColumnName="prov_id" />
+                <ScalarProperty Name="ciu_est" ColumnName="ciu_est" />
+                <ScalarProperty Name="ciu_fecha" ColumnName="ciu_fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clientes">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.clientes">
+              <MappingFragment StoreEntitySet="clientes">
+                <ScalarProperty Name="cli_id" ColumnName="cli_id" />
+                <ScalarProperty Name="cli_ced" ColumnName="cli_ced" />
+                <ScalarProperty Name="cli_nom" ColumnName="cli_nom" />
+                <ScalarProperty Name="cli_ape" ColumnName="cli_ape" />
+                <ScalarProperty Name="cli_tel" ColumnName="cli_tel" />
+                <ScalarProperty Name="ciu_id" ColumnName="ciu_id" />
+                <ScalarProperty Name="cli_dir" ColumnName="cli_dir" />
+                <ScalarProperty Name="cli_email" ColumnName="cli_email" />
+                <ScalarProperty Name="cli_est" ColumnName="cli_est" />
+                <ScalarProperty Name="cli_fecha" ColumnName="cli_fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="compras">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.compras">
+              <MappingFragment StoreEntitySet="compras">
+                <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+                <ScalarProperty Name="prove_id" ColumnName="prove_id" />
+                <ScalarProperty Name="comp_tip_doc" ColumnName="comp_tip_doc" />
+                <ScalarProperty Name="comp_num_doc" ColumnName="comp_num_doc" />
+                <ScalarProperty Name="comp_total" ColumnName="comp_total" />
+                <ScalarProperty Name="comp_est" ColumnName="comp_est" />
+                <ScalarProperty Name="usu_id" ColumnName="usu_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="empleados">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.empleados">
+              <MappingFragment StoreEntitySet="empleados">
+                <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+                <ScalarProperty Name="emp_ced" ColumnName="emp_ced" />
+                <ScalarProperty Name="emp_nom" ColumnName="emp_nom" />
+                <ScalarProperty Name="emp_ape" ColumnName="emp_ape" />
+                <ScalarProperty Name="cargo_id" ColumnName="cargo_id" />
+                <ScalarProperty Name="emp_salario" ColumnName="emp_salario" />
+                <ScalarProperty Name="ciu_id" ColumnName="ciu_id" />
+                <ScalarProperty Name="emp_fec_contrat" ColumnName="emp_fec_contrat" />
+                <ScalarProperty Name="emp_tel" ColumnName="emp_tel" />
+                <ScalarProperty Name="emp_est" ColumnName="emp_est" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="equipos">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.equipos">
+              <MappingFragment StoreEntitySet="equipos">
+                <ScalarProperty Name="equ_id" ColumnName="equ_id" />
+                <ScalarProperty Name="equ_nom" ColumnName="equ_nom" />
+                <ScalarProperty Name="equ_desc" ColumnName="equ_desc" />
+                <ScalarProperty Name="equ_prec_com" ColumnName="equ_prec_com" />
+                <ScalarProperty Name="equ_prec_ven" ColumnName="equ_prec_ven" />
+                <ScalarProperty Name="equ_stock" ColumnName="equ_stock" />
+                <ScalarProperty Name="equ_fec" ColumnName="equ_fec" />
+                <ScalarProperty Name="equ_est" ColumnName="equ_est" />
+                <ScalarProperty Name="mar_id" ColumnName="mar_id" />
+                <ScalarProperty Name="equ_code" ColumnName="equ_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="marcas">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.marcas">
+              <MappingFragment StoreEntitySet="marcas">
+                <ScalarProperty Name="marca_id" ColumnName="marca_id" />
+                <ScalarProperty Name="marca_nom" ColumnName="marca_nom" />
+                <ScalarProperty Name="marca_est" ColumnName="marca_est" />
+                <ScalarProperty Name="marca_fec" ColumnName="marca_fec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="materiales">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.materiales">
+              <MappingFragment StoreEntitySet="materiales">
+                <ScalarProperty Name="mat_id" ColumnName="mat_id" />
+                <ScalarProperty Name="mat_nom" ColumnName="mat_nom" />
+                <ScalarProperty Name="mat_desc" ColumnName="mat_desc" />
+                <ScalarProperty Name="mat_stock" ColumnName="mat_stock" />
+                <ScalarProperty Name="mat_prec_com" ColumnName="mat_prec_com" />
+                <ScalarProperty Name="mat_prec_ven" ColumnName="mat_prec_ven" />
+                <ScalarProperty Name="mat_fec" ColumnName="mat_fec" />
+                <ScalarProperty Name="mat_est" ColumnName="mat_est" />
+                <ScalarProperty Name="mar_id" ColumnName="mar_id" />
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+                <ScalarProperty Name="mat_code" ColumnName="mat_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pagos">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.pagos">
+              <MappingFragment StoreEntitySet="pagos">
+                <ScalarProperty Name="pag_id" ColumnName="pag_id" />
+                <ScalarProperty Name="pag_nom" ColumnName="pag_nom" />
+                <ScalarProperty Name="pag_desc" ColumnName="pag_desc" />
+                <ScalarProperty Name="pag_est" ColumnName="pag_est" />
+                <ScalarProperty Name="pag_fec" ColumnName="pag_fec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proveedores">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.proveedores">
+              <MappingFragment StoreEntitySet="proveedores">
+                <ScalarProperty Name="prove_id" ColumnName="prove_id" />
+                <ScalarProperty Name="prove_nom" ColumnName="prove_nom" />
+                <ScalarProperty Name="prove_dir" ColumnName="prove_dir" />
+                <ScalarProperty Name="prove_tel" ColumnName="prove_tel" />
+                <ScalarProperty Name="prove_email" ColumnName="prove_email" />
+                <ScalarProperty Name="prove_ruc" ColumnName="prove_ruc" />
+                <ScalarProperty Name="prove_est" ColumnName="prove_est" />
+                <ScalarProperty Name="prove_fecha" ColumnName="prove_fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="provincia">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.provincia">
+              <MappingFragment StoreEntitySet="provincia">
+                <ScalarProperty Name="prov_id" ColumnName="prov_id" />
+                <ScalarProperty Name="prov_nom" ColumnName="prov_nom" />
+                <ScalarProperty Name="prov_est" ColumnName="prov_est" />
+                <ScalarProperty Name="prov_fecha" ColumnName="prov_fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proyecto_tarea">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.proyecto_tarea">
+              <MappingFragment StoreEntitySet="proyecto_tarea">
+                <ScalarProperty Name="proy_id" ColumnName="proy_id" />
+                <ScalarProperty Name="tar_id" ColumnName="tar_id" />
+                <ScalarProperty Name="pt_fec_ini" ColumnName="pt_fec_ini" />
+                <ScalarProperty Name="pt_fec_fin" ColumnName="pt_fec_fin" />
+                <ScalarProperty Name="pt_fec_fin_real" ColumnName="pt_fec_fin_real" />
+                <ScalarProperty Name="pt_est" ColumnName="pt_est" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proyectos">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.proyectos">
+              <MappingFragment StoreEntitySet="proyectos">
+                <ScalarProperty Name="proy_id" ColumnName="proy_id" />
+                <ScalarProperty Name="proy_nom" ColumnName="proy_nom" />
+                <ScalarProperty Name="proy_desc" ColumnName="proy_desc" />
+                <ScalarProperty Name="proy_fecha_inicio" ColumnName="proy_fecha_inicio" />
+                <ScalarProperty Name="proy_fecha_fin_est" ColumnName="proy_fecha_fin_est" />
+                <ScalarProperty Name="proy_fecha_fin_real" ColumnName="proy_fecha_fin_real" />
+                <ScalarProperty Name="proy_presupuesto" ColumnName="proy_presupuesto" />
+                <ScalarProperty Name="proy_est" ColumnName="proy_est" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="servicios">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.servicios">
+              <MappingFragment StoreEntitySet="servicios">
+                <ScalarProperty Name="serv_id" ColumnName="serv_id" />
+                <ScalarProperty Name="serv_nom" ColumnName="serv_nom" />
+                <ScalarProperty Name="serv_desc" ColumnName="serv_desc" />
+                <ScalarProperty Name="serv_costo" ColumnName="serv_costo" />
+                <ScalarProperty Name="serv_est" ColumnName="serv_est" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tareas">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.tareas">
+              <MappingFragment StoreEntitySet="tareas">
+                <ScalarProperty Name="tar_id" ColumnName="tar_id" />
+                <ScalarProperty Name="tar_nom" ColumnName="tar_nom" />
+                <ScalarProperty Name="tar_desc" ColumnName="tar_desc" />
+                <ScalarProperty Name="tar_est" ColumnName="tar_est" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.usuarios">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="usu_id" ColumnName="usu_id" />
+                <ScalarProperty Name="usu_nom" ColumnName="usu_nom" />
+                <ScalarProperty Name="usu_email" ColumnName="usu_email" />
+                <ScalarProperty Name="usu_contra" ColumnName="usu_contra" />
+                <ScalarProperty Name="usu_est" ColumnName="usu_est" />
+                <ScalarProperty Name="usu_fec_reg" ColumnName="usu_fec_reg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ventas">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.ventas">
+              <MappingFragment StoreEntitySet="ventas">
+                <ScalarProperty Name="ven_id" ColumnName="ven_id" />
+                <ScalarProperty Name="cli_id" ColumnName="cli_id" />
+                <ScalarProperty Name="pag_id" ColumnName="pag_id" />
+                <ScalarProperty Name="ven_tip_doc" ColumnName="ven_tip_doc" />
+                <ScalarProperty Name="ven_num_doc" ColumnName="ven_num_doc" />
+                <ScalarProperty Name="ven_mont_pag" ColumnName="ven_mont_pag" />
+                <ScalarProperty Name="ven_mont_camb" ColumnName="ven_mont_camb" />
+                <ScalarProperty Name="ven_mont_tot" ColumnName="ven_mont_tot" />
+                <ScalarProperty Name="ven_fec" ColumnName="ven_fec" />
+                <ScalarProperty Name="ven_est" ColumnName="ven_est" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="alquiler_cliente">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.alquiler_cliente">
+              <MappingFragment StoreEntitySet="alquiler_cliente">
+                <ScalarProperty Name="alq_id" ColumnName="alq_id" />
+                <ScalarProperty Name="cli_id" ColumnName="cli_id" />
+                <ScalarProperty Name="ac_fec_asig" ColumnName="ac_fec_asig" />
+                <ScalarProperty Name="ac_est" ColumnName="ac_est" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="alquiler_proyecto">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.alquiler_proyecto">
+              <MappingFragment StoreEntitySet="alquiler_proyecto">
+                <ScalarProperty Name="alq_id" ColumnName="alq_id" />
+                <ScalarProperty Name="proy_id" ColumnName="proy_id" />
+                <ScalarProperty Name="ap_fec_asig" ColumnName="ap_fec_asig" />
+                <ScalarProperty Name="ap_est" ColumnName="ap_est" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cliente_proyecto">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.cliente_proyecto">
+              <MappingFragment StoreEntitySet="cliente_proyecto">
+                <ScalarProperty Name="cli_id" ColumnName="cli_id" />
+                <ScalarProperty Name="proy_id" ColumnName="proy_id" />
+                <ScalarProperty Name="cp_fecha" ColumnName="cp_fecha" />
+                <ScalarProperty Name="cp_rol" ColumnName="cp_rol" />
+                <ScalarProperty Name="cp_est" ColumnName="cp_est" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proyecto_servicio">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.proyecto_servicio">
+              <MappingFragment StoreEntitySet="proyecto_servicio">
+                <ScalarProperty Name="proy_id" ColumnName="proy_id" />
+                <ScalarProperty Name="serv_id" ColumnName="serv_id" />
+                <ScalarProperty Name="ps_fec_asig" ColumnName="ps_fec_asig" />
+                <ScalarProperty Name="ps_est" ColumnName="ps_est" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
