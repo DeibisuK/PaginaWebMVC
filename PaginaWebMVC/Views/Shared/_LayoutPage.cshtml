@@ -8,7 +8,6 @@
     <link href="~/Content/css/menu.css" rel="stylesheet" />
     <link href="~/Content/css/resumen.css" rel="stylesheet" />
     <link href="~/Content/css/empleado.css" rel="stylesheet" />
-    <link href="~/Content/css/Agregar.css" rel="stylesheet"/>
 </head>
 <body>
     <header>
@@ -18,7 +17,6 @@
             @{
                 var sharedData = Session["Nombre"] as string;
             }
-
             @if (sharedData != null)
             {
                 <a>Hola, @sharedData</a>
@@ -52,7 +50,7 @@
                             <a href="@Url.Action("Empleado", "Empleados")" class="nav__link nav__link--inside"> <i class="fa-solid fa-helmet-safety"></i> Empleados</a>
                         </li>
                         <li class="list_inside">
-                            <a href="@Url.Action("Cargos", "Home")" class="nav__link nav__link--inside"> <i class="fa-solid fa-users"></i> Cargos</a>
+                            <a href="@Url.Action("Cargos", "Cargos")" class="nav__link nav__link--inside"> <i class="fa-solid fa-users"></i> Cargos</a>
                         </li>
                     </ul>
                 </li>

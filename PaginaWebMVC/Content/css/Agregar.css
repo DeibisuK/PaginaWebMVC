@@ -1,83 +1,31 @@
 ﻿.Principal {
-    flex: 1;
+    display: inline-flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    background: #FAC710;
+}
+
+.Principal form {
+    flex: 4;
+    align-content:center;
+    justify-items:center;
+}
+.form-horizontal {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-}
-.head {
-    flex: 1;
-    max-height: 80px;
-    display: grid;
-    grid-template-columns: 1fr 0.1fr;
-    grid-template-rows: 0.5fr 0.5fr;
-    background: #FAC710;
-    color: white;
-    text-align: center;
+    background: white;
+    height: 200px;
+    width: 250px;
+    border: 2px solid black;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    gap:5px;
 }
 
-.tema {
-    grid-column: 1/3;
-    grid-row: 1/2;
-    color: black;
-    font-weight: bold;
-    align-content: center;
-}
 
-.txtbuscar {
-    grid-column: 1/2;
-    grid-row: 2/2;
-    align-content: center;
-    padding: 0 20px 0 20px;
-}
-
-    .txtbuscar input {
-        padding: 0 0 0 10px;
-        width: 100%;
-        height:60%;
-    }
-
-.btnbuscar {
-    grid-column: 2/2;
-    grid-row: 2/2;
-    align-content: center;
-}
-
-    .btnbuscar i {
-        background-color: black;
-        align-content:center;
-        color: white;
-        border: 0 solid black;
-        border-radius: 0px;
-        padding: 2px 5px 2px 5px;
-        height:30px;
-        width:80px;
-        cursor:pointer;
-    }
-
-.cuerpo {
-    flex: 2;
-    display: grid;
-    grid-template-columns: 5fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    background: #ffffff;
-    color: white;
-    text-align: center;
-}
-
-.ingreso {
-    grid-column: 1/2;
-    grid-row: 1/2;
-    background-color: black;
-}
-
-.botones {
-    grid-column: 2/3;
-    grid-row: 1/2;
-    background-color: rgb(224, 35, 35);
-}
-
-.tabla {
-    grid-column: 1/3;
-    grid-row: 2/3;
-    background-color: rgb(73, 15, 209);
+.form_btn {
+    background:aqua;
+    height:60px;
 }

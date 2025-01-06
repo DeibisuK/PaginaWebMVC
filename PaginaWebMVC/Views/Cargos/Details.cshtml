@@ -1,0 +1,32 @@
+﻿@model PaginaWebMVC.Models.DTO.Cargos
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div>
+    <h4>Cargos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cargo_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cargo_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cargo_nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cargo_nom)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {id = Model.cargo_id}) |
+    @Html.ActionLink("Back to List", "Cargos")
+</p>
