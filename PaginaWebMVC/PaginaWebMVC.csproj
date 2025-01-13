@@ -238,94 +238,113 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\alquileres.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\alquiler_cliente.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\alquiler_proyecto.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\cargos.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\categoria.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ciudad.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\clientes.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\cliente_proyecto.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\compras.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DTO\Cargos.cs" />
-    <Compile Include="Models\DTO\Empleados.cs" />
+    <Compile Include="Models\ConstructoraModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConstructoraModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConstructoraModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConstructoraModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConstructoraModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DTO\AlquilerDTO.cs" />
+    <Compile Include="Models\DTO\CargosDTO.cs" />
+    <Compile Include="Models\DTO\CategoriaDTO.cs" />
+    <Compile Include="Models\DTO\CiudadDTO.cs" />
+    <Compile Include="Models\DTO\ClienteDTO.cs" />
+    <Compile Include="Models\DTO\CompraDTO.cs" />
+    <Compile Include="Models\DTO\EmpleadosDTO.cs" />
+    <Compile Include="Models\DTO\EquipoDTO.cs" />
+    <Compile Include="Models\DTO\MarcasDTO.cs" />
+    <Compile Include="Models\DTO\MaterialesDTO.cs" />
+    <Compile Include="Models\DTO\PagosDTO.cs" />
+    <Compile Include="Models\DTO\ProveedoresDTO.cs" />
+    <Compile Include="Models\DTO\ProvinciaDTO.cs" />
+    <Compile Include="Models\DTO\ProyectosDTO.cs" />
+    <Compile Include="Models\DTO\ServiciosDTO.cs" />
+    <Compile Include="Models\DTO\TareasDTO.cs" />
+    <Compile Include="Models\DTO\UsuarioDTO.cs" />
+    <Compile Include="Models\DTO\VentasDTO.cs" />
     <Compile Include="Models\empleados.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\equipos.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\marcas.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\materiales.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\pagos.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\proveedores.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\provincia.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\proyectos.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\proyecto_servicio.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\proyecto_tarea.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelacionalModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RelacionalModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelacionalModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelacionalModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RelacionalModel.edmx</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\servicios.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\servicios_cliente.cs">
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tareas.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\usuarios.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ventas.cs">
-      <DependentUpon>RelacionalModel.tt</DependentUpon>
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Permisos\ValidarSesionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -358,15 +377,15 @@
     <Content Include="Content\Site.css" />
     <Content Include="Imagenes\Backg.jpg" />
     <Content Include="Imagenes\logoPY.png" />
-    <Content Include="Models\RelacionalModel.Context.tt">
+    <Content Include="Models\ConstructoraModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RelacionalModel.Context.cs</LastGenOutput>
-      <DependentUpon>RelacionalModel.edmx</DependentUpon>
+      <DependentUpon>ConstructoraModel.edmx</DependentUpon>
+      <LastGenOutput>ConstructoraModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\RelacionalModel.tt">
+    <Content Include="Models\ConstructoraModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RelacionalModel.edmx</DependentUpon>
-      <LastGenOutput>RelacionalModel.cs</LastGenOutput>
+      <DependentUpon>ConstructoraModel.edmx</DependentUpon>
+      <LastGenOutput>ConstructoraModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -396,12 +415,12 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <EntityDeploy Include="Models\RelacionalModel.edmx">
+    <EntityDeploy Include="Models\ConstructoraModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RelacionalModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>ConstructoraModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\RelacionalModel.edmx.diagram">
-      <DependentUpon>RelacionalModel.edmx</DependentUpon>
+    <Content Include="Models\ConstructoraModel.edmx.diagram">
+      <DependentUpon>ConstructoraModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
@@ -440,6 +459,7 @@
     <Content Include="Views\Cargos\Create.cshtml" />
     <Content Include="Views\Cargos\Edit.cshtml" />
     <Content Include="Views\Cargos\Delete.cshtml" />
+    <Content Include="Views\Empleados\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

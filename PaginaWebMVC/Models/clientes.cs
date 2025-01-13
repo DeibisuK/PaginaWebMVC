@@ -20,6 +20,7 @@ namespace PaginaWebMVC.Models
             this.cliente_proyecto = new HashSet<cliente_proyecto>();
             this.ventas = new HashSet<ventas>();
             this.alquiler_cliente = new HashSet<alquiler_cliente>();
+            this.servicios_cliente = new HashSet<servicios_cliente>();
         }
     
         public int cli_id { get; set; }
@@ -40,5 +41,7 @@ namespace PaginaWebMVC.Models
         public virtual ICollection<ventas> ventas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<alquiler_cliente> alquiler_cliente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<servicios_cliente> servicios_cliente { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace PaginaWebMVC.ViewModels
 {
     public class GetCargosVM
     {
-        public List<Cargos> cargos { get; set; }
-        public Cargos newCargo { get; set; }
+        public List<CargosDTO> cargos { get; set; }
+        public CargosDTO newCargo { get; set; }
     }
 }

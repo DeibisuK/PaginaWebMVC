@@ -18,6 +18,7 @@ namespace PaginaWebMVC.Models
         public servicios()
         {
             this.proyecto_servicio = new HashSet<proyecto_servicio>();
+            this.servicios_cliente = new HashSet<servicios_cliente>();
         }
     
         public int serv_id { get; set; }
@@ -25,8 +26,11 @@ namespace PaginaWebMVC.Models
         public string serv_desc { get; set; }
         public Nullable<decimal> serv_costo { get; set; }
         public string serv_est { get; set; }
+        public Nullable<System.DateTime> serv_fec { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<proyecto_servicio> proyecto_servicio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<servicios_cliente> servicios_cliente { get; set; }
     }
 }

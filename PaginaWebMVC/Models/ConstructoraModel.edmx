@@ -6,7 +6,7 @@
     <edmx:StorageModels>
       <Schema Namespace="ConstructoraBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.alquiler_cliente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'db_ab16d0_constructorabd.dbo.alquiler_cliente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="alquiler_cliente">
           <Key>
             <PropertyRef Name="alq_id" />
@@ -20,7 +20,7 @@ advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.alquiler_cliente' no tien
           <Property Name="ac_est" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.alquiler_proyecto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'db_ab16d0_constructorabd.dbo.alquiler_proyecto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="alquiler_proyecto">
           <Key>
             <PropertyRef Name="alq_id" />
@@ -56,7 +56,6 @@ advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.alquiler_proyecto' no tie
             <PropertyRef Name="cat_id" />
           </Key>
           <Property Name="cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="cat_nom" Type="varchar" MaxLength="100" />
           <Property Name="cat_desc" Type="varchar" MaxLength="100" />
           <Property Name="cat_est" Type="char" MaxLength="1" />
           <Property Name="cat_fec" Type="date" />
@@ -69,10 +68,10 @@ advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.alquiler_proyecto' no tie
           <Property Name="ciu_nom" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="prov_id" Type="int" />
           <Property Name="ciu_est" Type="char" MaxLength="1" />
-          <Property Name="ciu_fecha" Type="date" />
+          <Property Name="ciu_fec" Type="date" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.cliente_proyecto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'db_ab16d0_constructorabd.dbo.cliente_proyecto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="cliente_proyecto">
           <Key>
             <PropertyRef Name="cli_id" />
@@ -89,12 +88,12 @@ advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.cliente_proyecto' no tien
             <PropertyRef Name="cli_id" />
           </Key>
           <Property Name="cli_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="cli_ced" Type="varchar" MaxLength="15" />
+          <Property Name="cli_ced" Type="varchar" MaxLength="12" />
           <Property Name="cli_nom" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="cli_ape" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="cli_tel" Type="varchar" MaxLength="15" />
           <Property Name="ciu_id" Type="int" />
-          <Property Name="cli_dir" Type="varchar" MaxLength="255" />
+          <Property Name="cli_dir" Type="varchar" MaxLength="150" />
           <Property Name="cli_email" Type="varchar" MaxLength="100" />
           <Property Name="cli_est" Type="char" MaxLength="1" />
           <Property Name="cli_fecha" Type="date" />
@@ -105,14 +104,15 @@ advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.cliente_proyecto' no tien
           </Key>
           <Property Name="comp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="prove_id" Type="int" />
+          <Property Name="pag_id" Type="int" />
+          <Property Name="usu_id" Type="int" />
           <Property Name="comp_tip_doc" Type="varchar" MaxLength="50" />
           <Property Name="comp_num_doc" Type="varchar" MaxLength="50" />
           <Property Name="comp_total" Type="decimal" Precision="10" Scale="2" />
           <Property Name="comp_est" Type="char" MaxLength="1" />
-          <Property Name="usu_id" Type="int" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.detalle_compra_equ' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+advertencia 6013: La tabla o vista 'db_ab16d0_constructorabd.dbo.detalle_compra_equ' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
         <EntityType Name="detalle_compra_equ">
           <Property Name="comp_id" Type="int" />
           <Property Name="equ_id" Type="int" />
@@ -123,7 +123,7 @@ advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.detalle_compra_equ' no ti
           <Property Name="dce_fec" Type="date" />
         </EntityType>-->
         <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.detalle_compra_mat' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+advertencia 6013: La tabla o vista 'db_ab16d0_constructorabd.dbo.detalle_compra_mat' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
         <EntityType Name="detalle_compra_mat">
           <Property Name="comp_id" Type="int" />
           <Property Name="mat_id" Type="int" />
@@ -134,7 +134,7 @@ advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.detalle_compra_mat' no ti
           <Property Name="dcm_fec" Type="date" />
         </EntityType>-->
         <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.detalle_venta_equ' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+advertencia 6013: La tabla o vista 'db_ab16d0_constructorabd.dbo.detalle_venta_equ' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
         <EntityType Name="detalle_venta_equ">
           <Property Name="ven_id" Type="int" />
           <Property Name="equ_id" Type="int" />
@@ -144,7 +144,7 @@ advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.detalle_venta_equ' no tie
           <Property Name="dve_fec" Type="date" />
         </EntityType>-->
         <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.detalle_venta_mat' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+advertencia 6013: La tabla o vista 'db_ab16d0_constructorabd.dbo.detalle_venta_mat' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
         <EntityType Name="detalle_venta_mat">
           <Property Name="ven_id" Type="int" />
           <Property Name="mat_id" Type="int" />
@@ -154,7 +154,7 @@ advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.detalle_venta_mat' no tie
           <Property Name="dvm_fec" Type="date" />
         </EntityType>-->
         <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.empleado_tarea' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+advertencia 6013: La tabla o vista 'db_ab16d0_constructorabd.dbo.empleado_tarea' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
         <EntityType Name="empleado_tarea">
           <Property Name="emp_id" Type="int" />
           <Property Name="tar_id" Type="int" />
@@ -168,7 +168,7 @@ advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.empleado_tarea' no tiene 
             <PropertyRef Name="emp_id" />
           </Key>
           <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="emp_ced" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="emp_ced" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="emp_nom" Type="varchar" MaxLength="100" />
           <Property Name="emp_ape" Type="varchar" MaxLength="100" />
           <Property Name="cargo_id" Type="int" />
@@ -179,7 +179,7 @@ advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.empleado_tarea' no tiene 
           <Property Name="emp_est" Type="char" MaxLength="1" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.equipo_proyecto' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+advertencia 6013: La tabla o vista 'db_ab16d0_constructorabd.dbo.equipo_proyecto' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
         <EntityType Name="equipo_proyecto">
           <Property Name="equ_id" Type="int" />
           <Property Name="proy_id" Type="int" />
@@ -194,6 +194,9 @@ advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.equipo_proyecto' no tiene
             <PropertyRef Name="equ_id" />
           </Key>
           <Property Name="equ_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="equ_code" Type="varchar" MaxLength="50" />
+          <Property Name="mar_id" Type="int" />
+          <Property Name="cat_id" Type="int" />
           <Property Name="equ_nom" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="equ_desc" Type="varchar" MaxLength="255" />
           <Property Name="equ_prec_com" Type="decimal" Precision="10" Scale="2" />
@@ -201,46 +204,43 @@ advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.equipo_proyecto' no tiene
           <Property Name="equ_stock" Type="int" Nullable="false" />
           <Property Name="equ_fec" Type="date" />
           <Property Name="equ_est" Type="char" MaxLength="1" />
-          <Property Name="mar_id" Type="int" />
-          <Property Name="equ_code" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="marcas">
           <Key>
-            <PropertyRef Name="marca_id" />
+            <PropertyRef Name="mar_id" />
           </Key>
-          <Property Name="marca_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="marca_nom" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="marca_est" Type="char" MaxLength="1" />
-          <Property Name="marca_fec" Type="date" />
+          <Property Name="mar_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mar_desc" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="mar_est" Type="char" MaxLength="1" />
+          <Property Name="mar_fec" Type="date" />
         </EntityType>
         <EntityType Name="materiales">
           <Key>
             <PropertyRef Name="mat_id" />
           </Key>
           <Property Name="mat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mat_code" Type="varchar" MaxLength="50" />
+          <Property Name="mar_id" Type="int" />
+          <Property Name="cat_id" Type="int" />
           <Property Name="mat_nom" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="mat_desc" Type="varchar" MaxLength="255" />
+          <Property Name="mat_desc" Type="varchar" MaxLength="150" />
           <Property Name="mat_stock" Type="int" Nullable="false" />
           <Property Name="mat_prec_com" Type="decimal" Precision="10" Scale="2" />
           <Property Name="mat_prec_ven" Type="decimal" Precision="10" Scale="2" />
           <Property Name="mat_fec" Type="date" />
           <Property Name="mat_est" Type="char" MaxLength="1" />
-          <Property Name="mar_id" Type="int" />
-          <Property Name="cat_id" Type="int" />
-          <Property Name="mat_code" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="pagos">
           <Key>
             <PropertyRef Name="pag_id" />
           </Key>
           <Property Name="pag_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="pag_nom" Type="varchar" MaxLength="50" />
           <Property Name="pag_desc" Type="varchar" MaxLength="255" />
           <Property Name="pag_est" Type="char" MaxLength="1" />
           <Property Name="pag_fec" Type="date" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.proveedor_equipo' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+advertencia 6013: La tabla o vista 'db_ab16d0_constructorabd.dbo.proveedor_equipo' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
         <EntityType Name="proveedor_equipo">
           <Property Name="prove_id" Type="int" />
           <Property Name="equ_id" Type="int" />
@@ -248,7 +248,7 @@ advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.proveedor_equipo' no tien
           <Property Name="pe_fec" Type="date" />
         </EntityType>-->
         <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.proveedor_material' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+advertencia 6013: La tabla o vista 'db_ab16d0_constructorabd.dbo.proveedor_material' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
         <EntityType Name="proveedor_material">
           <Property Name="prove_id" Type="int" />
           <Property Name="mat_id" Type="int" />
@@ -260,13 +260,14 @@ advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.proveedor_material' no ti
             <PropertyRef Name="prove_id" />
           </Key>
           <Property Name="prove_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prove_ruc" Type="varchar" MaxLength="13" />
+          <Property Name="prove_represen" Type="varchar" MaxLength="75" />
           <Property Name="prove_nom" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="prove_dir" Type="varchar" MaxLength="255" />
+          <Property Name="prove_dir" Type="varchar" MaxLength="150" />
           <Property Name="prove_tel" Type="varchar" MaxLength="15" />
           <Property Name="prove_email" Type="varchar" MaxLength="100" />
-          <Property Name="prove_ruc" Type="varchar" MaxLength="13" />
           <Property Name="prove_est" Type="char" MaxLength="1" />
-          <Property Name="prove_fecha" Type="date" />
+          <Property Name="prove_fec" Type="date" />
         </EntityType>
         <EntityType Name="provincia">
           <Key>
@@ -275,10 +276,10 @@ advertencia 6013: La tabla o vista 'ConstructoraBD.dbo.proveedor_material' no ti
           <Property Name="prov_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="prov_nom" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="prov_est" Type="char" MaxLength="1" />
-          <Property Name="prov_fecha" Type="date" />
+          <Property Name="prov_fec" Type="date" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.proyecto_servicio' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'db_ab16d0_constructorabd.dbo.proyecto_servicio' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="proyecto_servicio">
           <Key>
             <PropertyRef Name="ps_fec_asig" />
@@ -320,9 +321,22 @@ advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.proyecto_servicio' no tie
           </Key>
           <Property Name="serv_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="serv_nom" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="serv_desc" Type="varchar" MaxLength="255" />
+          <Property Name="serv_desc" Type="varchar" MaxLength="150" />
           <Property Name="serv_costo" Type="decimal" Precision="18" Scale="2" />
           <Property Name="serv_est" Type="char" MaxLength="1" />
+          <Property Name="serv_fec" Type="datetime" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'db_ab16d0_constructorabd.dbo.servicios_cliente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="servicios_cliente">
+          <Key>
+            <PropertyRef Name="cli_id" />
+            <PropertyRef Name="serv_id" />
+          </Key>
+          <Property Name="cli_id" Type="int" Nullable="false" />
+          <Property Name="serv_id" Type="int" Nullable="false" />
+          <Property Name="sc_fec_asig" Type="date" />
+          <Property Name="sc_est" Type="char" MaxLength="1" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -350,7 +364,7 @@ advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.proyecto_servicio' no tie
           <Property Name="usu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="usu_nom" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="usu_email" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="usu_contra" Type="varchar" MaxLength="500" />
+          <Property Name="usu_contra" Type="varchar" MaxLength="64" />
           <Property Name="usu_est" Type="char" MaxLength="1" />
           <Property Name="usu_fec_reg" Type="date" Nullable="false" />
         </EntityType>
@@ -369,7 +383,7 @@ advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.proyecto_servicio' no tie
           <Property Name="ven_fec" Type="date" />
           <Property Name="ven_est" Type="char" MaxLength="1" />
         </EntityType>
-        <Association Name="FK__alquilere__equ_i__31B762FC">
+        <Association Name="FK__alquilere__equ_i__04E4BC85">
           <End Role="equipos" Type="Self.equipos" Multiplicity="0..1" />
           <End Role="alquileres" Type="Self.alquileres" Multiplicity="*" />
           <ReferentialConstraint>
@@ -381,7 +395,7 @@ advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.proyecto_servicio' no tie
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ciudad__prov_id__32AB8735">
+        <Association Name="FK__ciudad__prov_id__3D5E1FD2">
           <End Role="provincia" Type="Self.provincia" Multiplicity="0..1" />
           <End Role="ciudad" Type="Self.ciudad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -417,7 +431,7 @@ advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.proyecto_servicio' no tie
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__compras__prove_i__367C1819">
+        <Association Name="FK__compras__prove_i__66603565">
           <End Role="proveedores" Type="Self.proveedores" Multiplicity="0..1" />
           <End Role="compras" Type="Self.compras" Multiplicity="*" />
           <ReferentialConstraint>
@@ -430,38 +444,38 @@ advertencia 6002: La tabla o vista 'ConstructoraBD.dbo.proyecto_servicio' no tie
           </ReferentialConstraint>
         </Association>
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.detalle_compra_equ', pero no se encuentra la tabla.
-        <Association Name="FK__detalle_c__comp___3864608B" />-->
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.detalle_compra_mat', pero no se encuentra la tabla.
+        <Association Name="FK__detalle_c__comp___0D7A0286" />-->
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.detalle_compra_mat', pero no se encuentra la tabla.
-        <Association Name="FK__detalle_c__comp___3A4CA8FD" />-->
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.detalle_compra_equ', pero no se encuentra la tabla.
+        <Association Name="FK__detalle_c__comp___123EB7A3" />-->
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.detalle_compra_equ', pero no se encuentra la tabla.
-        <Association Name="FK__detalle_c__equ_i__395884C4" />-->
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.detalle_compra_equ', pero no se encuentra la tabla.
+        <Association Name="FK__detalle_c__equ_i__1332DBDC" />-->
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.detalle_compra_mat', pero no se encuentra la tabla.
-        <Association Name="FK__detalle_c__mat_i__3B40CD36" />-->
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.detalle_compra_mat', pero no se encuentra la tabla.
+        <Association Name="FK__detalle_c__mat_i__0E6E26BF" />-->
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.detalle_venta_equ', pero no se encuentra la tabla.
-        <Association Name="FK__detalle_v__equ_i__3D2915A8" />-->
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.detalle_venta_equ', pero no se encuentra la tabla.
+        <Association Name="FK__detalle_v__equ_i__17F790F9" />-->
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.detalle_venta_mat', pero no se encuentra la tabla.
-        <Association Name="FK__detalle_v__mat_i__3F115E1A" />-->
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.detalle_venta_mat', pero no se encuentra la tabla.
+        <Association Name="FK__detalle_v__mat_i__1CBC4616" />-->
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.detalle_venta_equ', pero no se encuentra la tabla.
-        <Association Name="FK__detalle_v__ven_i__3C34F16F" />-->
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.detalle_venta_equ', pero no se encuentra la tabla.
+        <Association Name="FK__detalle_v__ven_i__17036CC0" />-->
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.detalle_venta_mat', pero no se encuentra la tabla.
-        <Association Name="FK__detalle_v__ven_i__3E1D39E1" />-->
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.detalle_venta_mat', pero no se encuentra la tabla.
+        <Association Name="FK__detalle_v__ven_i__1BC821DD" />-->
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.empleado_tarea', pero no se encuentra la tabla.
-        <Association Name="FK__empleado___cargo__40058253" />-->
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.empleado_tarea', pero no se encuentra la tabla.
+        <Association Name="FK__empleado___cargo__47A6A41B" />-->
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.empleado_tarea', pero no se encuentra la tabla.
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.empleado_tarea', pero no se encuentra la tabla.
         <Association Name="FK__empleado___emp_i__489AC854" />-->
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.empleado_tarea', pero no se encuentra la tabla.
-        <Association Name="FK__empleado___tar_i__40F9A68C" />-->
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.empleado_tarea', pero no se encuentra la tabla.
+        <Association Name="FK__empleado___tar_i__498EEC8D" />-->
         <Association Name="FK__empleados__cargo__4CA06362">
           <End Role="cargos" Type="Self.cargos" Multiplicity="0..1" />
           <End Role="empleados" Type="Self.empleados" Multiplicity="*" />
@@ -487,24 +501,24 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.emplead
           </ReferentialConstraint>
         </Association>
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.equipo_proyecto', pero no se encuentra la tabla.
-        <Association Name="FK__equipo_pr__equ_i__44CA3770" />-->
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.equipo_proyecto', pero no se encuentra la tabla.
+        <Association Name="FK__equipo_pr__equ_i__503BEA1C" />-->
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.equipo_proyecto', pero no se encuentra la tabla.
-        <Association Name="FK__equipo_pr__proy___45BE5BA9" />-->
-        <Association Name="FK__equipos__mar_id__46B27FE2">
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.equipo_proyecto', pero no se encuentra la tabla.
+        <Association Name="FK__equipo_pr__proy___51300E55" />-->
+        <Association Name="FK__equipos__mar_id__6E01572D">
           <End Role="marcas" Type="Self.marcas" Multiplicity="0..1" />
           <End Role="equipos" Type="Self.equipos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="marcas">
-              <PropertyRef Name="marca_id" />
+              <PropertyRef Name="mar_id" />
             </Principal>
             <Dependent Role="equipos">
               <PropertyRef Name="mar_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__materiale__cat_i__489AC854">
+        <Association Name="FK__materiale__cat_i__628FA481">
           <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
           <End Role="materiales" Type="Self.materiales" Multiplicity="*" />
           <ReferentialConstraint>
@@ -516,12 +530,12 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.equipo_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__materiale__mar_i__47A6A41B">
+        <Association Name="FK__materiale__mar_i__619B8048">
           <End Role="marcas" Type="Self.marcas" Multiplicity="0..1" />
           <End Role="materiales" Type="Self.materiales" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="marcas">
-              <PropertyRef Name="marca_id" />
+              <PropertyRef Name="mar_id" />
             </Principal>
             <Dependent Role="materiales">
               <PropertyRef Name="mar_id" />
@@ -529,17 +543,17 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.equipo_
           </ReferentialConstraint>
         </Association>
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveedor_equipo', pero no se encuentra la tabla.
-        <Association Name="FK__proveedor__equ_i__4A8310C6" />-->
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.proveedor_equipo', pero no se encuentra la tabla.
+        <Association Name="FK__proveedor__equ_i__43D61337" />-->
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveedor_material', pero no se encuentra la tabla.
-        <Association Name="FK__proveedor__mat_i__4C6B5938" />-->
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.proveedor_material', pero no se encuentra la tabla.
+        <Association Name="FK__proveedor__mat_i__3F115E1A" />-->
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveedor_equipo', pero no se encuentra la tabla.
-        <Association Name="FK__proveedor__prove__498EEC8D" />-->
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.proveedor_material', pero no se encuentra la tabla.
+        <Association Name="FK__proveedor__prove__3E1D39E1" />-->
         <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveedor_material', pero no se encuentra la tabla.
-        <Association Name="FK__proveedor__prove__4B7734FF" />-->
+error 6004: Una relación hace referencia a la tabla 'db_ab16d0_constructorabd.dbo.proveedor_equipo', pero no se encuentra la tabla.
+        <Association Name="FK__proveedor__prove__42E1EEFE" />-->
         <Association Name="FK__proyecto___proy___3DE82FB7">
           <End Role="proyectos" Type="Self.proyectos" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -580,7 +594,7 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ventas__pag_id__51300E55">
+        <Association Name="FK__ventas__pag_id__00200768">
           <End Role="pagos" Type="Self.pagos" Multiplicity="0..1" />
           <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -652,6 +666,18 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_compras_pagos">
+          <End Role="pagos" Type="Self.pagos" Multiplicity="0..1" />
+          <End Role="compras" Type="Self.compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pagos">
+              <PropertyRef Name="pag_id" />
+            </Principal>
+            <Dependent Role="compras">
+              <PropertyRef Name="pag_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_compras_usuarios">
           <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
           <End Role="compras" Type="Self.compras" Multiplicity="*" />
@@ -661,6 +687,18 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             </Principal>
             <Dependent Role="compras">
               <PropertyRef Name="usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_equipos_categoria">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
+          <End Role="equipos" Type="Self.equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="equipos">
+              <PropertyRef Name="cat_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -684,6 +722,30 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
               <PropertyRef Name="serv_id" />
             </Principal>
             <Dependent Role="proyecto_servicio">
+              <PropertyRef Name="serv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_servicios_cliente_clientes">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="servicios_cliente" Type="Self.servicios_cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="cli_id" />
+            </Principal>
+            <Dependent Role="servicios_cliente">
+              <PropertyRef Name="cli_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_servicios_cliente_servicios">
+          <End Role="servicios" Type="Self.servicios" Multiplicity="1" />
+          <End Role="servicios_cliente" Type="Self.servicios_cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servicios">
+              <PropertyRef Name="serv_id" />
+            </Principal>
+            <Dependent Role="servicios_cliente">
               <PropertyRef Name="serv_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -742,11 +804,19 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
     [proyecto_servicio].[ps_est] AS [ps_est]
     FROM [dbo].[proyecto_servicio] AS [proyecto_servicio]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__alquilere__equ_i__31B762FC" Association="Self.FK__alquilere__equ_i__31B762FC">
+          <EntitySet Name="servicios_cliente" EntityType="Self.servicios_cliente" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [servicios_cliente].[cli_id] AS [cli_id], 
+    [servicios_cliente].[serv_id] AS [serv_id], 
+    [servicios_cliente].[sc_fec_asig] AS [sc_fec_asig], 
+    [servicios_cliente].[sc_est] AS [sc_est]
+    FROM [dbo].[servicios_cliente] AS [servicios_cliente]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__alquilere__equ_i__04E4BC85" Association="Self.FK__alquilere__equ_i__04E4BC85">
             <End Role="equipos" EntitySet="equipos" />
             <End Role="alquileres" EntitySet="alquileres" />
           </AssociationSet>
-          <AssociationSet Name="FK__ciudad__prov_id__32AB8735" Association="Self.FK__ciudad__prov_id__32AB8735">
+          <AssociationSet Name="FK__ciudad__prov_id__3D5E1FD2" Association="Self.FK__ciudad__prov_id__3D5E1FD2">
             <End Role="provincia" EntitySet="provincia" />
             <End Role="ciudad" EntitySet="ciudad" />
           </AssociationSet>
@@ -758,7 +828,7 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             <End Role="ciudad" EntitySet="ciudad" />
             <End Role="clientes" EntitySet="clientes" />
           </AssociationSet>
-          <AssociationSet Name="FK__compras__prove_i__367C1819" Association="Self.FK__compras__prove_i__367C1819">
+          <AssociationSet Name="FK__compras__prove_i__66603565" Association="Self.FK__compras__prove_i__66603565">
             <End Role="proveedores" EntitySet="proveedores" />
             <End Role="compras" EntitySet="compras" />
           </AssociationSet>
@@ -770,15 +840,15 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             <End Role="ciudad" EntitySet="ciudad" />
             <End Role="empleados" EntitySet="empleados" />
           </AssociationSet>
-          <AssociationSet Name="FK__equipos__mar_id__46B27FE2" Association="Self.FK__equipos__mar_id__46B27FE2">
+          <AssociationSet Name="FK__equipos__mar_id__6E01572D" Association="Self.FK__equipos__mar_id__6E01572D">
             <End Role="marcas" EntitySet="marcas" />
             <End Role="equipos" EntitySet="equipos" />
           </AssociationSet>
-          <AssociationSet Name="FK__materiale__cat_i__489AC854" Association="Self.FK__materiale__cat_i__489AC854">
+          <AssociationSet Name="FK__materiale__cat_i__628FA481" Association="Self.FK__materiale__cat_i__628FA481">
             <End Role="categoria" EntitySet="categoria" />
             <End Role="materiales" EntitySet="materiales" />
           </AssociationSet>
-          <AssociationSet Name="FK__materiale__mar_i__47A6A41B" Association="Self.FK__materiale__mar_i__47A6A41B">
+          <AssociationSet Name="FK__materiale__mar_i__619B8048" Association="Self.FK__materiale__mar_i__619B8048">
             <End Role="marcas" EntitySet="marcas" />
             <End Role="materiales" EntitySet="materiales" />
           </AssociationSet>
@@ -794,7 +864,7 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             <End Role="clientes" EntitySet="clientes" />
             <End Role="ventas" EntitySet="ventas" />
           </AssociationSet>
-          <AssociationSet Name="FK__ventas__pag_id__51300E55" Association="Self.FK__ventas__pag_id__51300E55">
+          <AssociationSet Name="FK__ventas__pag_id__00200768" Association="Self.FK__ventas__pag_id__00200768">
             <End Role="pagos" EntitySet="pagos" />
             <End Role="ventas" EntitySet="ventas" />
           </AssociationSet>
@@ -818,9 +888,17 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             <End Role="proyectos" EntitySet="proyectos" />
             <End Role="cliente_proyecto" EntitySet="cliente_proyecto" />
           </AssociationSet>
+          <AssociationSet Name="FK_compras_pagos" Association="Self.FK_compras_pagos">
+            <End Role="pagos" EntitySet="pagos" />
+            <End Role="compras" EntitySet="compras" />
+          </AssociationSet>
           <AssociationSet Name="FK_compras_usuarios" Association="Self.FK_compras_usuarios">
             <End Role="usuarios" EntitySet="usuarios" />
             <End Role="compras" EntitySet="compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_equipos_categoria" Association="Self.FK_equipos_categoria">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="equipos" EntitySet="equipos" />
           </AssociationSet>
           <AssociationSet Name="FK_proyecto_servicio_proyectos" Association="Self.FK_proyecto_servicio_proyectos">
             <End Role="proyectos" EntitySet="proyectos" />
@@ -829,6 +907,14 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
           <AssociationSet Name="FK_proyecto_servicio_servicios" Association="Self.FK_proyecto_servicio_servicios">
             <End Role="servicios" EntitySet="servicios" />
             <End Role="proyecto_servicio" EntitySet="proyecto_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_servicios_cliente_clientes" Association="Self.FK_servicios_cliente_clientes">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="servicios_cliente" EntitySet="servicios_cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_servicios_cliente_servicios" Association="Self.FK_servicios_cliente_servicios">
+            <End Role="servicios" EntitySet="servicios" />
+            <End Role="servicios_cliente" EntitySet="servicios_cliente" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -846,7 +932,7 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
           <Property Name="alq_fec_fin_est" Type="DateTime" Precision="0" />
           <Property Name="alq_fec_fin_re" Type="DateTime" Precision="0" />
           <Property Name="alq_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="equipos" Relationship="Self.FK__alquilere__equ_i__31B762FC" FromRole="alquileres" ToRole="equipos" />
+          <NavigationProperty Name="equipos" Relationship="Self.FK__alquilere__equ_i__04E4BC85" FromRole="alquileres" ToRole="equipos" />
           <NavigationProperty Name="alquiler_cliente" Relationship="Self.FK_alquiler_cliente_alquileres" FromRole="alquileres" ToRole="alquiler_cliente" />
           <NavigationProperty Name="alquiler_proyecto" Relationship="Self.FK_alquiler_proyecto_alquileres" FromRole="alquileres" ToRole="alquiler_proyecto" />
         </EntityType>
@@ -863,11 +949,11 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             <PropertyRef Name="cat_id" />
           </Key>
           <Property Name="cat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cat_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="cat_desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="cat_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="cat_fec" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="materiales" Relationship="Self.FK__materiale__cat_i__489AC854" FromRole="categoria" ToRole="materiales" />
+          <NavigationProperty Name="materiales" Relationship="Self.FK__materiale__cat_i__628FA481" FromRole="categoria" ToRole="materiales" />
+          <NavigationProperty Name="equipos" Relationship="Self.FK_equipos_categoria" FromRole="categoria" ToRole="equipos" />
         </EntityType>
         <EntityType Name="ciudad">
           <Key>
@@ -877,8 +963,8 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
           <Property Name="ciu_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="prov_id" Type="Int32" />
           <Property Name="ciu_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="ciu_fecha" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="provincia" Relationship="Self.FK__ciudad__prov_id__32AB8735" FromRole="ciudad" ToRole="provincia" />
+          <Property Name="ciu_fec" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="provincia" Relationship="Self.FK__ciudad__prov_id__3D5E1FD2" FromRole="ciudad" ToRole="provincia" />
           <NavigationProperty Name="clientes" Relationship="Self.FK__clientes__ciu_id__4222D4EF" FromRole="ciudad" ToRole="clientes" />
           <NavigationProperty Name="empleados" Relationship="Self.FK__empleados__ciu_i__4D94879B" FromRole="ciudad" ToRole="empleados" />
         </EntityType>
@@ -887,12 +973,12 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             <PropertyRef Name="cli_id" />
           </Key>
           <Property Name="cli_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cli_ced" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cli_ced" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="cli_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cli_ape" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cli_tel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="ciu_id" Type="Int32" />
-          <Property Name="cli_dir" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cli_dir" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="cli_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="cli_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="cli_fecha" Type="DateTime" Precision="0" />
@@ -900,6 +986,7 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
           <NavigationProperty Name="cliente_proyecto" Relationship="Self.FK__cliente_p__cli_i__55F4C372" FromRole="clientes" ToRole="cliente_proyecto" />
           <NavigationProperty Name="ventas" Relationship="Self.FK__ventas__cli_id__7F2BE32F" FromRole="clientes" ToRole="ventas" />
           <NavigationProperty Name="alquiler_cliente" Relationship="Self.FK_alquiler_cliente_clientes" FromRole="clientes" ToRole="alquiler_cliente" />
+          <NavigationProperty Name="servicios_cliente" Relationship="Self.FK_servicios_cliente_clientes" FromRole="clientes" ToRole="servicios_cliente" />
         </EntityType>
         <EntityType Name="compras">
           <Key>
@@ -907,12 +994,14 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
           </Key>
           <Property Name="comp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="prove_id" Type="Int32" />
+          <Property Name="pag_id" Type="Int32" />
+          <Property Name="usu_id" Type="Int32" />
           <Property Name="comp_tip_doc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="comp_num_doc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="comp_total" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="comp_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="usu_id" Type="Int32" />
-          <NavigationProperty Name="proveedores" Relationship="Self.FK__compras__prove_i__367C1819" FromRole="compras" ToRole="proveedores" />
+          <NavigationProperty Name="proveedores" Relationship="Self.FK__compras__prove_i__66603565" FromRole="compras" ToRole="proveedores" />
+          <NavigationProperty Name="pagos" Relationship="Self.FK_compras_pagos" FromRole="compras" ToRole="pagos" />
           <NavigationProperty Name="usuarios" Relationship="Self.FK_compras_usuarios" FromRole="compras" ToRole="usuarios" />
         </EntityType>
         <EntityType Name="empleados">
@@ -920,7 +1009,7 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             <PropertyRef Name="emp_id" />
           </Key>
           <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="emp_ced" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emp_ced" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="emp_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="emp_ape" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="cargo_id" Type="Int32" />
@@ -937,6 +1026,9 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             <PropertyRef Name="equ_id" />
           </Key>
           <Property Name="equ_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="equ_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mar_id" Type="Int32" />
+          <Property Name="cat_id" Type="Int32" />
           <Property Name="equ_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="equ_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="equ_prec_com" Type="Decimal" Precision="10" Scale="2" />
@@ -944,64 +1036,64 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
           <Property Name="equ_stock" Type="Int32" Nullable="false" />
           <Property Name="equ_fec" Type="DateTime" Precision="0" />
           <Property Name="equ_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="mar_id" Type="Int32" />
-          <Property Name="equ_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="alquileres" Relationship="Self.FK__alquilere__equ_i__31B762FC" FromRole="equipos" ToRole="alquileres" />
-          <NavigationProperty Name="marcas" Relationship="Self.FK__equipos__mar_id__46B27FE2" FromRole="equipos" ToRole="marcas" />
+          <NavigationProperty Name="alquileres" Relationship="Self.FK__alquilere__equ_i__04E4BC85" FromRole="equipos" ToRole="alquileres" />
+          <NavigationProperty Name="categoria" Relationship="Self.FK_equipos_categoria" FromRole="equipos" ToRole="categoria" />
+          <NavigationProperty Name="marcas" Relationship="Self.FK__equipos__mar_id__6E01572D" FromRole="equipos" ToRole="marcas" />
         </EntityType>
         <EntityType Name="marcas">
           <Key>
-            <PropertyRef Name="marca_id" />
+            <PropertyRef Name="mar_id" />
           </Key>
-          <Property Name="marca_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="marca_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="marca_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="marca_fec" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="equipos" Relationship="Self.FK__equipos__mar_id__46B27FE2" FromRole="marcas" ToRole="equipos" />
-          <NavigationProperty Name="materiales" Relationship="Self.FK__materiale__mar_i__47A6A41B" FromRole="marcas" ToRole="materiales" />
+          <Property Name="mar_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mar_desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mar_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mar_fec" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="equipos" Relationship="Self.FK__equipos__mar_id__6E01572D" FromRole="marcas" ToRole="equipos" />
+          <NavigationProperty Name="materiales" Relationship="Self.FK__materiale__mar_i__619B8048" FromRole="marcas" ToRole="materiales" />
         </EntityType>
         <EntityType Name="materiales">
           <Key>
             <PropertyRef Name="mat_id" />
           </Key>
           <Property Name="mat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mat_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mar_id" Type="Int32" />
+          <Property Name="cat_id" Type="Int32" />
           <Property Name="mat_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="mat_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="mat_desc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="mat_stock" Type="Int32" Nullable="false" />
           <Property Name="mat_prec_com" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="mat_prec_ven" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="mat_fec" Type="DateTime" Precision="0" />
           <Property Name="mat_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="mar_id" Type="Int32" />
-          <Property Name="cat_id" Type="Int32" />
-          <Property Name="mat_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="categoria" Relationship="Self.FK__materiale__cat_i__489AC854" FromRole="materiales" ToRole="categoria" />
-          <NavigationProperty Name="marcas" Relationship="Self.FK__materiale__mar_i__47A6A41B" FromRole="materiales" ToRole="marcas" />
+          <NavigationProperty Name="categoria" Relationship="Self.FK__materiale__cat_i__628FA481" FromRole="materiales" ToRole="categoria" />
+          <NavigationProperty Name="marcas" Relationship="Self.FK__materiale__mar_i__619B8048" FromRole="materiales" ToRole="marcas" />
         </EntityType>
         <EntityType Name="pagos">
           <Key>
             <PropertyRef Name="pag_id" />
           </Key>
           <Property Name="pag_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="pag_nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="pag_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="pag_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="pag_fec" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="ventas" Relationship="Self.FK__ventas__pag_id__51300E55" FromRole="pagos" ToRole="ventas" />
+          <NavigationProperty Name="compras" Relationship="Self.FK_compras_pagos" FromRole="pagos" ToRole="compras" />
+          <NavigationProperty Name="ventas" Relationship="Self.FK__ventas__pag_id__00200768" FromRole="pagos" ToRole="ventas" />
         </EntityType>
         <EntityType Name="proveedores">
           <Key>
             <PropertyRef Name="prove_id" />
           </Key>
           <Property Name="prove_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prove_ruc" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="prove_represen" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
           <Property Name="prove_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="prove_dir" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="prove_dir" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="prove_tel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="prove_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="prove_ruc" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
           <Property Name="prove_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="prove_fecha" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="compras" Relationship="Self.FK__compras__prove_i__367C1819" FromRole="proveedores" ToRole="compras" />
+          <Property Name="prove_fec" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="compras" Relationship="Self.FK__compras__prove_i__66603565" FromRole="proveedores" ToRole="compras" />
         </EntityType>
         <EntityType Name="provincia">
           <Key>
@@ -1010,8 +1102,8 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
           <Property Name="prov_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="prov_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="prov_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="prov_fecha" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="ciudad" Relationship="Self.FK__ciudad__prov_id__32AB8735" FromRole="provincia" ToRole="ciudad" />
+          <Property Name="prov_fec" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ciudad" Relationship="Self.FK__ciudad__prov_id__3D5E1FD2" FromRole="provincia" ToRole="ciudad" />
         </EntityType>
         <EntityType Name="proyecto_tarea">
           <Key>
@@ -1050,10 +1142,12 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
           </Key>
           <Property Name="serv_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="serv_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="serv_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="serv_desc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="serv_costo" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="serv_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="serv_fec" Type="DateTime" Precision="3" />
           <NavigationProperty Name="proyecto_servicio" Relationship="Self.FK_proyecto_servicio_servicios" FromRole="servicios" ToRole="proyecto_servicio" />
+          <NavigationProperty Name="servicios_cliente" Relationship="Self.FK_servicios_cliente_servicios" FromRole="servicios" ToRole="servicios_cliente" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -1082,7 +1176,7 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
           <Property Name="usu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="usu_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="usu_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="usu_contra" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="usu_contra" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="usu_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="usu_fec_reg" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="compras" Relationship="Self.FK_compras_usuarios" FromRole="usuarios" ToRole="compras" />
@@ -1102,7 +1196,7 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
           <Property Name="ven_fec" Type="DateTime" Precision="0" />
           <Property Name="ven_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="clientes" Relationship="Self.FK__ventas__cli_id__7F2BE32F" FromRole="ventas" ToRole="clientes" />
-          <NavigationProperty Name="pagos" Relationship="Self.FK__ventas__pag_id__51300E55" FromRole="ventas" ToRole="pagos" />
+          <NavigationProperty Name="pagos" Relationship="Self.FK__ventas__pag_id__00200768" FromRole="ventas" ToRole="pagos" />
         </EntityType>
         <EntityType Name="alquiler_cliente">
           <Key>
@@ -1157,7 +1251,19 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
           <NavigationProperty Name="proyectos" Relationship="Self.FK_proyecto_servicio_proyectos" FromRole="proyecto_servicio" ToRole="proyectos" />
           <NavigationProperty Name="servicios" Relationship="Self.FK_proyecto_servicio_servicios" FromRole="proyecto_servicio" ToRole="servicios" />
         </EntityType>
-        <Association Name="FK__alquilere__equ_i__31B762FC">
+        <EntityType Name="servicios_cliente">
+          <Key>
+            <PropertyRef Name="cli_id" />
+            <PropertyRef Name="serv_id" />
+          </Key>
+          <Property Name="cli_id" Type="Int32" Nullable="false" />
+          <Property Name="serv_id" Type="Int32" Nullable="false" />
+          <Property Name="sc_fec_asig" Type="DateTime" Precision="0" />
+          <Property Name="sc_est" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="clientes" Relationship="Self.FK_servicios_cliente_clientes" FromRole="servicios_cliente" ToRole="clientes" />
+          <NavigationProperty Name="servicios" Relationship="Self.FK_servicios_cliente_servicios" FromRole="servicios_cliente" ToRole="servicios" />
+        </EntityType>
+        <Association Name="FK__alquilere__equ_i__04E4BC85">
           <End Role="equipos" Type="Self.equipos" Multiplicity="0..1" />
           <End Role="alquileres" Type="Self.alquileres" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1205,7 +1311,7 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__materiale__cat_i__489AC854">
+        <Association Name="FK__materiale__cat_i__628FA481">
           <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
           <End Role="materiales" Type="Self.materiales" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1217,7 +1323,19 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ciudad__prov_id__32AB8735">
+        <Association Name="FK_equipos_categoria">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
+          <End Role="equipos" Type="Self.equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="equipos">
+              <PropertyRef Name="cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ciudad__prov_id__3D5E1FD2">
           <End Role="provincia" Type="Self.provincia" Multiplicity="0..1" />
           <End Role="ciudad" Type="Self.ciudad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1289,7 +1407,19 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__compras__prove_i__367C1819">
+        <Association Name="FK_servicios_cliente_clientes">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="servicios_cliente" Type="Self.servicios_cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="cli_id" />
+            </Principal>
+            <Dependent Role="servicios_cliente">
+              <PropertyRef Name="cli_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__compras__prove_i__66603565">
           <End Role="proveedores" Type="Self.proveedores" Multiplicity="0..1" />
           <End Role="compras" Type="Self.compras" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1298,6 +1428,18 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             </Principal>
             <Dependent Role="compras">
               <PropertyRef Name="prove_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compras_pagos">
+          <End Role="pagos" Type="Self.pagos" Multiplicity="0..1" />
+          <End Role="compras" Type="Self.compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pagos">
+              <PropertyRef Name="pag_id" />
+            </Principal>
+            <Dependent Role="compras">
+              <PropertyRef Name="pag_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1313,31 +1455,31 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__equipos__mar_id__46B27FE2">
+        <Association Name="FK__equipos__mar_id__6E01572D">
           <End Role="marcas" Type="Self.marcas" Multiplicity="0..1" />
           <End Role="equipos" Type="Self.equipos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="marcas">
-              <PropertyRef Name="marca_id" />
+              <PropertyRef Name="mar_id" />
             </Principal>
             <Dependent Role="equipos">
               <PropertyRef Name="mar_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__materiale__mar_i__47A6A41B">
+        <Association Name="FK__materiale__mar_i__619B8048">
           <End Role="marcas" Type="Self.marcas" Multiplicity="0..1" />
           <End Role="materiales" Type="Self.materiales" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="marcas">
-              <PropertyRef Name="marca_id" />
+              <PropertyRef Name="mar_id" />
             </Principal>
             <Dependent Role="materiales">
               <PropertyRef Name="mar_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ventas__pag_id__51300E55">
+        <Association Name="FK__ventas__pag_id__00200768">
           <End Role="pagos" Type="Self.pagos" Multiplicity="0..1" />
           <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1425,6 +1567,18 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_servicios_cliente_servicios">
+          <End Role="servicios" Type="Self.servicios" Multiplicity="1" />
+          <End Role="servicios_cliente" Type="Self.servicios_cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servicios">
+              <PropertyRef Name="serv_id" />
+            </Principal>
+            <Dependent Role="servicios_cliente">
+              <PropertyRef Name="serv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ConstructoraBDEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="alquileres" EntityType="Self.alquileres" />
           <EntitySet Name="cargos" EntityType="Self.cargos" />
@@ -1450,7 +1604,8 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
           <EntitySet Name="alquiler_proyecto" EntityType="Self.alquiler_proyecto" />
           <EntitySet Name="cliente_proyecto" EntityType="Self.cliente_proyecto" />
           <EntitySet Name="proyecto_servicio" EntityType="Self.proyecto_servicio" />
-          <AssociationSet Name="FK__alquilere__equ_i__31B762FC" Association="Self.FK__alquilere__equ_i__31B762FC">
+          <EntitySet Name="servicios_cliente" EntityType="Self.servicios_cliente" />
+          <AssociationSet Name="FK__alquilere__equ_i__04E4BC85" Association="Self.FK__alquilere__equ_i__04E4BC85">
             <End Role="equipos" EntitySet="equipos" />
             <End Role="alquileres" EntitySet="alquileres" />
           </AssociationSet>
@@ -1466,11 +1621,15 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             <End Role="cargos" EntitySet="cargos" />
             <End Role="empleados" EntitySet="empleados" />
           </AssociationSet>
-          <AssociationSet Name="FK__materiale__cat_i__489AC854" Association="Self.FK__materiale__cat_i__489AC854">
+          <AssociationSet Name="FK__materiale__cat_i__628FA481" Association="Self.FK__materiale__cat_i__628FA481">
             <End Role="categoria" EntitySet="categoria" />
             <End Role="materiales" EntitySet="materiales" />
           </AssociationSet>
-          <AssociationSet Name="FK__ciudad__prov_id__32AB8735" Association="Self.FK__ciudad__prov_id__32AB8735">
+          <AssociationSet Name="FK_equipos_categoria" Association="Self.FK_equipos_categoria">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="equipos" EntitySet="equipos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ciudad__prov_id__3D5E1FD2" Association="Self.FK__ciudad__prov_id__3D5E1FD2">
             <End Role="provincia" EntitySet="provincia" />
             <End Role="ciudad" EntitySet="ciudad" />
           </AssociationSet>
@@ -1494,23 +1653,31 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             <End Role="clientes" EntitySet="clientes" />
             <End Role="alquiler_cliente" EntitySet="alquiler_cliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__compras__prove_i__367C1819" Association="Self.FK__compras__prove_i__367C1819">
+          <AssociationSet Name="FK_servicios_cliente_clientes" Association="Self.FK_servicios_cliente_clientes">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="servicios_cliente" EntitySet="servicios_cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__compras__prove_i__66603565" Association="Self.FK__compras__prove_i__66603565">
             <End Role="proveedores" EntitySet="proveedores" />
+            <End Role="compras" EntitySet="compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compras_pagos" Association="Self.FK_compras_pagos">
+            <End Role="pagos" EntitySet="pagos" />
             <End Role="compras" EntitySet="compras" />
           </AssociationSet>
           <AssociationSet Name="FK_compras_usuarios" Association="Self.FK_compras_usuarios">
             <End Role="usuarios" EntitySet="usuarios" />
             <End Role="compras" EntitySet="compras" />
           </AssociationSet>
-          <AssociationSet Name="FK__equipos__mar_id__46B27FE2" Association="Self.FK__equipos__mar_id__46B27FE2">
+          <AssociationSet Name="FK__equipos__mar_id__6E01572D" Association="Self.FK__equipos__mar_id__6E01572D">
             <End Role="marcas" EntitySet="marcas" />
             <End Role="equipos" EntitySet="equipos" />
           </AssociationSet>
-          <AssociationSet Name="FK__materiale__mar_i__47A6A41B" Association="Self.FK__materiale__mar_i__47A6A41B">
+          <AssociationSet Name="FK__materiale__mar_i__619B8048" Association="Self.FK__materiale__mar_i__619B8048">
             <End Role="marcas" EntitySet="marcas" />
             <End Role="materiales" EntitySet="materiales" />
           </AssociationSet>
-          <AssociationSet Name="FK__ventas__pag_id__51300E55" Association="Self.FK__ventas__pag_id__51300E55">
+          <AssociationSet Name="FK__ventas__pag_id__00200768" Association="Self.FK__ventas__pag_id__00200768">
             <End Role="pagos" EntitySet="pagos" />
             <End Role="ventas" EntitySet="ventas" />
           </AssociationSet>
@@ -1537,6 +1704,10 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
           <AssociationSet Name="FK_proyecto_servicio_servicios" Association="Self.FK_proyecto_servicio_servicios">
             <End Role="servicios" EntitySet="servicios" />
             <End Role="proyecto_servicio" EntitySet="proyecto_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_servicios_cliente_servicios" Association="Self.FK_servicios_cliente_servicios">
+            <End Role="servicios" EntitySet="servicios" />
+            <End Role="servicios_cliente" EntitySet="servicios_cliente" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1569,7 +1740,6 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             <EntityTypeMapping TypeName="ConstructoraBDModel.categoria">
               <MappingFragment StoreEntitySet="categoria">
                 <ScalarProperty Name="cat_id" ColumnName="cat_id" />
-                <ScalarProperty Name="cat_nom" ColumnName="cat_nom" />
                 <ScalarProperty Name="cat_desc" ColumnName="cat_desc" />
                 <ScalarProperty Name="cat_est" ColumnName="cat_est" />
                 <ScalarProperty Name="cat_fec" ColumnName="cat_fec" />
@@ -1583,7 +1753,7 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
                 <ScalarProperty Name="ciu_nom" ColumnName="ciu_nom" />
                 <ScalarProperty Name="prov_id" ColumnName="prov_id" />
                 <ScalarProperty Name="ciu_est" ColumnName="ciu_est" />
-                <ScalarProperty Name="ciu_fecha" ColumnName="ciu_fecha" />
+                <ScalarProperty Name="ciu_fec" ColumnName="ciu_fec" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1608,11 +1778,12 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
               <MappingFragment StoreEntitySet="compras">
                 <ScalarProperty Name="comp_id" ColumnName="comp_id" />
                 <ScalarProperty Name="prove_id" ColumnName="prove_id" />
+                <ScalarProperty Name="pag_id" ColumnName="pag_id" />
+                <ScalarProperty Name="usu_id" ColumnName="usu_id" />
                 <ScalarProperty Name="comp_tip_doc" ColumnName="comp_tip_doc" />
                 <ScalarProperty Name="comp_num_doc" ColumnName="comp_num_doc" />
                 <ScalarProperty Name="comp_total" ColumnName="comp_total" />
                 <ScalarProperty Name="comp_est" ColumnName="comp_est" />
-                <ScalarProperty Name="usu_id" ColumnName="usu_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1636,6 +1807,9 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             <EntityTypeMapping TypeName="ConstructoraBDModel.equipos">
               <MappingFragment StoreEntitySet="equipos">
                 <ScalarProperty Name="equ_id" ColumnName="equ_id" />
+                <ScalarProperty Name="equ_code" ColumnName="equ_code" />
+                <ScalarProperty Name="mar_id" ColumnName="mar_id" />
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
                 <ScalarProperty Name="equ_nom" ColumnName="equ_nom" />
                 <ScalarProperty Name="equ_desc" ColumnName="equ_desc" />
                 <ScalarProperty Name="equ_prec_com" ColumnName="equ_prec_com" />
@@ -1643,18 +1817,16 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
                 <ScalarProperty Name="equ_stock" ColumnName="equ_stock" />
                 <ScalarProperty Name="equ_fec" ColumnName="equ_fec" />
                 <ScalarProperty Name="equ_est" ColumnName="equ_est" />
-                <ScalarProperty Name="mar_id" ColumnName="mar_id" />
-                <ScalarProperty Name="equ_code" ColumnName="equ_code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="marcas">
             <EntityTypeMapping TypeName="ConstructoraBDModel.marcas">
               <MappingFragment StoreEntitySet="marcas">
-                <ScalarProperty Name="marca_id" ColumnName="marca_id" />
-                <ScalarProperty Name="marca_nom" ColumnName="marca_nom" />
-                <ScalarProperty Name="marca_est" ColumnName="marca_est" />
-                <ScalarProperty Name="marca_fec" ColumnName="marca_fec" />
+                <ScalarProperty Name="mar_id" ColumnName="mar_id" />
+                <ScalarProperty Name="mar_desc" ColumnName="mar_desc" />
+                <ScalarProperty Name="mar_est" ColumnName="mar_est" />
+                <ScalarProperty Name="mar_fec" ColumnName="mar_fec" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1662,6 +1834,9 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             <EntityTypeMapping TypeName="ConstructoraBDModel.materiales">
               <MappingFragment StoreEntitySet="materiales">
                 <ScalarProperty Name="mat_id" ColumnName="mat_id" />
+                <ScalarProperty Name="mat_code" ColumnName="mat_code" />
+                <ScalarProperty Name="mar_id" ColumnName="mar_id" />
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
                 <ScalarProperty Name="mat_nom" ColumnName="mat_nom" />
                 <ScalarProperty Name="mat_desc" ColumnName="mat_desc" />
                 <ScalarProperty Name="mat_stock" ColumnName="mat_stock" />
@@ -1669,9 +1844,6 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
                 <ScalarProperty Name="mat_prec_ven" ColumnName="mat_prec_ven" />
                 <ScalarProperty Name="mat_fec" ColumnName="mat_fec" />
                 <ScalarProperty Name="mat_est" ColumnName="mat_est" />
-                <ScalarProperty Name="mar_id" ColumnName="mar_id" />
-                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
-                <ScalarProperty Name="mat_code" ColumnName="mat_code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1679,7 +1851,6 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             <EntityTypeMapping TypeName="ConstructoraBDModel.pagos">
               <MappingFragment StoreEntitySet="pagos">
                 <ScalarProperty Name="pag_id" ColumnName="pag_id" />
-                <ScalarProperty Name="pag_nom" ColumnName="pag_nom" />
                 <ScalarProperty Name="pag_desc" ColumnName="pag_desc" />
                 <ScalarProperty Name="pag_est" ColumnName="pag_est" />
                 <ScalarProperty Name="pag_fec" ColumnName="pag_fec" />
@@ -1690,13 +1861,14 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
             <EntityTypeMapping TypeName="ConstructoraBDModel.proveedores">
               <MappingFragment StoreEntitySet="proveedores">
                 <ScalarProperty Name="prove_id" ColumnName="prove_id" />
+                <ScalarProperty Name="prove_ruc" ColumnName="prove_ruc" />
+                <ScalarProperty Name="prove_represen" ColumnName="prove_represen" />
                 <ScalarProperty Name="prove_nom" ColumnName="prove_nom" />
                 <ScalarProperty Name="prove_dir" ColumnName="prove_dir" />
                 <ScalarProperty Name="prove_tel" ColumnName="prove_tel" />
                 <ScalarProperty Name="prove_email" ColumnName="prove_email" />
-                <ScalarProperty Name="prove_ruc" ColumnName="prove_ruc" />
                 <ScalarProperty Name="prove_est" ColumnName="prove_est" />
-                <ScalarProperty Name="prove_fecha" ColumnName="prove_fecha" />
+                <ScalarProperty Name="prove_fec" ColumnName="prove_fec" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1706,7 +1878,7 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
                 <ScalarProperty Name="prov_id" ColumnName="prov_id" />
                 <ScalarProperty Name="prov_nom" ColumnName="prov_nom" />
                 <ScalarProperty Name="prov_est" ColumnName="prov_est" />
-                <ScalarProperty Name="prov_fecha" ColumnName="prov_fecha" />
+                <ScalarProperty Name="prov_fec" ColumnName="prov_fec" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1744,6 +1916,7 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
                 <ScalarProperty Name="serv_desc" ColumnName="serv_desc" />
                 <ScalarProperty Name="serv_costo" ColumnName="serv_costo" />
                 <ScalarProperty Name="serv_est" ColumnName="serv_est" />
+                <ScalarProperty Name="serv_fec" ColumnName="serv_fec" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1834,6 +2007,16 @@ error 6004: Una relación hace referencia a la tabla 'ConstructoraBD.dbo.proveed
                 <ScalarProperty Name="serv_id" ColumnName="serv_id" />
                 <ScalarProperty Name="ps_fec_asig" ColumnName="ps_fec_asig" />
                 <ScalarProperty Name="ps_est" ColumnName="ps_est" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="servicios_cliente">
+            <EntityTypeMapping TypeName="ConstructoraBDModel.servicios_cliente">
+              <MappingFragment StoreEntitySet="servicios_cliente">
+                <ScalarProperty Name="cli_id" ColumnName="cli_id" />
+                <ScalarProperty Name="serv_id" ColumnName="serv_id" />
+                <ScalarProperty Name="sc_fec_asig" ColumnName="sc_fec_asig" />
+                <ScalarProperty Name="sc_est" ColumnName="sc_est" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

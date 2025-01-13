@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PaginaWebMVC.Models.DTO.Empleados>
+﻿@model IEnumerable<PaginaWebMVC.Models.DTO.EmpleadosDTO>
 
 @{
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
@@ -32,13 +32,13 @@
                         @Html.DisplayNameFor(model => model.emp_ape)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.cargo_id)
+                        @Html.DisplayNameFor(model => model.cargo_nom)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.emp_salario)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.ciu_id)
+                        @Html.DisplayNameFor(model => model.ciu_nom)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.emp_fec_contrat)
@@ -69,13 +69,13 @@
                             @Html.DisplayFor(modelItem => item.emp_ape)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.cargo_id)
+                            @Html.DisplayFor(modelItem => item.cargo_nom)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.emp_salario)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.ciu_id)
+                            @Html.DisplayFor(modelItem => item.ciu_nom)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.emp_fec_contrat)
@@ -87,9 +87,9 @@
                             @Html.DisplayFor(modelItem => item.emp_est)
                         </td>
                         <td>
-                            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "editar" })
-                            @Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "detalles" })
-                            @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "eliminar" })
+                            @Html.ActionLink("Editar", "Edit", new { id=item.emp_id}, new { @class = "editar" })
+                            @Html.ActionLink("Detalles", "Details", new { id = item.emp_id }, new { @class = "detalles" })
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.emp_id }, new { @class = "eliminar" })
                         </td>
                     </tr>
                 }

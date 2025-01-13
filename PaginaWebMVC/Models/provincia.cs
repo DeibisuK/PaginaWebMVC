@@ -23,7 +23,7 @@ namespace PaginaWebMVC.Models
         public int prov_id { get; set; }
         public string prov_nom { get; set; }
         public string prov_est { get; set; }
-        public Nullable<System.DateTime> prov_fecha { get; set; }
+        public Nullable<System.DateTime> prov_fec { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ciudad> ciudad { get; set; }

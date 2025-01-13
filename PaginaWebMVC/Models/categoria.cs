@@ -18,15 +18,17 @@ namespace PaginaWebMVC.Models
         public categoria()
         {
             this.materiales = new HashSet<materiales>();
+            this.equipos = new HashSet<equipos>();
         }
     
         public int cat_id { get; set; }
-        public string cat_nom { get; set; }
         public string cat_desc { get; set; }
         public string cat_est { get; set; }
         public Nullable<System.DateTime> cat_fec { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<materiales> materiales { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<equipos> equipos { get; set; }
     }
 }

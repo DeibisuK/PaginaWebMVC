@@ -1,0 +1,111 @@
+﻿@model PaginaWebMVC.Models.DTO.EmpleadosDTO
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    ViewBag.Title = "Empleado";
+}
+<div>
+    <h4>Empleados</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.emp_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emp_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emp_ced)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emp_ced)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emp_nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emp_nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emp_ape)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emp_ape)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cargo_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cargo_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cargo_nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cargo_nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emp_salario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emp_salario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ciu_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciu_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ciu_nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciu_nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emp_fec_contrat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emp_fec_contrat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emp_tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emp_tel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emp_est)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emp_est)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.emp_id }) |
+    @Html.ActionLink("Back to List", "Empleado")
+</p>

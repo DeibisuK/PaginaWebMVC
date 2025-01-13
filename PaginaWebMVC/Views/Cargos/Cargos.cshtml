@@ -13,9 +13,7 @@
         <input type="search" placeholder="Buscar">
     </div>
     <div class="Cont_Body">
-        <div class="Cont_Form">
-            @Html.Partial("Create")
-        </div>
+
         <div class="Cont_Tabla">
             <table>
                 <thead>
@@ -24,7 +22,7 @@
                             @Html.DisplayNameFor(model => model.newCargo.cargo_id)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.newCargo.cargo_id)
+                            @Html.DisplayNameFor(model => model.newCargo.cargo_nom)
                         </th>
                         <th>
                             Acciones
@@ -43,9 +41,12 @@
                                 @Html.DisplayFor(modelItem => item.cargo_nom)
                             </td>
                             <td class="asd">
-                                @Html.ActionLink("Editar", "Edit", new { id = item.cargo_id }, new { @class = "editar" })
-                                @Html.ActionLink("Detalles", "Details", new { id = item.cargo_id }, new { @class = "detalles" })
-                                @Html.ActionLink("Eliminar", "Delete", new { id = item.cargo_id }, new { @class = "eliminar" })
+                                <button class="editar" onclick="loadPartial('Edit', @item.cargo_id)">Editar</button>
+                                <button class="detalles" onclick="loadPartial('Details', @item.cargo_id)">Detalles</button>
+                                <button class="eliminar" onclick="loadPartial('Delete', @item.cargo_id)">Eliminar</button>
+                                @*@Html.ActionLink("Editar", "RenderPartial", new { partialName = "Editar", id = item.cargo_id }, new { @class = "editar" })
+                                    @Html.ActionLink("Detalles", "RenderPartial", new { partialName = "Detalles", id = item.cargo_id }, new { @class = "detalles" })
+                                    @Html.ActionLink("Eliminar", "RenderPartial", new { partialName = "Eliminar", id = item.cargo_id }, new { @class = "eliminar" })*@
                             </td>
                         </tr>
                     }
@@ -53,5 +54,25 @@
 
             </table>
         </div>
+        <div id="partial-container" class="Cont_Form">
+        </div>
     </div>
 </div>
+<script>
+    function loadPartial(action, id) {
+        $.ajax({
+            url: '/Cargos/' + action,
+            type: 'GET',
+            data: { id: id },
+            success: function (data) {
+                $('#partial-container').html(data);
+            },
+            error: function () {
+                alert('Error al cargar la vista');
+            }
+        });
+    }
+    $(document).ready(function () {
+        loadPartial('Create');
+    });
+</script>

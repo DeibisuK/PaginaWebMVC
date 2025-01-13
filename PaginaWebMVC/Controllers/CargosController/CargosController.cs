@@ -17,11 +17,11 @@ namespace PaginaWebMVC.Controllers.CargosController
         {
             
             // Obtener la lista de cargos desde la base de datos
-            List <Cargos> listCargos;
+            List <CargosDTO> listCargos;
             using (ConstructoraBDEntities context = new ConstructoraBDEntities())
             {
                 listCargos = (from c in context.cargos
-                              select new Cargos()
+                              select new CargosDTO()
                               {
                                   cargo_id = c.cargo_id,
                                   cargo_nom = c.cargo_nom
@@ -32,7 +32,7 @@ namespace PaginaWebMVC.Controllers.CargosController
             var model = new GetCargosVM
             {
                 cargos = listCargos, // Asignar la lista de cargos
-                newCargo = new Cargos() // Crear un nuevo modelo vacío para el formulario de creación
+                newCargo = new CargosDTO() // Crear un nuevo modelo vacío para el formulario de creación
             };
 
             return View(model); // Pasar el ViewModel a la vista
@@ -50,13 +50,14 @@ namespace PaginaWebMVC.Controllers.CargosController
                     return HttpNotFound(); // Retorna 404 si no se encuentra
                 }
 
-                var dto = new Cargos()
+                var dto = new CargosDTO()
                 {
                     cargo_id = entity.cargo_id,
                     cargo_nom = entity.cargo_nom
                 };
 
-                return View(dto);
+                // Retorna una vista parcial en lugar de una vista completa
+                return PartialView("Details", dto);
             }
         }
 
@@ -65,13 +66,11 @@ namespace PaginaWebMVC.Controllers.CargosController
         {
             using (ConstructoraBDEntities context = new ConstructoraBDEntities())
             {
-                // Obtener el próximo ID solo para mostrarlo (no se enviará al servidor)
                 int nextId = Convert.ToInt32(context.Database.SqlQuery<decimal>("SELECT IDENT_CURRENT('cargos') + IDENT_INCR('cargos')").FirstOrDefault());
-
-                // Pasar el ID calculado como ViewBag (o ViewData)
                 ViewBag.NextId = nextId;
             }
-            return View();
+
+            return PartialView("Create");
         }
 
         // POST: Cargos/Create
@@ -90,7 +89,6 @@ namespace PaginaWebMVC.Controllers.CargosController
                         });
                         context.SaveChanges();
                     }
-
                     // Redirigir a la acción que lista los cargos
                     return RedirectToAction("Cargos");
                 }
@@ -117,19 +115,19 @@ namespace PaginaWebMVC.Controllers.CargosController
                     return HttpNotFound(); // Retorna 404 si no se encuentra
                 }
 
-                var dto = new Cargos()
+                var dto = new CargosDTO()
                 {
                     cargo_id = entity.cargo_id,
                     cargo_nom = entity.cargo_nom
                 };
 
-                return View(dto);
+                return PartialView("Edit", dto);
             }
         }
 
         // POST: Cargos/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Cargos cargo)
+        public ActionResult Edit(int id, CargosDTO cargo)
         {
             try
             {
@@ -168,16 +166,16 @@ namespace PaginaWebMVC.Controllers.CargosController
 
                 if (entity == null)
                 {
-                    return HttpNotFound(); // Retorna 404 si no se encuentra
+                    return HttpNotFound();
                 }
 
-                var dto = new Cargos()
+                var dto = new CargosDTO()
                 {
                     cargo_id = entity.cargo_id,
                     cargo_nom = entity.cargo_nom
                 };
 
-                return View(dto);
+                return PartialView("Delete", dto);
             }
         }
 
@@ -201,19 +199,68 @@ namespace PaginaWebMVC.Controllers.CargosController
                 return View();
             }
         }
-        public ActionResult RenderPartial(string partialName, int id)
-        {
-            switch (partialName)
-            {
-                case "Editar":
-                    return PartialView("Edit", id);
-                case "Details":
-                    return PartialView("Details", id); // Ejemplo
-                case "Eliminar":
-                    return PartialView("Detele", id); // Ejemplo
-                default:
-                    return PartialView("Create");
-            }
-        }
+        //public ActionResult RenderPartial(string partialName, int id)
+        //{
+        //    using (ConstructoraBDEntities context = new ConstructoraBDEntities())
+        //    {
+        //        switch (partialName)
+        //        {
+        //            case "Editar":
+        //                var editModel = context.cargos
+        //                    .Where(x => x.cargo_id == id)
+        //                    .Select(x => new Cargos
+        //                    {
+        //                        cargo_id = x.cargo_id,
+        //                        cargo_nom = x.cargo_nom
+        //                    })
+        //                    .FirstOrDefault();
+
+        //                if (editModel == null)
+        //                {
+        //                    return HttpNotFound(); // Si no se encuentra el cargo
+        //                }
+
+        //                return PartialView("Edit", editModel);
+
+        //            case "Detalles":
+        //                var detailsModel = context.cargos
+        //                    .Where(x => x.cargo_id == id)
+        //                    .Select(x => new Cargos
+        //                    {
+        //                        cargo_id = x.cargo_id,
+        //                        cargo_nom = x.cargo_nom
+        //                    })
+        //                    .FirstOrDefault();
+
+        //                if (detailsModel == null)
+        //                {
+        //                    return HttpNotFound(); // Si no se encuentra el cargo
+        //                }
+
+        //                return PartialView("Details", detailsModel);
+
+        //            case "Eliminar":
+        //                var deleteModel = context.cargos
+        //                    .Where(x => x.cargo_id == id)
+        //                    .Select(x => new Cargos
+        //                    {
+        //                        cargo_id = x.cargo_id,
+        //                        cargo_nom = x.cargo_nom
+        //                    })
+        //                    .FirstOrDefault();
+
+        //                if (deleteModel == null)
+        //                {
+        //                    return HttpNotFound(); // Si no se encuentra el cargo
+        //                }
+
+        //                return PartialView("Delete", deleteModel);
+
+        //            default:
+        //                return PartialView("Create");
+        //        }
+        //    }
+        //}
+
     }
 }

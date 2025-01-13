@@ -21,6 +21,9 @@ namespace PaginaWebMVC.Models
         }
     
         public int equ_id { get; set; }
+        public string equ_code { get; set; }
+        public Nullable<int> mar_id { get; set; }
+        public Nullable<int> cat_id { get; set; }
         public string equ_nom { get; set; }
         public string equ_desc { get; set; }
         public Nullable<decimal> equ_prec_com { get; set; }
@@ -28,11 +31,10 @@ namespace PaginaWebMVC.Models
         public int equ_stock { get; set; }
         public Nullable<System.DateTime> equ_fec { get; set; }
         public string equ_est { get; set; }
-        public Nullable<int> mar_id { get; set; }
-        public string equ_code { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<alquileres> alquileres { get; set; }
+        public virtual categoria categoria { get; set; }
         public virtual marcas marcas { get; set; }
     }
 }

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="41928cda42474c0d9f09363bd348464c" Name="Diagram1">
+        <EntityTypeShape EntityType="ConstructoraBDModel.alquileres" Width="1.5" PointX="8.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.cargos" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.categoria" Width="1.5" PointX="3.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.ciudad" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.clientes" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.compras" Width="1.5" PointX="10.5" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.empleados" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.equipos" Width="1.5" PointX="6" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.marcas" Width="1.5" PointX="3.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.materiales" Width="1.5" PointX="6" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.pagos" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.proveedores" Width="1.5" PointX="8.25" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.provincia" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.proyecto_tarea" Width="1.5" PointX="10.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.proyectos" Width="1.5" PointX="8.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.servicios" Width="1.5" PointX="8.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.tareas" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.usuarios" Width="1.5" PointX="8.25" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.ventas" Width="1.5" PointX="7.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.alquiler_cliente" Width="1.5" PointX="10.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.alquiler_proyecto" Width="1.5" PointX="13.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.cliente_proyecto" Width="1.5" PointX="10.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.proyecto_servicio" Width="1.5" PointX="13.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraBDModel.servicios_cliente" Width="1.5" PointX="10.5" PointY="12.625" IsExpanded="true" />
+        <AssociationConnector Association="ConstructoraBDModel.FK__alquilere__equ_i__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK_alquiler_cliente_alquileres" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK_alquiler_proyecto_alquileres" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK__empleados__cargo__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK__materiale__cat_i__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK_equipos_categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK__ciudad__prov_id__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK__clientes__ciu_id__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK__empleados__ciu_i__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK__cliente_p__cli_i__55F4C372" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK__ventas__cli_id__7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK_alquiler_cliente_clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK_servicios_cliente_clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK__compras__prove_i__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK_compras_pagos" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK_compras_usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK__equipos__mar_id__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK__materiale__mar_i__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK__ventas__pag_id__00200768" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK__proyecto___proy___3DE82FB7" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK__proyecto___tar_i__3EDC53F0" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK_alquiler_proyecto_proyectos" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK_cliente_proyecto_proyectos" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK_proyecto_servicio_proyectos" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK_proyecto_servicio_servicios" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraBDModel.FK_servicios_cliente_servicios" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

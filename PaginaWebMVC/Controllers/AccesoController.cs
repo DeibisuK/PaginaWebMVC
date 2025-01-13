@@ -14,7 +14,7 @@ namespace PaginaWebMVC.Controllers
 {
     public class AccesoController : Controller
     {
-        static string cadena = "Data Source=MACHINEGUN\\SQLEX;initial catalog=ConstructoraBD;integrated security=true";
+        static string cadena = "Data Source=SQL1001.site4now.net;Initial catalog=db_ab16d0_constructorabd;User Id=db_ab16d0_constructorabd_admin;Password=cartuchin1";
 
         public ActionResult Login()
         {
@@ -89,21 +89,20 @@ namespace PaginaWebMVC.Controllers
 
                 using (SqlConnection cn = new SqlConnection(cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario", cn);
-                    cmd.Parameters.AddWithValue("Nombre", user.Nombre);
-                    cmd.Parameters.AddWithValue("Correo", user.Correo);
-                    cmd.Parameters.AddWithValue("Contraseña", user.Clave);
-                    cmd.Parameters.Add("Estado", SqlDbType.Char, 1).Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add("Fecha", SqlDbType.Date).Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add("Registrado", SqlDbType.Bit).Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
+                    SqlCommand cmd = new SqlCommand("SP_RegistrarUsuario", cn);
+                    cmd.Parameters.AddWithValue("usu_nom", user.Nombre);
+                    cmd.Parameters.AddWithValue("usu_email", user.Correo);
+                    cmd.Parameters.AddWithValue("usu_contra", user.Clave);
+                    cmd.Parameters.AddWithValue("usu_est", 'H');
+                    cmd.Parameters.Add("IdUsuarioResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cn.Open();
                     cmd.ExecuteNonQuery();
 
-                    registrado = Convert.ToBoolean(cmd.Parameters["Registrado"].Value);
-                    mensaje = cmd.Parameters["Registrado"].Value.ToString();
+                    registrado = Convert.ToBoolean(cmd.Parameters["IdUsuarioResultado"].Value);
+                    mensaje = cmd.Parameters["IdUsuarioResultado"].Value.ToString();
                 }
 
                 ViewData["MensajeRegister"] = mensaje;
@@ -116,14 +115,14 @@ namespace PaginaWebMVC.Controllers
                 {
                     return View("Login");
                 }
-            }
+        }
             catch (Exception)
             {
                 ViewData["MensajeRegister"] = "Llena los datos";
                 ViewData["MostrarRegistro"] = "active"; // Bandera para mostrar el registro.
                 return View("Login");
-            }
         }
+    }
 
         public static string ConvertirSha256(string texto)
         {

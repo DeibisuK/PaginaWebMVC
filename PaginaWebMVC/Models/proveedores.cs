@@ -21,13 +21,14 @@ namespace PaginaWebMVC.Models
         }
     
         public int prove_id { get; set; }
+        public string prove_ruc { get; set; }
+        public string prove_represen { get; set; }
         public string prove_nom { get; set; }
         public string prove_dir { get; set; }
         public string prove_tel { get; set; }
         public string prove_email { get; set; }
-        public string prove_ruc { get; set; }
         public string prove_est { get; set; }
-        public Nullable<System.DateTime> prove_fecha { get; set; }
+        public Nullable<System.DateTime> prove_fec { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<compras> compras { get; set; }

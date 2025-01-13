@@ -17,15 +17,17 @@ namespace PaginaWebMVC.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public pagos()
         {
+            this.compras = new HashSet<compras>();
             this.ventas = new HashSet<ventas>();
         }
     
         public int pag_id { get; set; }
-        public string pag_nom { get; set; }
         public string pag_desc { get; set; }
         public string pag_est { get; set; }
         public Nullable<System.DateTime> pag_fec { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<compras> compras { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ventas> ventas { get; set; }
     }

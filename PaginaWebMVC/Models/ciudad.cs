@@ -25,7 +25,7 @@ namespace PaginaWebMVC.Models
         public string ciu_nom { get; set; }
         public Nullable<int> prov_id { get; set; }
         public string ciu_est { get; set; }
-        public Nullable<System.DateTime> ciu_fecha { get; set; }
+        public Nullable<System.DateTime> ciu_fec { get; set; }
     
         public virtual provincia provincia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

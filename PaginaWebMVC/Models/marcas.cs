@@ -21,10 +21,10 @@ namespace PaginaWebMVC.Models
             this.materiales = new HashSet<materiales>();
         }
     
-        public int marca_id { get; set; }
-        public string marca_nom { get; set; }
-        public string marca_est { get; set; }
-        public Nullable<System.DateTime> marca_fec { get; set; }
+        public int mar_id { get; set; }
+        public string mar_desc { get; set; }
+        public string mar_est { get; set; }
+        public Nullable<System.DateTime> mar_fec { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<equipos> equipos { get; set; }

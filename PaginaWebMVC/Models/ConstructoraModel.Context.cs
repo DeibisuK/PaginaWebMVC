@@ -49,5 +49,6 @@ namespace PaginaWebMVC.Models
         public virtual DbSet<alquiler_proyecto> alquiler_proyecto { get; set; }
         public virtual DbSet<cliente_proyecto> cliente_proyecto { get; set; }
         public virtual DbSet<proyecto_servicio> proyecto_servicio { get; set; }
+        public virtual DbSet<servicios_cliente> servicios_cliente { get; set; }
     }
 }

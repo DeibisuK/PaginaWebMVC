@@ -16,13 +16,15 @@ namespace PaginaWebMVC.Models
     {
         public int comp_id { get; set; }
         public Nullable<int> prove_id { get; set; }
+        public Nullable<int> pag_id { get; set; }
+        public Nullable<int> usu_id { get; set; }
         public string comp_tip_doc { get; set; }
         public string comp_num_doc { get; set; }
         public Nullable<decimal> comp_total { get; set; }
         public string comp_est { get; set; }
-        public Nullable<int> usu_id { get; set; }
     
         public virtual proveedores proveedores { get; set; }
+        public virtual pagos pagos { get; set; }
         public virtual usuarios usuarios { get; set; }
     }
 }
