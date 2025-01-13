@@ -1,50 +1,56 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="~/Content/css/Estilos.css" rel="stylesheet" />
-    <title>Login</title>
-</head>
-<body>
-    <div class="container @ViewData["MostrarRegistro"]" id="container">
-        @{ Html.RenderPartial("_Register");}
+﻿@model PaginaWebMVC.Models.DTO.UsuarioDTO
 
-        <div class="form-container sign-in">
-            <form action="@Url.Action("Login","Acceso")" method="post">
-                <h1>UTMACH</h1>
-                <label id="lbUsuario">Usuario:</label>
-                <input type="text" name="Correo" placeholder="Correo">
+@using (Html.BeginForm("Login", "Acceso", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
 
-                <label id="lbPassword">Contraseña:</label>
-                <input type="password" name="Clave" placeholder="Contraseña">
-                @if (ViewData["MensajeLogin"] != null)
-                {
-                    <div class="alert-danger" role="alert">
-                        @ViewData["MensajeLogin"]
-                    </div>
-                }
+<div class="form-horizontal">
+    <h4>Iniciar Sesión</h4>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                <button type="submit" name="button">Iniciar Sesion</button>
-
-                <a id="register" href="#"> CREAR UNA CUENTA</a>
-                <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">OLVIDO SU CONTRASEÑA?</a>
-            </form>
-
-        </div>
-        <div class="toggle-container">
-            <div class="toggle">
-                <div class="toggle-panel toggle-left">
-                    <img src="~/Imagenes/logoPY.png">
-                    <button class="hidden" id="login">Volver</button>
-                </div>
-                <div class="toggle-panel toggle-right">
-                    <img src="~/Imagenes/logoPY.png">
-                </div>
-            </div>
+    <!-- Campo Nombre de Usuario -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.usu_nom, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.usu_nom, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre de Usuario" } })
+            @Html.ValidationMessageFor(model => model.usu_nom, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <script src="~/Scripts/js/script.js"></script>
-</body>
-</html>
+    <!-- Campo Correo Electrónico -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.usu_email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.usu_email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Correo Electrónico" } })
+            @Html.ValidationMessageFor(model => model.usu_email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Campo Contraseña -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.usu_contra, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.PasswordFor(model => model.usu_contra, new { htmlAttributes = new { @class = "form-control", @placeholder = "Contraseña" } })
+            @Html.ValidationMessageFor(model => model.usu_contra, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.usu_repeat, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.PasswordFor(model => model.usu_repeat, new { htmlAttributes = new { @class = "form-control", @placeholder = "Repite" } })
+            @Html.ValidationMessageFor(model => model.usu_repeat, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Estado del Usuario (Campo oculto, siempre se envía como "H") -->
+    @Html.HiddenFor(model => model.usu_est)
+
+    <!-- Botón de Enviar -->
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Registrar Usuario" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}

@@ -333,6 +333,12 @@
     <Compile Include="Models\servicios_cliente.cs">
       <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>ConstructoraModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>ConstructoraModel.tt</DependentUpon>
     </Compile>
@@ -443,7 +449,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Acceso\Login.cshtml" />
+    <Content Include="Views\Acceso\aLogin.cshtml" />
     <Content Include="Views\Acceso\_Register.cshtml" />
     <Content Include="Views\Home\Resumen.cshtml" />
     <Content Include="Views\Shared\_LayoutPage.cshtml" />
@@ -460,6 +466,10 @@
     <Content Include="Views\Cargos\Edit.cshtml" />
     <Content Include="Views\Cargos\Delete.cshtml" />
     <Content Include="Views\Empleados\Details.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Acceso\Login.cshtml" />
+    <Content Include="Views\Acceso\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

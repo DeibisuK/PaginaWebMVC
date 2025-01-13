@@ -3,6 +3,7 @@ using PaginaWebMVC.Models.DTO;
 using PaginaWebMVC.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -83,13 +84,32 @@ namespace PaginaWebMVC.Controllers.CargosController
                 {
                     using (ConstructoraBDEntities context = new ConstructoraBDEntities())
                     {
-                        context.cargos.Add(new cargos()
+                        var resultado = new ObjectParameter("Resultado", typeof(int));
+                        var mensaje = new ObjectParameter("Mensaje", typeof(string));
+                        context.SP_RegistrarCargo(model.newCargo.cargo_nom, resultado, mensaje);
+                        
+                        // Verificar el resultado y mensaje
+                        if ((int)resultado.Value > 0)
                         {
-                            cargo_nom = model.newCargo.cargo_nom // Usamos el cargo del modelo de creación
-                        });
-                        context.SaveChanges();
+                            // Registro exitoso
+                            TempData["Success"] = "Cargo registrado correctamente.";
+                            context.SaveChanges();
+                        }
+                        else
+                        {
+                            // Error en el registro
+                            TempData["Error"] = mensaje.Value.ToString();
+                        }
                     }
-                    // Redirigir a la acción que lista los cargos
+                    //using (ConstructoraBDEntities context = new ConstructoraBDEntities())
+                    //{
+                    //    context.cargos.Add(new cargos()
+                    //    {
+                    //        cargo_nom = model.newCargo.cargo_nom // Usamos el cargo del modelo de creación
+                    //    });
+                    //    context.SaveChanges();
+                    //}
+                    //// Redirigir a la acción que lista los cargos
                     return RedirectToAction("Cargos");
                 }
 

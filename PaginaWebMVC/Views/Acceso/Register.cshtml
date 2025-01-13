@@ -1,0 +1,65 @@
+﻿@model PaginaWebMVC.Models.DTO.UsuarioDTO
+
+@using (Html.BeginForm("Register", "Acceso", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Iniciar Sesión</h4>
+
+        <!-- Mostrar el mensaje de ViewData["MensajeLogin"] -->
+        
+            <div class="alert alert-info">
+                A
+                @ViewData["MensajeRegsiter"]
+            </div>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <!-- Campo Nombre de Usuario -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.usu_nom, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.usu_nom, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre de Usuario" } })
+                @Html.ValidationMessageFor(model => model.usu_nom, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Campo Correo Electrónico -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.usu_email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.usu_email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Correo Electrónico" } })
+                @Html.ValidationMessageFor(model => model.usu_email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Campo Contraseña -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.usu_contra, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.usu_contra, new { htmlAttributes = new { @class = "form-control", @placeholder = "Contraseña" } })
+                @Html.ValidationMessageFor(model => model.usu_contra, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Campo Repetir Contraseña -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.usu_repeat, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.usu_repeat, new { htmlAttributes = new { @class = "form-control", @placeholder = "Repite" } })
+                @Html.ValidationMessageFor(model => model.usu_repeat, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Estado del Usuario (Campo oculto, siempre se envía como "H") -->
+        @Html.HiddenFor(model => model.usu_est)
+
+        <!-- Botón de Enviar -->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Registrar Usuario" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}

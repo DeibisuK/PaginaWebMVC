@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Proyecto_Constructora.Entidades
+namespace PaginaWebMVC.Models.DTO
 {
     public class UsuarioDTO
     {
@@ -12,7 +12,8 @@ namespace Proyecto_Constructora.Entidades
         public string usu_nom { get; set; }
         public string usu_email { get; set; }
         public string usu_contra { get; set; }
-        public char usu_est { get; set; }
+        public string usu_repeat { get; set; }
+        public string usu_est { get; set; }
         public string usu_fec_reg { get; set; }
     }
 }

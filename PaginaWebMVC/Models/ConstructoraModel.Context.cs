@@ -12,6 +12,8 @@ namespace PaginaWebMVC.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ConstructoraBDEntities : DbContext
     {
@@ -50,5 +52,727 @@ namespace PaginaWebMVC.Models
         public virtual DbSet<cliente_proyecto> cliente_proyecto { get; set; }
         public virtual DbSet<proyecto_servicio> proyecto_servicio { get; set; }
         public virtual DbSet<servicios_cliente> servicios_cliente { get; set; }
+    
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int SP_CambiarContrasena(string correo, string usu_contra, ObjectParameter mensaje)
+        {
+            var correoParameter = correo != null ?
+                new ObjectParameter("correo", correo) :
+                new ObjectParameter("correo", typeof(string));
+    
+            var usu_contraParameter = usu_contra != null ?
+                new ObjectParameter("usu_contra", usu_contra) :
+                new ObjectParameter("usu_contra", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_CambiarContrasena", correoParameter, usu_contraParameter, mensaje);
+        }
+    
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int SP_DatosDashboard(ObjectParameter nEmpleados, ObjectParameter nClientes, ObjectParameter nProveedores, ObjectParameter nProyectos, ObjectParameter nMateriales, ObjectParameter nEquipos, ObjectParameter totVentas, ObjectParameter totCompras)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_DatosDashboard", nEmpleados, nClientes, nProveedores, nProyectos, nMateriales, nEquipos, totVentas, totCompras);
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int SP_EditarCargo(Nullable<int> cargo_id, string cargo_nom, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var cargo_idParameter = cargo_id.HasValue ?
+                new ObjectParameter("cargo_id", cargo_id) :
+                new ObjectParameter("cargo_id", typeof(int));
+    
+            var cargo_nomParameter = cargo_nom != null ?
+                new ObjectParameter("cargo_nom", cargo_nom) :
+                new ObjectParameter("cargo_nom", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EditarCargo", cargo_idParameter, cargo_nomParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_EditarCategoria(Nullable<int> cat_id, string cat_desc, string cat_est, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var cat_idParameter = cat_id.HasValue ?
+                new ObjectParameter("cat_id", cat_id) :
+                new ObjectParameter("cat_id", typeof(int));
+    
+            var cat_descParameter = cat_desc != null ?
+                new ObjectParameter("cat_desc", cat_desc) :
+                new ObjectParameter("cat_desc", typeof(string));
+    
+            var cat_estParameter = cat_est != null ?
+                new ObjectParameter("cat_est", cat_est) :
+                new ObjectParameter("cat_est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EditarCategoria", cat_idParameter, cat_descParameter, cat_estParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_EditarCliente(Nullable<int> cli_id, string cli_ced, string cli_nom, string cli_ape, string cli_tel, Nullable<int> ciu_id, string cli_dir, string cli_email, string cli_est, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var cli_idParameter = cli_id.HasValue ?
+                new ObjectParameter("cli_id", cli_id) :
+                new ObjectParameter("cli_id", typeof(int));
+    
+            var cli_cedParameter = cli_ced != null ?
+                new ObjectParameter("cli_ced", cli_ced) :
+                new ObjectParameter("cli_ced", typeof(string));
+    
+            var cli_nomParameter = cli_nom != null ?
+                new ObjectParameter("cli_nom", cli_nom) :
+                new ObjectParameter("cli_nom", typeof(string));
+    
+            var cli_apeParameter = cli_ape != null ?
+                new ObjectParameter("cli_ape", cli_ape) :
+                new ObjectParameter("cli_ape", typeof(string));
+    
+            var cli_telParameter = cli_tel != null ?
+                new ObjectParameter("cli_tel", cli_tel) :
+                new ObjectParameter("cli_tel", typeof(string));
+    
+            var ciu_idParameter = ciu_id.HasValue ?
+                new ObjectParameter("ciu_id", ciu_id) :
+                new ObjectParameter("ciu_id", typeof(int));
+    
+            var cli_dirParameter = cli_dir != null ?
+                new ObjectParameter("cli_dir", cli_dir) :
+                new ObjectParameter("cli_dir", typeof(string));
+    
+            var cli_emailParameter = cli_email != null ?
+                new ObjectParameter("cli_email", cli_email) :
+                new ObjectParameter("cli_email", typeof(string));
+    
+            var cli_estParameter = cli_est != null ?
+                new ObjectParameter("cli_est", cli_est) :
+                new ObjectParameter("cli_est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EditarCliente", cli_idParameter, cli_cedParameter, cli_nomParameter, cli_apeParameter, cli_telParameter, ciu_idParameter, cli_dirParameter, cli_emailParameter, cli_estParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_EditarEmpleado(Nullable<int> emp_id, string emp_ced, string emp_nom, string emp_ape, Nullable<int> cargo_id, Nullable<decimal> emp_salario, Nullable<int> ciu_id, string emp_tel, string emp_est, ObjectParameter respuesta, ObjectParameter mensaje)
+        {
+            var emp_idParameter = emp_id.HasValue ?
+                new ObjectParameter("emp_id", emp_id) :
+                new ObjectParameter("emp_id", typeof(int));
+    
+            var emp_cedParameter = emp_ced != null ?
+                new ObjectParameter("emp_ced", emp_ced) :
+                new ObjectParameter("emp_ced", typeof(string));
+    
+            var emp_nomParameter = emp_nom != null ?
+                new ObjectParameter("emp_nom", emp_nom) :
+                new ObjectParameter("emp_nom", typeof(string));
+    
+            var emp_apeParameter = emp_ape != null ?
+                new ObjectParameter("emp_ape", emp_ape) :
+                new ObjectParameter("emp_ape", typeof(string));
+    
+            var cargo_idParameter = cargo_id.HasValue ?
+                new ObjectParameter("cargo_id", cargo_id) :
+                new ObjectParameter("cargo_id", typeof(int));
+    
+            var emp_salarioParameter = emp_salario.HasValue ?
+                new ObjectParameter("emp_salario", emp_salario) :
+                new ObjectParameter("emp_salario", typeof(decimal));
+    
+            var ciu_idParameter = ciu_id.HasValue ?
+                new ObjectParameter("ciu_id", ciu_id) :
+                new ObjectParameter("ciu_id", typeof(int));
+    
+            var emp_telParameter = emp_tel != null ?
+                new ObjectParameter("emp_tel", emp_tel) :
+                new ObjectParameter("emp_tel", typeof(string));
+    
+            var emp_estParameter = emp_est != null ?
+                new ObjectParameter("emp_est", emp_est) :
+                new ObjectParameter("emp_est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EditarEmpleado", emp_idParameter, emp_cedParameter, emp_nomParameter, emp_apeParameter, cargo_idParameter, emp_salarioParameter, ciu_idParameter, emp_telParameter, emp_estParameter, respuesta, mensaje);
+        }
+    
+        public virtual int SP_EditarMarca(Nullable<int> mar_id, string mar_desc, string mar_est, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var mar_idParameter = mar_id.HasValue ?
+                new ObjectParameter("mar_id", mar_id) :
+                new ObjectParameter("mar_id", typeof(int));
+    
+            var mar_descParameter = mar_desc != null ?
+                new ObjectParameter("mar_desc", mar_desc) :
+                new ObjectParameter("mar_desc", typeof(string));
+    
+            var mar_estParameter = mar_est != null ?
+                new ObjectParameter("mar_est", mar_est) :
+                new ObjectParameter("mar_est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EditarMarca", mar_idParameter, mar_descParameter, mar_estParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_EditarMaterial(Nullable<int> mat_id, string mat_code, Nullable<int> mar_id, Nullable<int> cat_id, string mat_nom, string mat_desc, string mat_est, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var mat_codeParameter = mat_code != null ?
+                new ObjectParameter("mat_code", mat_code) :
+                new ObjectParameter("mat_code", typeof(string));
+    
+            var mar_idParameter = mar_id.HasValue ?
+                new ObjectParameter("mar_id", mar_id) :
+                new ObjectParameter("mar_id", typeof(int));
+    
+            var cat_idParameter = cat_id.HasValue ?
+                new ObjectParameter("cat_id", cat_id) :
+                new ObjectParameter("cat_id", typeof(int));
+    
+            var mat_nomParameter = mat_nom != null ?
+                new ObjectParameter("mat_nom", mat_nom) :
+                new ObjectParameter("mat_nom", typeof(string));
+    
+            var mat_descParameter = mat_desc != null ?
+                new ObjectParameter("mat_desc", mat_desc) :
+                new ObjectParameter("mat_desc", typeof(string));
+    
+            var mat_estParameter = mat_est != null ?
+                new ObjectParameter("mat_est", mat_est) :
+                new ObjectParameter("mat_est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EditarMaterial", mat_idParameter, mat_codeParameter, mar_idParameter, cat_idParameter, mat_nomParameter, mat_descParameter, mat_estParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_EditarPago(Nullable<int> pag_id, string pag_desc, string pag_est, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var pag_idParameter = pag_id.HasValue ?
+                new ObjectParameter("pag_id", pag_id) :
+                new ObjectParameter("pag_id", typeof(int));
+    
+            var pag_descParameter = pag_desc != null ?
+                new ObjectParameter("pag_desc", pag_desc) :
+                new ObjectParameter("pag_desc", typeof(string));
+    
+            var pag_estParameter = pag_est != null ?
+                new ObjectParameter("pag_est", pag_est) :
+                new ObjectParameter("pag_est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EditarPago", pag_idParameter, pag_descParameter, pag_estParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_EditarProveedor(Nullable<int> prove_id, string prove_ruc, string prove_represen, string prove_nom, string prove_dir, string prove_tel, string prove_email, string prove_est, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var prove_idParameter = prove_id.HasValue ?
+                new ObjectParameter("prove_id", prove_id) :
+                new ObjectParameter("prove_id", typeof(int));
+    
+            var prove_rucParameter = prove_ruc != null ?
+                new ObjectParameter("prove_ruc", prove_ruc) :
+                new ObjectParameter("prove_ruc", typeof(string));
+    
+            var prove_represenParameter = prove_represen != null ?
+                new ObjectParameter("prove_represen", prove_represen) :
+                new ObjectParameter("prove_represen", typeof(string));
+    
+            var prove_nomParameter = prove_nom != null ?
+                new ObjectParameter("prove_nom", prove_nom) :
+                new ObjectParameter("prove_nom", typeof(string));
+    
+            var prove_dirParameter = prove_dir != null ?
+                new ObjectParameter("prove_dir", prove_dir) :
+                new ObjectParameter("prove_dir", typeof(string));
+    
+            var prove_telParameter = prove_tel != null ?
+                new ObjectParameter("prove_tel", prove_tel) :
+                new ObjectParameter("prove_tel", typeof(string));
+    
+            var prove_emailParameter = prove_email != null ?
+                new ObjectParameter("prove_email", prove_email) :
+                new ObjectParameter("prove_email", typeof(string));
+    
+            var prove_estParameter = prove_est != null ?
+                new ObjectParameter("prove_est", prove_est) :
+                new ObjectParameter("prove_est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EditarProveedor", prove_idParameter, prove_rucParameter, prove_represenParameter, prove_nomParameter, prove_dirParameter, prove_telParameter, prove_emailParameter, prove_estParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_EditarServicio(Nullable<int> serv_id, string serv_nom, string serv_desc, Nullable<decimal> serv_costo, string serv_est, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var serv_idParameter = serv_id.HasValue ?
+                new ObjectParameter("serv_id", serv_id) :
+                new ObjectParameter("serv_id", typeof(int));
+    
+            var serv_nomParameter = serv_nom != null ?
+                new ObjectParameter("serv_nom", serv_nom) :
+                new ObjectParameter("serv_nom", typeof(string));
+    
+            var serv_descParameter = serv_desc != null ?
+                new ObjectParameter("serv_desc", serv_desc) :
+                new ObjectParameter("serv_desc", typeof(string));
+    
+            var serv_costoParameter = serv_costo.HasValue ?
+                new ObjectParameter("serv_costo", serv_costo) :
+                new ObjectParameter("serv_costo", typeof(decimal));
+    
+            var serv_estParameter = serv_est != null ?
+                new ObjectParameter("serv_est", serv_est) :
+                new ObjectParameter("serv_est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EditarServicio", serv_idParameter, serv_nomParameter, serv_descParameter, serv_costoParameter, serv_estParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_EliminarCargo(Nullable<int> cargo_id, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var cargo_idParameter = cargo_id.HasValue ?
+                new ObjectParameter("cargo_id", cargo_id) :
+                new ObjectParameter("cargo_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EliminarCargo", cargo_idParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_EliminarCategoria(Nullable<int> cat_id, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var cat_idParameter = cat_id.HasValue ?
+                new ObjectParameter("cat_id", cat_id) :
+                new ObjectParameter("cat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EliminarCategoria", cat_idParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_EliminarCliente(Nullable<int> cli_id, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var cli_idParameter = cli_id.HasValue ?
+                new ObjectParameter("cli_id", cli_id) :
+                new ObjectParameter("cli_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EliminarCliente", cli_idParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_EliminarEmpleado(Nullable<int> emp_id, ObjectParameter respuesta, ObjectParameter mensaje)
+        {
+            var emp_idParameter = emp_id.HasValue ?
+                new ObjectParameter("emp_id", emp_id) :
+                new ObjectParameter("emp_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EliminarEmpleado", emp_idParameter, respuesta, mensaje);
+        }
+    
+        public virtual int SP_EliminarMarca(Nullable<int> mar_id, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var mar_idParameter = mar_id.HasValue ?
+                new ObjectParameter("mar_id", mar_id) :
+                new ObjectParameter("mar_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EliminarMarca", mar_idParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_EliminarPago(Nullable<int> pag_id, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var pag_idParameter = pag_id.HasValue ?
+                new ObjectParameter("pag_id", pag_id) :
+                new ObjectParameter("pag_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EliminarPago", pag_idParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_EliminarProveedor(Nullable<int> prove_id, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var prove_idParameter = prove_id.HasValue ?
+                new ObjectParameter("prove_id", prove_id) :
+                new ObjectParameter("prove_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EliminarProveedor", prove_idParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_EliminarServicio(Nullable<int> serv_id, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var serv_idParameter = serv_id.HasValue ?
+                new ObjectParameter("serv_id", serv_id) :
+                new ObjectParameter("serv_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EliminarServicio", serv_idParameter, resultado, mensaje);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int SP_RegistrarCargo(string cargo_nom, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var cargo_nomParameter = cargo_nom != null ?
+                new ObjectParameter("cargo_nom", cargo_nom) :
+                new ObjectParameter("cargo_nom", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RegistrarCargo", cargo_nomParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_RegistrarCategoria(string cat_desc, string cat_est, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var cat_descParameter = cat_desc != null ?
+                new ObjectParameter("cat_desc", cat_desc) :
+                new ObjectParameter("cat_desc", typeof(string));
+    
+            var cat_estParameter = cat_est != null ?
+                new ObjectParameter("cat_est", cat_est) :
+                new ObjectParameter("cat_est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RegistrarCategoria", cat_descParameter, cat_estParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_RegistrarCliente(string cli_ced, string cli_nom, string cli_ape, string cli_tel, Nullable<int> ciu_id, string cli_dir, string cli_email, string cli_est, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var cli_cedParameter = cli_ced != null ?
+                new ObjectParameter("cli_ced", cli_ced) :
+                new ObjectParameter("cli_ced", typeof(string));
+    
+            var cli_nomParameter = cli_nom != null ?
+                new ObjectParameter("cli_nom", cli_nom) :
+                new ObjectParameter("cli_nom", typeof(string));
+    
+            var cli_apeParameter = cli_ape != null ?
+                new ObjectParameter("cli_ape", cli_ape) :
+                new ObjectParameter("cli_ape", typeof(string));
+    
+            var cli_telParameter = cli_tel != null ?
+                new ObjectParameter("cli_tel", cli_tel) :
+                new ObjectParameter("cli_tel", typeof(string));
+    
+            var ciu_idParameter = ciu_id.HasValue ?
+                new ObjectParameter("ciu_id", ciu_id) :
+                new ObjectParameter("ciu_id", typeof(int));
+    
+            var cli_dirParameter = cli_dir != null ?
+                new ObjectParameter("cli_dir", cli_dir) :
+                new ObjectParameter("cli_dir", typeof(string));
+    
+            var cli_emailParameter = cli_email != null ?
+                new ObjectParameter("cli_email", cli_email) :
+                new ObjectParameter("cli_email", typeof(string));
+    
+            var cli_estParameter = cli_est != null ?
+                new ObjectParameter("cli_est", cli_est) :
+                new ObjectParameter("cli_est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RegistrarCliente", cli_cedParameter, cli_nomParameter, cli_apeParameter, cli_telParameter, ciu_idParameter, cli_dirParameter, cli_emailParameter, cli_estParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_RegistrarEmpleado(string emp_ced, string emp_nom, string emp_ape, Nullable<int> cargo_id, Nullable<decimal> emp_salario, Nullable<int> ciu_id, string emp_tel, string emp_est, ObjectParameter idEmpleadoResultado, ObjectParameter mensaje)
+        {
+            var emp_cedParameter = emp_ced != null ?
+                new ObjectParameter("emp_ced", emp_ced) :
+                new ObjectParameter("emp_ced", typeof(string));
+    
+            var emp_nomParameter = emp_nom != null ?
+                new ObjectParameter("emp_nom", emp_nom) :
+                new ObjectParameter("emp_nom", typeof(string));
+    
+            var emp_apeParameter = emp_ape != null ?
+                new ObjectParameter("emp_ape", emp_ape) :
+                new ObjectParameter("emp_ape", typeof(string));
+    
+            var cargo_idParameter = cargo_id.HasValue ?
+                new ObjectParameter("cargo_id", cargo_id) :
+                new ObjectParameter("cargo_id", typeof(int));
+    
+            var emp_salarioParameter = emp_salario.HasValue ?
+                new ObjectParameter("emp_salario", emp_salario) :
+                new ObjectParameter("emp_salario", typeof(decimal));
+    
+            var ciu_idParameter = ciu_id.HasValue ?
+                new ObjectParameter("ciu_id", ciu_id) :
+                new ObjectParameter("ciu_id", typeof(int));
+    
+            var emp_telParameter = emp_tel != null ?
+                new ObjectParameter("emp_tel", emp_tel) :
+                new ObjectParameter("emp_tel", typeof(string));
+    
+            var emp_estParameter = emp_est != null ?
+                new ObjectParameter("emp_est", emp_est) :
+                new ObjectParameter("emp_est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RegistrarEmpleado", emp_cedParameter, emp_nomParameter, emp_apeParameter, cargo_idParameter, emp_salarioParameter, ciu_idParameter, emp_telParameter, emp_estParameter, idEmpleadoResultado, mensaje);
+        }
+    
+        public virtual int SP_RegistrarMarca(string mar_desc, string mar_est, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var mar_descParameter = mar_desc != null ?
+                new ObjectParameter("mar_desc", mar_desc) :
+                new ObjectParameter("mar_desc", typeof(string));
+    
+            var mar_estParameter = mar_est != null ?
+                new ObjectParameter("mar_est", mar_est) :
+                new ObjectParameter("mar_est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RegistrarMarca", mar_descParameter, mar_estParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_RegistrarMaterial(string mat_code, Nullable<int> mar_id, Nullable<int> cat_id, string mat_nom, string mat_desc, string mat_est, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var mat_codeParameter = mat_code != null ?
+                new ObjectParameter("mat_code", mat_code) :
+                new ObjectParameter("mat_code", typeof(string));
+    
+            var mar_idParameter = mar_id.HasValue ?
+                new ObjectParameter("mar_id", mar_id) :
+                new ObjectParameter("mar_id", typeof(int));
+    
+            var cat_idParameter = cat_id.HasValue ?
+                new ObjectParameter("cat_id", cat_id) :
+                new ObjectParameter("cat_id", typeof(int));
+    
+            var mat_nomParameter = mat_nom != null ?
+                new ObjectParameter("mat_nom", mat_nom) :
+                new ObjectParameter("mat_nom", typeof(string));
+    
+            var mat_descParameter = mat_desc != null ?
+                new ObjectParameter("mat_desc", mat_desc) :
+                new ObjectParameter("mat_desc", typeof(string));
+    
+            var mat_estParameter = mat_est != null ?
+                new ObjectParameter("mat_est", mat_est) :
+                new ObjectParameter("mat_est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RegistrarMaterial", mat_codeParameter, mar_idParameter, cat_idParameter, mat_nomParameter, mat_descParameter, mat_estParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_RegistrarPago(string pag_desc, string pag_est, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var pag_descParameter = pag_desc != null ?
+                new ObjectParameter("pag_desc", pag_desc) :
+                new ObjectParameter("pag_desc", typeof(string));
+    
+            var pag_estParameter = pag_est != null ?
+                new ObjectParameter("pag_est", pag_est) :
+                new ObjectParameter("pag_est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RegistrarPago", pag_descParameter, pag_estParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_RegistrarProveedor(string prove_ruc, string prove_represen, string prove_nom, string prove_dir, string prove_tel, string prove_email, string prove_est, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var prove_rucParameter = prove_ruc != null ?
+                new ObjectParameter("prove_ruc", prove_ruc) :
+                new ObjectParameter("prove_ruc", typeof(string));
+    
+            var prove_represenParameter = prove_represen != null ?
+                new ObjectParameter("prove_represen", prove_represen) :
+                new ObjectParameter("prove_represen", typeof(string));
+    
+            var prove_nomParameter = prove_nom != null ?
+                new ObjectParameter("prove_nom", prove_nom) :
+                new ObjectParameter("prove_nom", typeof(string));
+    
+            var prove_dirParameter = prove_dir != null ?
+                new ObjectParameter("prove_dir", prove_dir) :
+                new ObjectParameter("prove_dir", typeof(string));
+    
+            var prove_telParameter = prove_tel != null ?
+                new ObjectParameter("prove_tel", prove_tel) :
+                new ObjectParameter("prove_tel", typeof(string));
+    
+            var prove_emailParameter = prove_email != null ?
+                new ObjectParameter("prove_email", prove_email) :
+                new ObjectParameter("prove_email", typeof(string));
+    
+            var prove_estParameter = prove_est != null ?
+                new ObjectParameter("prove_est", prove_est) :
+                new ObjectParameter("prove_est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RegistrarProveedor", prove_rucParameter, prove_represenParameter, prove_nomParameter, prove_dirParameter, prove_telParameter, prove_emailParameter, prove_estParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_RegistrarServicio(string serv_nom, string serv_desc, Nullable<decimal> serv_costo, string serv_est, ObjectParameter resultado, ObjectParameter mensaje)
+        {
+            var serv_nomParameter = serv_nom != null ?
+                new ObjectParameter("serv_nom", serv_nom) :
+                new ObjectParameter("serv_nom", typeof(string));
+    
+            var serv_descParameter = serv_desc != null ?
+                new ObjectParameter("serv_desc", serv_desc) :
+                new ObjectParameter("serv_desc", typeof(string));
+    
+            var serv_costoParameter = serv_costo.HasValue ?
+                new ObjectParameter("serv_costo", serv_costo) :
+                new ObjectParameter("serv_costo", typeof(decimal));
+    
+            var serv_estParameter = serv_est != null ?
+                new ObjectParameter("serv_est", serv_est) :
+                new ObjectParameter("serv_est", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RegistrarServicio", serv_nomParameter, serv_descParameter, serv_costoParameter, serv_estParameter, resultado, mensaje);
+        }
+    
+        public virtual int SP_RegistrarUsuario(string usu_nom, string usu_email, string usu_contra, string usu_est, ObjectParameter idUsuarioResultado, ObjectParameter mensaje)
+        {
+            var usu_nomParameter = usu_nom != null ?
+                new ObjectParameter("usu_nom", usu_nom) :
+                new ObjectParameter("usu_nom", typeof(string));
+    
+            var usu_emailParameter = usu_email != null ?
+                new ObjectParameter("usu_email", usu_email) :
+                new ObjectParameter("usu_email", typeof(string));
+    
+            var usu_contraParameter = usu_contra != null ?
+                new ObjectParameter("usu_contra", usu_contra) :
+                new ObjectParameter("usu_contra", typeof(string));
+    
+            var usu_estParameter = usu_est != null ?
+                new ObjectParameter("usu_est", usu_est) :
+                new ObjectParameter("usu_est", typeof(string));
+
+            if (idUsuarioResultado == null)
+            {
+                idUsuarioResultado = new ObjectParameter("IdUsuarioResultado", typeof(int));
+            }
+
+            if (mensaje == null)
+            {
+                mensaje = new ObjectParameter("Mensaje", typeof(string));
+            }
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RegistrarUsuario", usu_nomParameter, usu_emailParameter, usu_contraParameter, usu_estParameter, idUsuarioResultado, mensaje);
+        }
+    
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int SP_RenovarContrasena(string usu_contra_actual, string usu_contra_nueva, ObjectParameter mensaje)
+        {
+            var usu_contra_actualParameter = usu_contra_actual != null ?
+                new ObjectParameter("usu_contra_actual", usu_contra_actual) :
+                new ObjectParameter("usu_contra_actual", typeof(string));
+    
+            var usu_contra_nuevaParameter = usu_contra_nueva != null ?
+                new ObjectParameter("usu_contra_nueva", usu_contra_nueva) :
+                new ObjectParameter("usu_contra_nueva", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RenovarContrasena", usu_contra_actualParameter, usu_contra_nuevaParameter, mensaje);
+        }
+    
+        public virtual int SP_RenovarCorreo(string usu_correo_actual, string usu_correo_nueva, ObjectParameter mensaje)
+        {
+            var usu_correo_actualParameter = usu_correo_actual != null ?
+                new ObjectParameter("usu_correo_actual", usu_correo_actual) :
+                new ObjectParameter("usu_correo_actual", typeof(string));
+    
+            var usu_correo_nuevaParameter = usu_correo_nueva != null ?
+                new ObjectParameter("usu_correo_nueva", usu_correo_nueva) :
+                new ObjectParameter("usu_correo_nueva", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RenovarCorreo", usu_correo_actualParameter, usu_correo_nuevaParameter, mensaje);
+        }
+    
+        public virtual int SP_RenovarUsuario(string usu_usu_actual, string usu_usu_nueva, ObjectParameter mensaje)
+        {
+            var usu_usu_actualParameter = usu_usu_actual != null ?
+                new ObjectParameter("usu_usu_actual", usu_usu_actual) :
+                new ObjectParameter("usu_usu_actual", typeof(string));
+    
+            var usu_usu_nuevaParameter = usu_usu_nueva != null ?
+                new ObjectParameter("usu_usu_nueva", usu_usu_nueva) :
+                new ObjectParameter("usu_usu_nueva", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RenovarUsuario", usu_usu_actualParameter, usu_usu_nuevaParameter, mensaje);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> SP_ValidarUsuario(string correo, string contraseña)
+        {
+            var correoParameter = correo != null ?
+                new ObjectParameter("Correo", correo) :
+                new ObjectParameter("Correo", typeof(string));
+    
+            var contraseñaParameter = contraseña != null ?
+                new ObjectParameter("Contraseña", contraseña) :
+                new ObjectParameter("Contraseña", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_ValidarUsuario", correoParameter, contraseñaParameter);
+        }
     }
 }

@@ -15,15 +15,6 @@ namespace PaginaWebMVC.Models.DTO
         public string cargo_nom { get; set; }
 
 
-        public List<CargosDTO> Listar(string text)
-        {
-            using ()
-            {
-                SqlCommand cmd = new SqlCommand("sp_ValidarUsuario", cn);
-                cmd.Parameters.AddWithValue("Correo", user.Correo);
-                cmd.Parameters.AddWithValue("Contraseña", user.Clave);
-                cmd.CommandType = CommandType.StoredProcedure;
-            }
-        }
+        
     }
 }
